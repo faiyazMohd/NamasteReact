@@ -1,0 +1,27 @@
+Definition and Usage
+
+The crossorigin attribute sets the mode of the request to an HTTP CORS Request.
+
+Web pages often make requests to load resources on other servers. Here is where CORS comes in.
+
+A cross-origin request is a request for a resource (e.g. style sheets, iframes, images, fonts, or scripts) from another domain.
+
+CORS is used to manage cross-origin requests.
+
+CORS stands for Cross-Origin Resource Sharing, and is a mechanism that allows resources on a web page to be requested from another domain outside their own domain. It defines a way of how a browser and server can interact to determine whether it is safe to allow the cross-origin request. CORS allows servers to specify who can access the assets on the server, among many other things.
+
+Tip: The opposite of cross-origin requests is same-origin requests. This means that a web page can only interact with other documents that are also on the same server. This policy enforces that documents that interact with each other must have the same origin (domain).
+
+As we know that HTML introduces many elements and attribute that have some definition and specification that will be used for the enhancement of web development. In this article, we will learn how to use crossorigin attributes in HTML.
+
+The purpose of crossorigin attribute is used to share the resources from one domain to another domain. Basically, it is used to handle the CORS request. It is used to handle the CORS request that checks whether it is safe to allow for sharing the resources from other domains. The resources may include Audio, Video, Images, Link or external script that specifies whether to support a cross-origin request or not.
+
+CORS: It stands for cross-origin resource sharing. It is a mechanism by which one webpage requests to another domain for fetching out the resource like audio, video, script, etc. from the third party server without leaking their credentials information. 
+
+Values: This attribute contains two values which are given below –
+
+anonymous: It has a default value. It defines a CORS request which will be sent without passing the credential information.
+use-credentials: A cross-origin request will be sent with credentials, cookies, and certificate.
+
+//gtp
+The `crossorigin` attribute in a `<script>` tag is used to fetch scripts from a different domain or origin while complying with security policies. It allows the browser to handle cross-origin requests properly and ensures access to resources hosted on other domains. It helps maintain security and privacy by controlling the inclusion of user credentials and ensures that scripts can be safely loaded from different origins.

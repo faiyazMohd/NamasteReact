@@ -1,0 +1,7 @@
+React and ReactDOM are two separate packages in the React ecosystem, each serving a distinct purpose:
+
+1. React: React, or React.js, is the core library that provides the foundation for building user interfaces. It focuses on the components and their lifecycle, state management, and rendering logic. React allows you to create reusable UI components and efficiently update the UI in response to changes in application state. It introduces the concept of a virtual DOM, which optimizes rendering performance by selectively updating only the necessary parts of the UI.
+
+2. ReactDOM: ReactDOM is a specific package within the React ecosystem that serves as the glue between React and the actual browser DOM (Document Object Model). It provides the necessary bindings to render React components into the browser and manage interactions with the DOM. ReactDOM is responsible for handling the reconciliation process, which updates the actual DOM to reflect changes made to React components.
+
+In summary, React is the core library that handles the component-based architecture, state management, and rendering logic, while ReactDOM is a package that specifically focuses on rendering React components into the browser DOM. React allows you to build UI components, and ReactDOM facilitates the interaction between React and the browser environment, making it possible to see the rendered components on a web page.

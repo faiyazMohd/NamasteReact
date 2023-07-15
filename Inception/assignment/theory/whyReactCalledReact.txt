@@ -1,0 +1,11 @@
+React, often referred to as React.js or ReactJS, is known as "React" due to its core principle of reactive component-based development. The name "React" reflects the fundamental concept of the library, which is to efficiently and dynamically update the user interface (UI) in response to changes in application state.
+
+React was developed by Facebook and released in 2013. It gained popularity quickly because of its unique approach to building UI components. React introduced the concept of a virtual DOM (Document Object Model), a lightweight representation of the actual DOM, which is the structure of a web page.
+
+When using React, developers define components as reusable building blocks that encapsulate a portion of the UI and its behavior. Each component represents a piece of the application's UI, and React efficiently updates only the necessary components when there are changes in the application state. This reactive behavior allows for efficient rendering and avoids unnecessary DOM updates.
+
+The name "React" represents this reactive nature of the library. React's design philosophy emphasizes the ability to reactively update the UI based on changes in data or state, providing a more efficient and performant way of building dynamic web applications.
+
+Furthermore, the name "React" also reflects the declarative nature of the library. React allows developers to describe how the UI should look at any given moment, and it automatically handles the underlying updates and rendering. Instead of imperatively manipulating the DOM, developers declare the desired UI state, and React takes care of updating the UI reactively based on those declarations.
+
+Overall, React's name represents its core principles of reactive, component-based development and declarative UI updates. It has become widely adopted and popular among developers for its efficiency, performance, and developer-friendly approach to building user interfaces.

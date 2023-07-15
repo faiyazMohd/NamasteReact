@@ -1,0 +1,16 @@
+//GPT
+"async" and "defer" are attributes used in `<script>` tags to control the loading and execution of JavaScript files.
+
+1. Async attribute:
+   - When the "async" attribute is included in a `<script>` tag, it indicates to the browser that the script can be executed asynchronously while the HTML parsing continues.
+   - The script file is fetched in the background, and once it's available, it can interrupt the HTML parsing to execute immediately.
+   - Multiple scripts with the "async" attribute can be fetched and executed concurrently, allowing for parallel loading and potentially faster page rendering.
+   - However, the order of execution of asynchronously loaded scripts may not be guaranteed, so scripts relying on each other may need additional synchronization mechanisms.
+
+2. Defer attribute:
+   - When the "defer" attribute is included in a `<script>` tag, it instructs the browser to defer the execution of the script until the HTML parsing is complete.
+   - Scripts with the "defer" attribute are fetched in the background, but their execution is delayed until the entire HTML document is parsed.
+   - The deferred scripts are executed in the order they appear in the HTML document, ensuring predictable execution and preserving the dependency order between scripts.
+   - The "defer" attribute is particularly useful when scripts need to access or manipulate elements in the DOM, as it ensures that the HTML structure is fully loaded before script execution.
+
+In summary, the "async" attribute allows scripts to be fetched and executed asynchronously, potentially improving page loading speed but with no guarantee of execution order. On the other hand, the "defer" attribute defers script execution until after the HTML parsing is complete, ensuring ordered execution and suitable for scripts that rely on the DOM being fully available.

@@ -1,0 +1,17 @@
+CDN stands for Content Delivery Network. It is a distributed network of servers located in different geographic locations worldwide. The primary purpose of a CDN is to deliver web content, such as images, CSS files, JavaScript files, videos, and other static assets, to users more efficiently and with higher performance.
+
+Here are a few reasons why CDN is used:
+
+1. Improved Website Performance: CDNs have servers strategically placed in various locations, which allows content to be delivered from a server that is closer to the end user. This reduces latency and improves the overall performance of the website. When a user requests content, it is served from the nearest server instead of traveling long distances, resulting in faster load times.
+
+2. Scalability and High Availability: CDNs are designed to handle high volumes of traffic and distribute it across multiple servers. This helps in scaling the website's capacity to accommodate traffic spikes and ensures that content is always available, even during peak usage periods.
+
+3. Load Balancing: CDNs use load balancing techniques to distribute traffic across multiple servers. This helps to distribute the load evenly and avoid overloading a single server, improving the responsiveness and reliability of the website.
+
+4. Caching: CDNs cache content on their servers. When a user requests content, the CDN serves the cached version if available, reducing the load on the origin server and minimizing response times. Caching also helps to minimize bandwidth usage and reduce server load.
+
+5. Global Reach: CDNs have servers located in multiple regions around the world, which enables faster content delivery to users regardless of their geographical location. This is particularly beneficial for international audiences, as it reduces the distance content has to travel.
+
+6. DDoS Protection: CDNs often provide additional security features, including protection against Distributed Denial of Service (DDoS) attacks. By distributing traffic across multiple servers, CDNs can help absorb and mitigate the impact of DDoS attacks, ensuring that websites remain accessible.
+
+Overall, CDNs help improve website performance, reduce latency, enhance scalability, and provide a better user experience by delivering content from servers closer to the end user. They are especially useful for websites with global audiences and high traffic volumes.
