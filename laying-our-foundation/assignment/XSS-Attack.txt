@@ -1,0 +1,16 @@
+//GPT
+XSS (Cross-Site Scripting) is a type of security vulnerability that occurs when an attacker injects malicious scripts into a trusted website or application, which then executes the scripts in the browser of unsuspecting users. XSS attacks can have various harmful consequences, including data theft, session hijacking, defacement of websites, and distribution of malware.
+
+There are three main types of XSS attacks:
+
+1. **Stored XSS**: Also known as persistent XSS, this occurs when the malicious script is permanently stored on the target server, such as in a database or comment section. Whenever a user accesses the affected page, the script is served along with the legitimate content and executed in their browser.
+
+2. **Reflected XSS**: This type of XSS attack involves the injection of a malicious script that is embedded in a URL or input field, typically as part of a crafted link or a manipulated form submission. The script is then reflected back to the user in the server's response, and the user's browser executes it.
+
+3. **DOM-based XSS**: This type of XSS attack exploits vulnerabilities in the Document Object Model (DOM) of a web page. Instead of targeting the server or server response, the attacker manipulates the client-side scripts or the DOM structure itself to execute malicious code.
+
+XSS attacks can be used to steal sensitive information, such as login credentials, session tokens, or personal data, from users. They can also be leveraged to perform actions on behalf of the user, such as sending requests, defacing websites, or performing other malicious activities.
+
+Preventing XSS attacks requires proper input validation, output encoding, and secure coding practices. Web developers should sanitize and validate user input, use appropriate output encoding when displaying data, and implement Content Security Policies (CSP) to restrict the execution of untrusted scripts.
+
+Users can protect themselves from XSS attacks by keeping their browsers and web applications up to date, being cautious with clicking on suspicious links or downloading files, and using browser extensions that offer protection against XSS vulnerabilities.

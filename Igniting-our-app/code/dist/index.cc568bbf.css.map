@@ -1,1 +1,0 @@
-{"mappings":"ACAA","sources":["index.cc568bbf.css","style.css"],"sourcesContent":["#outerContainer {\n  background-color: bisque;\n}\n\n/*# sourceMappingURL=index.cc568bbf.css.map */\n","#outerContainer{\r\n    background-color: bisque;\r\n}"],"names":[],"version":3,"file":"index.cc568bbf.css.map"}

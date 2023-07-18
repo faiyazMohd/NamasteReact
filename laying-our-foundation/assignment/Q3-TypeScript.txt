@@ -1,0 +1,49 @@
+Q: Role of type attribute in script tag? What options can I use there?
+
+A: The type attribute specifies the type of the script. The type attribute identifies the content between the <script> and </script> tags. It has a Default value which is “text/javascript”.
+type attribute can be of the following types:
+
+    text/javascript : It is the basic standard of writing javascript code inside the <script> tag.
+
+Syntax
+
+<script type="text/javascript"></script>
+
+text/ecmascript : this value indicates that the script is following the EcmaScript standards.
+module: This value tells the browser that the script is a module that can import or export other files or modules inside it.
+text/babel : This value indicates that the script is a babel type and required bable to transpile it.
+text/typescript: As the name suggest the script is written in TypeScript.
+
+
+//GPT
+The type attribute in the <script> tag specifies the media type of the script being included. It helps the browser understand how to handle and interpret the content of the script. The type attribute is optional, but when specified, it is recommended to provide a valid MIME type.
+
+Here are some commonly used values for the type attribute:
+
+JavaScript (default): If the type attribute is omitted or set to text/javascript, it is interpreted as JavaScript code. This is the default behavior if no type attribute is specified.
+html
+Copy code
+<script>
+  // JavaScript code here
+</script>
+Module scripts: You can use the type attribute module to indicate that the script is an ECMAScript module. Module scripts allow you to use features like import and export to organize and manage JavaScript code across different files.
+html
+Copy code
+<script type="module">
+  // Module script code here
+</script>
+Other script types: You can also use the type attribute to specify other script types, such as:
+html
+Copy code
+<script type="text/ecmascript">
+  // ECMAScript code here
+</script>
+
+<script type="application/javascript">
+  // JavaScript code here
+</script>
+
+<script type="text/coffeescript">
+  // CoffeeScript code here
+</script>
+It's worth noting that the type attribute is less commonly used nowadays, especially for JavaScript code. In modern HTML5 documents, the type attribute is often omitted for JavaScript code since text/javascript is the default assumed by browsers. However, for module scripts, it is still necessary to explicitly specify type="module".

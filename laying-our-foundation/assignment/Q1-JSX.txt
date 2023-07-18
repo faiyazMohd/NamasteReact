@@ -1,0 +1,31 @@
+Q: What is JSX?
+
+A: JSX stands for JavaScript XML. JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement() and/or appendChild() methods. JSX makes it easier to write and add HTML in React. JSX converts HTML tags into react elements.
+Example 1 using JSX:
+
+const myElement = <h1>I Love JSX!</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+Example 2 Without JSX:
+
+const myElement = React.createElement('h1', {}, 'I do not use JSX!');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+
+
+
+//GPT
+JSX (JavaScript XML) is an extension to the JavaScript language syntax. It allows you to write HTML-like code within JavaScript, primarily used in frameworks like React. JSX provides a way to define the structure and appearance of user interfaces (UI) in a declarative manner.
+
+JSX looks similar to HTML but is actually closer to JavaScript. It allows you to mix HTML-like elements, attributes, and syntax with JavaScript expressions and logic. JSX elements can represent UI components, and they can be rendered, updated, and composed in JavaScript code.
+
+Here's an example of JSX code:
+
+```jsx
+const element = <h1>Hello, JSX!</h1>;
+```
+
+In the above code, the JSX expression `<h1>Hello, JSX!</h1>` represents an HTML-like element, specifically an `<h1>` heading with the text "Hello, JSX!". This JSX code can be rendered and displayed on a webpage using React or other JSX-compatible frameworks.
+
+JSX is not directly understood by browsers or JavaScript engines. It needs to be transpiled into regular JavaScript code using tools like Babel to ensure browser compatibility. The transpiled code will use regular JavaScript function calls and objects to create and manipulate the corresponding UI components defined in JSX.
