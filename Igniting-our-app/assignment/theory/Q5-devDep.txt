@@ -1,0 +1,33 @@
+5. What is difference between dependencies vs devDependencies ? :
+
+A: Dependencies should contain library and framework in which your app is built on, needs to function effectively. such as Vue, React, Angular, Express, JQuery and etc. DevDependencies should contain modules/packages a developer needs during development. such as, parcel, webpack, vite, mocha. These packages are necessary only while you are developing your project, not necessary on production. To save a dependency as a devDependency on installation we need to do,
+
+npm install --save-dev
+
+instead of just,
+
+npm install --save
+
+//GPT
+In the context of npm (Node Package Manager) and package.json files, there are two distinct categories for specifying dependencies: `dependencies` and `devDependencies`. These categories represent different types of dependencies and serve different purposes in a JavaScript project.
+
+1. Dependencies (`dependencies`):
+   - Dependencies listed under the `dependencies` section are packages that are required for the normal runtime operation of the application or project.
+   - They typically include packages that are necessary for the application to function properly when it is deployed or used by end-users.
+   - Examples include utility libraries, frameworks, or modules that provide core functionality to the application.
+   - Dependencies listed under `dependencies` are installed when running `npm install` without the `--production` flag.
+
+2. Development Dependencies (`devDependencies`):
+   - Dependencies listed under the `devDependencies` section are packages that are only required during development and not in the production runtime of the application.
+   - They include packages that are helpful during development, such as testing frameworks, build tools, linters, and other development-specific utilities.
+   - Examples include testing libraries, bundlers, transpilers, code formatters, and other development-specific tools.
+   - `devDependencies` are not included when the project is deployed or used in production, as they are not necessary for the functioning of the application itself.
+   - Development dependencies are installed when running `npm install` with the `--production` flag explicitly set to `false` or when running `npm install` without any flags in a development environment.
+
+The separation of dependencies and devDependencies allows for more efficient management of dependencies based on their intended use. It helps reduce the size of production deployments by excluding development-specific tools and dependencies that are not necessary for end-users.
+
+By maintaining a clear distinction between dependencies and devDependencies, you can ensure that only the necessary packages are included in the production build, minimizing potential security vulnerabilities and optimizing the overall performance of the application.
+
+When running `npm install`, both dependencies and devDependencies listed in the `package.json` file will be installed by default. However, during production deployments, `devDependencies` are typically omitted or removed to keep the deployment lean and efficient.
+
+To summarize, `dependencies` are essential packages required for the application to run in production, while `devDependencies` are development-specific packages necessary during the development and testing phase but not needed in the production environment.

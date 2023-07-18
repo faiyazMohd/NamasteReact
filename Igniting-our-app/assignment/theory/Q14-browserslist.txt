@@ -1,0 +1,20 @@
+Q: What is browserslist?
+
+A: Browserslist is a tool that allows specifying which browsers should be supported in your frontend app by specifying "queries" in a config file. It's used by frameworks/libraries such as React, Angular and Vue, but it's not limited to them.
+
+//GPT
+Browserslist is a configuration file and query syntax used to define the target browsers or environments that a web project should support. It is commonly used in modern front-end development tools like Babel, Autoprefixer, and Stylelint to determine which CSS prefixes, JavaScript polyfills, or other optimizations should be applied based on the specified browser compatibility requirements.
+
+Here's how Browserslist works:
+
+1. Configuration File: Browserslist uses a configuration file, typically named `.browserslistrc` or specified in the `browserslist` field of `package.json`. This file defines the target browsers or environments in a specific syntax.
+
+2. Query Syntax: Browserslist queries are written using a simple syntax to specify the browsers or environments to target. For example, you can use keywords like "defaults" to target the default browserlist used by popular tools, or you can specify individual browser versions, usage percentages, or ranges.
+
+3. Tool Integration: Various front-end development tools integrate with Browserslist to leverage the specified target browsers. For example, Babel uses Browserslist to determine which JavaScript transformations and polyfills are necessary to ensure compatibility with the specified browsers. Autoprefixer uses it to add vendor prefixes to CSS properties based on the supported browsers.
+
+4. Browser Compatibility: Browserslist simplifies the process of managing browser compatibility by providing a unified way to define target browsers. This ensures that the project's code and assets are optimized and tailored to the specific browsers and versions that need to be supported, reducing the chances of compatibility issues.
+
+By defining the target browsers using Browserslist, developers can ensure that their web projects are compatible with a specific set of browsers or environments while avoiding unnecessary optimizations or polyfills for unsupported versions. This improves the efficiency of the build process and helps deliver a better user experience across different platforms.
+
+The Browserslist syntax is versatile and supports various options and queries, including specifying specific browser versions, ranges, usage statistics, or custom queries. It is widely used in the front-end development ecosystem and has become a standard way to define browser compatibility requirements in modern web projects.

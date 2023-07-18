@@ -1,0 +1,25 @@
+7. What is Tree Shaking?
+
+ans:A: Tree shaking is process of removing the unwanted code that we do not use while developing the application. In computing, tree shaking is a dead code elimination technique that is applied when optimizing code.
+
+
+//GPT
+Tree shaking is a technique used in modern JavaScript build processes to eliminate unused code or dead code from the final bundled output. It helps reduce the size of the JavaScript bundle, resulting in faster loading times and improved performance for web applications.
+
+Here's how tree shaking works:
+
+1. Code Analysis: The build tool (such as Webpack or Rollup) analyzes the JavaScript code and its dependencies to determine which parts of the code are actually used or referenced.
+
+2. Dependency Graph: The build tool constructs a dependency graph based on the imports and exports in the code. It identifies the relationships between modules and how they depend on each other.
+
+3. Unused Code Removal: Using the dependency graph, the build tool can detect and eliminate code that is not used or referenced by any other part of the application. This includes functions, variables, or entire modules that are not needed.
+
+4. Minification and Bundling: After removing the unused code, the build tool proceeds with minification and bundling, generating a smaller and optimized JavaScript bundle for deployment.
+
+The main goal of tree shaking is to remove code that will never be executed, reducing the overall bundle size. This is particularly beneficial when working with large libraries or frameworks that offer many features but may only use a small portion of them in a specific project.
+
+Tree shaking relies on the ES module system, which provides static structure information about imports and exports. This allows the build tool to determine the exact dependencies at build time, enabling dead code elimination.
+
+It's important to note that tree shaking requires modules to be written in a way that allows static analysis. Specifically, the imports and exports must be statically analyzable so that the build tool can accurately determine which parts of the code are used or not.
+
+In summary, tree shaking is a build optimization technique that removes unused or dead code from JavaScript bundles. By eliminating unnecessary code, it reduces the bundle size and improves application performance by ensuring that only the required code is shipped to the client's browser.

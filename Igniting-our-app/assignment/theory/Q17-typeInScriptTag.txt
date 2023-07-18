@@ -1,0 +1,62 @@
+
+//GTP
+The `type` attribute in the `<script>` tag is used to specify the MIME type of the script being included. It helps the browser understand how to interpret and execute the script code.
+
+There are two common values used for the `type` attribute:
+
+1. `type="text/javascript"` (default):
+   - If the `type` attribute is not specified or set to `"text/javascript"`, it indicates that the content of the `<script>` tag is JavaScript code.
+   - This value has been the default for many years, and most modern browsers assume JavaScript when the `type` attribute is omitted.
+
+2. `type="module"`:
+   - The `type="module"` value is used to indicate that the script is an ECMAScript module. ECMAScript modules are a standardized way of organizing and sharing JavaScript code.
+   - When the `type` attribute is set to `"module"`, the browser treats the script as an ES module and applies stricter parsing rules. This enables the use of `import` and `export` statements for module dependencies.
+
+It's worth noting that the `type` attribute is not required in HTML5. If you're including JavaScript code and not using ECMAScript modules, you can omit the `type` attribute altogether. Most modern browsers will interpret the content as JavaScript by default.
+
+Here's an example of using the `type` attribute in a `<script>` tag:
+
+```html
+<!-- JavaScript code -->
+<script type="text/javascript">
+  // JavaScript code goes here
+</script>
+
+<!-- ECMAScript module -->
+<script type="module">
+  // ES module code goes here
+</script>
+```
+
+Remember that when using ECMAScript modules (`type="module"`), there are additional rules and considerations, such as how modules are loaded and the usage of `import` and `export` statements.
+
+The `type` attribute in the `<script>` tag can have various values depending on the type of script you are including. Here are some common values used with the `type` attribute:
+
+1. `text/javascript` (default):
+   - This is the default value assumed by most browsers when the `type` attribute is omitted.
+   - It indicates that the content of the `<script>` tag is JavaScript code.
+   - Example: `<script type="text/javascript"> ... </script>`
+
+2. `module`:
+   - This value is used to indicate that the script is an ECMAScript module.
+   - It enables the use of `import` and `export` statements for module dependencies.
+   - Example: `<script type="module"> ... </script>`
+
+3. `text/ecmascript`:
+   - This value is used to specify JavaScript code that adheres to the ECMAScript standard.
+   - It is less commonly used in modern web development.
+   - Example: `<script type="text/ecmascript"> ... </script>`
+
+4. `application/javascript`:
+   - This value is used to indicate that the content is JavaScript code.
+   - It is an alternative to `text/javascript` and is used to comply with certain MIME standards.
+   - Example: `<script type="application/javascript"> ... </script>`
+
+5. `text/x-javascript`:
+   - This value is used to specify JavaScript code but is less commonly used.
+   - It was widely used in the past but is now deprecated in favor of `text/javascript`.
+   - Example: `<script type="text/x-javascript"> ... </script>`
+
+It's important to note that for modern JavaScript development, the most commonly used `type` value is either `text/javascript` (or omitted) for regular JavaScript code or `module` for ECMAScript modules. The other values mentioned above are less commonly used or have become outdated.
+
+Remember that the HTML5 specification doesn't strictly require the `type` attribute for `<script>` tags. If you're including regular JavaScript code without using modules, you can omit the `type` attribute altogether, and most browsers will interpret it as JavaScript by default.

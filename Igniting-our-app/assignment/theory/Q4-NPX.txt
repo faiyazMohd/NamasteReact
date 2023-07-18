@@ -1,0 +1,32 @@
+Q: What is npx?
+
+A: npx is a tool that is used to execute the packages. It comes with the npm, when you installed npm above 5.2.0 version then automatically npx will installed. It is an npm package runner that can execute any package that you want from the npm registry without even installing that package.
+
+//GPT
+When we say that `npx` allows you to execute packages without explicitly installing them, it means that you don't need to perform a separate installation step before using the package. 
+
+Typically, when you want to use a package, you would need to install it either globally (using `npm install -g package-name`) or locally within your project (using `npm install package-name`). This installation step fetches the package from the npm registry and copies it to the appropriate location, making it available for use.
+
+However, with `npx`, you can directly run a command provided by a package without having to install the package explicitly beforehand. `npx` handles the process of fetching the package from the registry (if it's not already present locally), temporarily installing it, and executing the desired command.
+
+For example, let's say there is a package called `example-package` that provides a command-line tool called `example-tool`. Normally, you would have to install the package globally or locally using `npm install example-package` before being able to run the `example-tool` command. But with `npx`, you can directly execute the command without explicitly installing the package:
+
+```
+npx example-package example-tool
+```
+
+`npx` checks if the package is available locally or globally and, if not, automatically fetches and installs it temporarily before executing the desired command. This eliminates the need for a separate installation step, allowing you to run packages on the fly without cluttering your system or project dependencies.
+
+So, by using `npx`, you can conveniently execute packages without the explicit installation step that is typically required with `npm install`.
+
+When `npx` installs a package, it is temporary in the sense that it creates a temporary directory where it downloads and installs the package. The package and its dependencies are stored in this temporary directory for the duration of the command execution.
+
+The temporary installation created by `npx` is typically removed after the command execution completes. This means that once the command finishes running, the installed package and its dependencies are no longer present on your system.
+
+The temporary nature of the installation serves to minimize the clutter and potential conflicts caused by globally or permanently installing packages. It allows you to run packages on-demand without leaving behind any residual files or affecting other projects on your machine.
+
+Each time you use `npx` to run a package, it performs the installation process if necessary, executes the command with the installed package, and then cleans up the temporary directory after the command completes. This ensures that subsequent `npx` invocations start with a clean slate and don't interfere with other installations.
+
+It's worth noting that if a package is already installed locally or globally on your system, `npx` will prefer the existing installation instead of creating a temporary one. In such cases, it directly uses the installed version without any temporary installation.
+
+Overall, the temporary installation created by `npx` lasts only for the duration of the command execution and is automatically cleaned up afterwards, ensuring a clean and isolated environment for each command invocation.

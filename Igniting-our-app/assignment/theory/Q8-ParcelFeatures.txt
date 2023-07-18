@@ -1,0 +1,9 @@
+9. List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+ans:
+
+HMR - Hot module replacement : Parcel provides HMR properties to keep track of files changes by using file watcher algorithms.
+Compression : Parcel provides compression properties to compress our files e.g images to optimize the performance of our app.
+Minification : Parcel minifies the code.
+Zero config : Unlike Webpack, Parcel requires zero configurations to setup.
+Old browser competibility : Parcel allows support for older broser also.
+ 
