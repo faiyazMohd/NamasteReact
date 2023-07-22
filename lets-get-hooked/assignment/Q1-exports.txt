@@ -1,0 +1,130 @@
+Q: What is the difference between Named export, Default export, and * as export?
+
+A: ES6 provides us to import & export a module and use it in other files. ES6 provides two ways to export a module from a file: named export and default export. In Named export, one can have multiple named exports per file. Then import the specific exports they want surrounded in {} braces. The name of imported module has to be the same as the name of the exported module. In Named export, the component is exported from MyComponent.js file like:
+
+export const MyComponent = () => {}
+export const MyComponent2 = () => {}
+
+and the component is imported from MyComponent.js file like: here we must use {} in MyComponent.
+
+// ex. importing a single named export
+import { MyComponent } from "./MyComponent";
+
+// ex. importing multiple named exports
+import { MyComponent, MyComponent2 } from "./MyComponent";
+
+// ex. giving a named import a different name by using "as":
+import { MyComponent2 as MyNewComponent } from "./MyComponent";
+
+In Default export, One can have only one default export per file. The naming of import is completely independent in default export and we can use any name we like. In Default export, the component is exported from MyComponent.js file like:
+
+const MyComponent = () => {}
+export default MyComponent;
+
+and the component is imported from MyComponent.js file like: here we must omit {} in MyComponent.
+
+import MyComponent from "./MyComponent";
+
+In * as export, it is used to import the whole module as a component and access the components inside the module. In * as export, the component is exported from MyComponent.js file like:
+
+export const MyComponent = () => {}
+export const MyComponent2 = () => {}
+export const MyComponent3 = () => {}
+
+and the component is imported from MyComponent.js file like:
+
+import * as MainComponents from "./MyComponent";
+
+Now we can use them in JSX as:
+
+<MainComponents.MyComponent />
+<MainComponents.MyComponent2 />
+<MainComponents.MyComponent3 />
+
+We can use Named export and Default export together. So you should export like:
+
+export const MyComponent2 = () => {}
+const MyComponent = () => {}
+export default MyComponent;
+
+and import like:
+
+import MyComponent, {MyComponent2} from "./MyComponent";
+
+
+//GPT
+In JavaScript and ECMAScript modules, there are three different ways to export functionalities from a module: Named export, Default export, and the `* as` export.
+
+1. **Named Export**:
+A named export allows you to export multiple functionalities (variables, functions, classes, or objects) from a module with explicit names. You can export multiple entities as named exports within the same module, and they can be imported individually in other modules.
+
+Example of named export in a module:
+
+```js
+// MyModule.js
+export const variable1 = 'Hello';
+export function add(a, b) {
+  return a + b;
+}
+export class MyClass {
+  // ...
+}
+```
+
+To import named exports in another module:
+
+```js
+// AnotherModule.js
+import { variable1, add, MyClass } from './MyModule';
+console.log(variable1); // Output: 'Hello'
+console.log(add(3, 5)); // Output: 8
+const instance = new MyClass();
+```
+
+2. **Default Export**:
+A default export allows you to export a single functionality as the default value from a module. There can be only one default export per module. When importing a default export, you can give it any name you prefer.
+
+Example of default export in a module:
+
+```js
+// MyModule.js
+const data = [1, 2, 3];
+export default data;
+```
+
+To import the default export in another module:
+
+```js
+// AnotherModule.js
+import myData from './MyModule';
+console.log(myData); // Output: [1, 2, 3]
+```
+
+3. **`* as` Export**:
+The `* as` export allows you to export all named exports from one module and import them as properties of an object in another module. This approach is useful when you want to import multiple functionalities from a module without importing them individually.
+
+Example of `* as` export in a module:
+
+```js
+// MyModule.js
+export const variable1 = 'Hello';
+export function add(a, b) {
+  return a + b;
+}
+```
+
+To import all named exports using `* as`:
+
+```js
+// AnotherModule.js
+import * as MyModule from './MyModule';
+console.log(MyModule.variable1); // Output: 'Hello'
+console.log(MyModule.add(3, 5)); // Output: 8
+```
+
+In summary:
+- Named export allows multiple exports from a module with explicit names.
+- Default export exports a single value from a module, and you can import it with any name.
+- `* as` export imports all named exports from a module into a single object, which allows you to access them as properties of that object.
+
+These export techniques offer flexibility and organization when structuring and sharing functionalities between JavaScript modules. The choice of which export to use depends on the specific requirements and design of your application.

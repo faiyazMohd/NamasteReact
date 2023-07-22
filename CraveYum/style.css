@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.header {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+.logo > img {
+  width: 10rem;
+}
+
+.list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.list > li {
+  padding: 0 1.5rem;
+}
+.list > li:hover {
+  cursor: pointer;
+}
+
+.body {
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.restaurantCard {
+  border: 1px solid #000;
+  width: 19rem;
+  margin: 2rem;
+}
+.restaurantCard > img {
+  width: 100%;
+  height: 16rem;
+}

@@ -1,0 +1,94 @@
+Q: What is props in React? Ways to.
+
+A: props stands for properties. Props are arguments passed into React components. props are used in React to pass data from one component to another (from a parent component to a child component(s)). They are useful when you want the flow of data in your app to be dynamic.
+Example
+
+function App() {
+  return (
+    <div className="App">
+      <Tool name="Chetan Nada" tool="Figma"/> // name and tool are props
+    </div>
+  )
+}
+
+
+//GPTIn React, `props` (short for "properties") are a mechanism for passing data from a parent component to a child component. They are a way to make components more flexible and reusable by allowing them to receive and use data from their parent components.
+
+Props are read-only, meaning that they cannot be modified within the child component that receives them. Instead, the parent component is responsible for passing data down to its child components through props.
+
+Here's how you can use props in React:
+
+1. **Passing Props to a Component**:
+To pass props to a component, you simply include them as attributes when rendering the component. For example:
+
+ParentComponent.jsx:
+```jsx
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const name = 'John';
+  const age = 30;
+
+  return <ChildComponent name={name} age={age} />;
+};
+```
+
+ChildComponent.jsx:
+```jsx
+import React from 'react';
+
+const ChildComponent = (props) => {
+  return (
+    <div>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </div>
+  );
+};
+```
+
+2. **Accessing Props in a Component**:
+In the child component, you can access the passed props through the function parameters or by using destructuring for more concise code:
+
+Using function parameters:
+```jsx
+const ChildComponent = (props) => {
+  return (
+    <div>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </div>
+  );
+};
+```
+
+Using destructuring:
+```jsx
+const ChildComponent = ({ name, age }) => {
+  return (
+    <div>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+    </div>
+  );
+};
+```
+
+3. **Default Props**:
+You can also define default props for a component, which will be used if a particular prop is not passed from the parent component:
+
+```jsx
+const ChildComponent = ({ name = 'Guest', age }) => {
+  return (
+    <div>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+    </div>
+  );
+};
+```
+
+In this example, if the `name` prop is not provided from the parent component, the default value 'Guest' will be used.
+
+Props are a fundamental concept in React, allowing data to flow from parent components to child components, facilitating communication and reusability within the component tree.

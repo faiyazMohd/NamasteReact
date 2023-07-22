@@ -1,0 +1,35 @@
+React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+
+The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+
+//source 2
+React Fiber is a concept of ReactJS that is used to render a system faster, smoother and smarter. The Fiber reconciler, which became the default reconciler for React 16 and above, is a complete rewrite of React’s reconciliation algorithm to solve some long-standing issues in React. Because Fiber is asynchronous, React can:
+
+    Pause, resume, and restart rendering work on components as new updates come in
+    Reuse previously completed work and even abort it if not needed
+    Split work into chunks and prioritize tasks based on importance
+
+//GPT
+React Fiber is an internal reimplementation of the React reconciliation algorithm and core algorithmic engine. It was introduced in React version 16.0 as a significant rewrite of the previous stack-based, recursive reconciliation algorithm. The primary motivation behind creating React Fiber was to improve the performance of React and enable better support for concurrent rendering.
+
+The term "Fiber" refers to a unit of work in React. The new algorithm breaks the rendering work into smaller units called "fibers," and these fibers represent individual components in the component tree. The previous stack-based reconciliation algorithm had limitations, especially when dealing with large component trees, as it could block the main thread for extended periods, causing jank and performance issues.
+
+With React Fiber, the reconciliation work can be paused, aborted, or resumed during rendering, making it easier to work with time-slicing and concurrent rendering. This allows React to prioritize high-priority updates (e.g., user interactions) over low-priority updates (e.g., background or non-visible changes). It also enables more granular control over rendering, so that React can break rendering work into smaller chunks and ensure that the application remains responsive during updates.
+
+Key features and benefits of React Fiber:
+
+1. **Concurrent Rendering**: React Fiber enables concurrent rendering, which allows the browser to better manage its resources by interleaving rendering work with other browser tasks. This improves the responsiveness of the UI during complex rendering processes.
+
+2. **Incremental Rendering**: React Fiber breaks the rendering process into smaller units, allowing the application to display incremental updates to the user while work is still ongoing. This results in a more smooth and interactive user experience.
+
+3. **Prioritization**: React Fiber introduces a priority model that allows developers to define the priority level of updates. High-priority updates can be given preference over low-priority updates, ensuring that critical UI changes are processed quickly.
+
+4. **Error Handling**: React Fiber improves error handling and reporting by tracking errors more accurately and providing better error boundaries.
+
+5. **Server-Side Rendering**: React Fiber has better support for server-side rendering and code splitting.
+
+It's important to note that, from the perspective of a React developer, the introduction of React Fiber does not significantly change the API or the way React components are written. It is an internal implementation detail of React that makes React more efficient and better equipped to handle complex UI rendering.
+
+Since its introduction, React Fiber has gradually been integrated into React's core implementation and has opened up possibilities for future features and optimizations. However, as of my knowledge cutoff in September 2021, concurrent rendering with React Fiber is still an opt-in feature and is not enabled by default. Future versions of React may provide more extensive support for concurrent rendering as the React team continues to refine and improve React Fiber.

@@ -32,10 +32,15 @@ const heading = (
 
 const HeaderComponent = ()=>
   (
+    <React.Fragment >
+    <div>
+      Hola
+    </div>
     <div>
       {heading}
       <h1>Namaste React</h1>
     </div>
+    </React.Fragment>
   )
 
 // root.render(div);

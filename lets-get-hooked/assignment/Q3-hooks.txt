@@ -1,0 +1,63 @@
+Q: What are React Hooks?
+
+A: In React version 16.8, React introduced a new pattern called Hooks. React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects. Hooks allow you to reuse stateful logic without changing your component hierarchy. This makes it easy to share Hooks among many components or with the community.
+React provides a bunch of standard in-built hooks:
+
+    useState: To manage states. Returns a stateful value and an updater function to update it.
+    useEffect: To manage side-effects like API calls, subscriptions, timers, mutations, and more.
+    useContext: To return the current value for a context.
+    useReducer: A useState alternative to help with complex state management.
+    useCallback: It returns a memorized version of a callback to help a child component not re-render unnecessarily.
+    useMemo: It returns a memoized value that helps in performance optimizations.
+    useRef: It returns a ref object with a current property. The ref object is mutable. It is mainly used to access a child component imperatively.
+    useLayoutEffect: It fires at the end of all DOM mutations. It's best to use useEffect as much as possible over this one as the useLayoutEffect fires synchronously.
+    useDebugValue: Helps to display a label in React DevTools for custom hooks.
+
+
+//GPT
+React Hooks are functions that allow you to use state and other React features in functional components, which were previously only available in class components. They were introduced in React version 16.8 as a way to write more concise and reusable code in functional components, making it easier to manage state, side effects, and lifecycle events.
+
+Before React Hooks, functional components were stateless and could not use features like state, lifecycle methods, or context without converting them to class components. React Hooks provide an alternative to class components by offering a set of built-in functions that let you add state and other React features to functional components.
+
+Some commonly used React Hooks include:
+
+1. **useState**: Allows functional components to have their own state variables and update them. It returns a state variable and a function to update that state.
+
+2. **useEffect**: Performs side effects in functional components, such as fetching data, subscribing to events, or updating the DOM. It replaces the lifecycle methods like `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
+
+3. **useContext**: Provides a way to consume the nearest ancestor's context in a functional component, making it easier to access global state or configuration.
+
+4. **useReducer**: Similar to `useState`, but allows you to manage more complex state logic with a reducer function, akin to how Redux works.
+
+5. **useMemo**: Memoizes expensive calculations to avoid unnecessary re-calculations on every render.
+
+6. **useCallback**: Memoizes callback functions to prevent unnecessary re-renders when passing them as props to child components.
+
+7. **useRef**: Provides a way to create mutable references that persist across renders, useful for accessing and interacting with DOM elements.
+
+8. **useLayoutEffect**: Similar to `useEffect`, but runs synchronously after all DOM mutations. Useful for DOM measurements and updates.
+
+Using React Hooks, functional components can now be used to handle complex state management, side effects, and other React-specific functionality without the need for class components. This has simplified the development process and made code more readable and maintainable.
+
+Here's a simple example using `useState` hook:
+
+```jsx
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0); // Initializes state variable count with 0
+
+  const increment = () => {
+    setCount(count + 1); // Updates the state variable count
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+```
+
+With React Hooks, developers can write more functional-style code and enjoy the benefits of stateful logic in functional components without relying on class components.

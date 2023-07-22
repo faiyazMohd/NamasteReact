@@ -1,0 +1,23 @@
+Q: What is Reconciliation in React?
+
+A: Reconciliation is the process through which React updates the Browser DOM and makes React work faster. React use a diffing algorithm so that component updates are predictable and faster. React would first calculate the difference between the real DOM and the copy of DOM (Virtual DOM) when there's an update of components. React stores a copy of Browser DOM which is called Virtual DOM. When we make changes or add data, React creates a new Virtual DOM and compares it with the previous one. Comparison is done by Diffing Algorithm. React compares the Virtual DOM with Real DOM. It finds out the changed nodes and updates only the changed nodes in Real DOM leaving the rest nodes as it is. This process is called Reconciliation.
+
+
+//GPT
+Reconciliation in React refers to the process of comparing the previous Virtual DOM with the updated Virtual DOM to determine the minimal set of changes required to update the actual DOM. It is a crucial step in React's rendering process and is responsible for efficiently updating the user interface (UI) while minimizing unnecessary DOM manipulations.
+
+When the state or props of a React component change, a new Virtual DOM is generated with the updated state. React then compares this new Virtual DOM with the previous one. This comparison is done using a diffing algorithm that efficiently finds the differences between the two Virtual DOM trees.
+
+The goal of the reconciliation process is to compute the minimum number of changes needed to transform the previous UI representation into the new one. By identifying only the changes, React can optimize the updating process, reducing the performance overhead and making UI updates more efficient.
+
+Reconciliation follows these main steps:
+
+1. **Diffing**: React performs a recursive tree traversal of the previous Virtual DOM and the updated Virtual DOM. During this traversal, React identifies any differences between the two trees, such as newly added elements, modified elements, or elements that were removed.
+
+2. **Component Re-rendering**: When React identifies changes between elements, it updates the affected components to reflect the new state or props. React components may re-render if their state or props have changed. However, React also attempts to minimize unnecessary re-renders by comparing the new props and state with the previous ones.
+
+3. **Minimal Updates**: After identifying the differences, React calculates the minimum number of updates needed to transform the previous DOM state into the new DOM state. This optimization step ensures that only the necessary changes are applied to the actual DOM, minimizing DOM manipulations and rendering time.
+
+4. **Batching**: Once React determines the updates needed, it batches the changes into a single update to the actual DOM. This batching further optimizes the rendering process by reducing layout thrashing and reflows.
+
+By performing reconciliation and efficiently updating the DOM, React significantly improves the performance of UI rendering and enhances the user experience. The Virtual DOM and reconciliation process are critical components of React's architecture, allowing developers to build responsive and high-performing applications with ease.

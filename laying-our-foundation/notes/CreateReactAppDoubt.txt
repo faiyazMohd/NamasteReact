@@ -1,0 +1,43 @@
+In Create React App, the `index.html` file in the `public` folder does not contain a `<script>` tag referencing the `index.js` file. Instead, the JavaScript code from `index.js` is injected into the `index.html` file dynamically during the build process.
+
+Here's how it works:
+
+1. **index.html**: The `index.html` file in the `public` folder serves as the main HTML template for your React application. It contains the basic structure of the page, including the `<div>` element with the `id` of `'root'`, where the React app will be rendered.
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <title>React App</title>
+   </head>
+   <body>
+     <div id="root"></div>
+   </body>
+   </html>
+   ```
+
+2. **index.js**: The `index.js` file in the `src` folder is the main entry point of your React application. It contains the code to render the root component of your application into the DOM. Typically, `index.js` looks like this:
+
+   ```jsx
+   import React from 'react';
+   import ReactDOM from 'react-dom';
+   import App from './App'; // Your root component
+
+   ReactDOM.render(<App />, document.getElementById('root'));
+   ```
+
+3. **Build Process**: When you run the `npm run build` or `yarn build` command in Create React App, the build process takes place. During this process, Webpack (the build tool used by Create React App) bundles all the JavaScript code, including `index.js` and its dependencies, into a single optimized JavaScript file.
+
+4. **Injecting JavaScript**: The resulting JavaScript bundle is automatically injected into the `index.html` file during the build process. The build tool adds a `<script>` tag to the `index.html` file, linking to the generated JavaScript bundle file.
+
+   The injected `<script>` tag looks something like this:
+
+   ```html
+   <script src="/static/js/main.<hash>.js"></script>
+   ```
+
+   The `<script>` tag references the optimized JavaScript bundle (with a hashed filename) that contains the transpiled and bundled code from `index.js` and all other JavaScript files in your application.
+
+5. **Result**: When you open the `index.html` file generated in the `build` folder (created during the build process), the injected `<script>` tag loads the JavaScript bundle. As a result, the React application starts running, and the root component (`<App />`) gets rendered into the `<div>` with the `id` of `'root'`. The application is now connected to the `index.html` file, and the rendered UI appears inside the designated `<div>`.

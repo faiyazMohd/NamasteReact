@@ -2947,131 +2947,21 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-const Logo = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        id: "left",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "https://endurefit.netlify.app/static/media/logowithname.3f6ee07af81e14903860.png",
-                alt: "Logo",
-                style: {
-                    height: "2rem"
-                }
-            }, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 4,
-                columnNumber: 5
-            }, undefined),
-            " "
-        ]
-    }, void 0, true, {
-        fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-        lineNumber: 3,
-        columnNumber: 20
-    }, undefined);
-_c = Logo;
-const Search = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        id: "searchBar",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                type: "text",
-                style: {
-                    margin: "1rem",
-                    width: "21vw",
-                    height: "1.7rem",
-                    borderRadius: "0.5rem"
-                }
-            }, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 9,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                style: {
-                    backgroundColor: "#63bccb",
-                    borderRadius: "0.5rem",
-                    padding: "0.3rem"
-                },
-                children: "Search"
-            }, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 15,
-                columnNumber: 5
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-        lineNumber: 8,
-        columnNumber: 22
-    }, undefined);
-_c1 = Search;
-const UserIcon = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        id: "right",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-            style: {
-                height: "2.8rem"
-            },
-            src: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-            alt: "UserIcon"
-        }, void 0, false, {
-            fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-            lineNumber: 22,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false, {
-        fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-        lineNumber: 21,
-        columnNumber: 24
-    }, undefined);
-_c2 = UserIcon;
-const Header = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        id: "header",
-        style: {
-            backgroundColor: "#aed8df",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between"
-        },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Logo, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 32,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Search, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 33,
-                columnNumber: 5
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(UserIcon, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-                lineNumber: 34,
-                columnNumber: 5
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-        lineNumber: 26,
-        columnNumber: 22
-    }, undefined);
-_c3 = Header;
+var _header = require("./components/Header");
+var _headerDefault = parcelHelpers.interopDefault(_header);
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _headerDefault.default), {}, void 0, false, {
     fileName: "assignments/session 3/code/Q2/assign-Q2.js",
-    lineNumber: 37,
+    lineNumber: 5,
     columnNumber: 13
 }, undefined));
-var _c, _c1, _c2, _c3;
-$RefreshReg$(_c, "Logo");
-$RefreshReg$(_c1, "Search");
-$RefreshReg$(_c2, "UserIcon");
-$RefreshReg$(_c3, "Header");
 
   $parcel$ReactRefreshHelpers$9ed5.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Header":"dIo1t"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27424,6 +27314,163 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7422ead32dcc1e6b":"786KC"}]},["1OO0z","1xC6H","aajuL"], "aajuL", "parcelRequirefc98")
+},{"7422ead32dcc1e6b":"786KC"}],"dIo1t":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3a58 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3a58.prelude(module);
+
+try {
+// import {Logo,Search,UserIcon} from "./NavItems";
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _navItems = require("./NavItems");
+var _navItemsDefault = parcelHelpers.interopDefault(_navItems);
+// import * as NavItems from "./NavItems"
+// const {Logo,Search,UserIcon}  =  NavItems;
+// import {Logo,Search,UserIcon}  from "./NavItems";
+const Header = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "header",
+        style: {
+            backgroundColor: "#aed8df",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between"
+        },
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).Logo, {}, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/Header.js",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).Search, {}, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/Header.js",
+                lineNumber: 14,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).UserIcon, {}, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/Header.js",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "assignments/session 3/code/Q2/components/Header.js",
+        lineNumber: 6,
+        columnNumber: 22
+    }, undefined);
+_c = Header;
+exports.default = Header;
+var _c;
+$RefreshReg$(_c, "Header");
+
+  $parcel$ReactRefreshHelpers$3a58.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./NavItems":"l9yB2"}],"l9yB2":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$229e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$229e.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Logo", ()=>Logo);
+parcelHelpers.export(exports, "Search", ()=>Search);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const Logo = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "left",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: "https://endurefit.netlify.app/static/media/logowithname.3f6ee07af81e14903860.png",
+                alt: "Logo",
+                style: {
+                    height: "2rem"
+                }
+            }, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+                lineNumber: 2,
+                columnNumber: 7
+            }, undefined),
+            " "
+        ]
+    }, void 0, true, {
+        fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+        lineNumber: 1,
+        columnNumber: 27
+    }, undefined);
+_c = Logo;
+const Search = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "searchBar",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                type: "text",
+                style: {
+                    margin: "1rem",
+                    width: "21vw",
+                    height: "1.7rem",
+                    borderRadius: "0.5rem"
+                }
+            }, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                style: {
+                    backgroundColor: "#63bccb",
+                    borderRadius: "0.5rem",
+                    padding: "0.3rem"
+                },
+                children: "Search"
+            }, void 0, false, {
+                fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+        lineNumber: 6,
+        columnNumber: 29
+    }, undefined);
+_c1 = Search;
+const UserIcon = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "right",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            style: {
+                height: "2.8rem"
+            },
+            src: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            alt: "UserIcon"
+        }, void 0, false, {
+            fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+            lineNumber: 20,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "assignments/session 3/code/Q2/components/NavItems.js",
+        lineNumber: 19,
+        columnNumber: 24
+    }, undefined);
+_c2 = UserIcon;
+// const NavItems = {Logo,Search, UserIcon}
+// export default NavItems
+exports.default = UserIcon;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "Logo");
+$RefreshReg$(_c1, "Search");
+$RefreshReg$(_c2, "UserIcon");
+
+  $parcel$ReactRefreshHelpers$229e.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["1OO0z","1xC6H","aajuL"], "aajuL", "parcelRequirefc98")
 
 //# sourceMappingURL=index.e2f64863.js.map

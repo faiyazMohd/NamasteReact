@@ -9,7 +9,7 @@
   },
   "author": "Faiyaz Mohamed",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": { 
     "@babel/core": "^7.22.9",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "parcel": "^2.9.3",
