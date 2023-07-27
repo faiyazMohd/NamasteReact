@@ -1,0 +1,48 @@
+Q: What is async and await?
+
+A: Async: It simply allows us to write promises-based code as if it was synchronous and it checks that we are not breaking the execution thread. It operates asynchronously via the event loop. Async functions will always return a promise. It makes sure that a promise is returned and if it is not returned then JavaScript automatically wraps it in a promise which is resolved with its value. Await: Await function is used to wait for the promise. It could be used within the async block only. It makes the code wait until the promise returns a result. It only makes the async block wait. for example:
+
+// async function getRestaurant to fetch Swiggy API data
+  async function getRestaurants() {
+    const data = await fetch(
+      "Swiggy_API_URL"
+    );
+    const json = await data.json();
+    // we get the Swiggy API data in json format
+    console.log(json);
+  }
+
+
+/GPT
+**Async and Await:**
+As previously explained, `async` and `await` are features in JavaScript that provide a more synchronous-looking syntax for handling asynchronous operations, particularly when working with promises. To recap:
+
+1. `async`: The `async` keyword is used to define an asynchronous function. It automatically returns a promise, and any value returned from the function will be wrapped in a resolved promise, or if the function throws an error, the promise will be rejected.
+
+2. `await`: The `await` keyword is used within an `async` function to pause the execution of the function until a promise is resolved. It can only be used inside an `async` function and allows you to write asynchronous code that looks like synchronous code.
+
+**Advantages of async and await:**
+
+1. **Readability and Maintainability:** One of the main advantages of `async/await` is improved code readability. By using `await`, asynchronous code can be written in a more linear, synchronous style, which can make it easier to understand and maintain, especially for complex asynchronous operations.
+
+2. **Error Handling:** Error handling with `async/await` is more straightforward compared to traditional promise chaining with `.then()` and `.catch()`. You can use standard try/catch blocks to catch and handle errors, making it easier to manage exceptions.
+
+3. **Sequencing Asynchronous Operations:** `async/await` makes it easy to sequence asynchronous operations, ensuring that one operation is completed before moving on to the next. This is particularly useful when one operation depends on the result of a previous one.
+
+4. **Debugging:** `async/await` can simplify debugging asynchronous code. By using the try/catch blocks, you can easily pinpoint where an error occurred in the code execution.
+
+5. **Parallel Asynchronous Operations:** Although `await` pauses the execution of the function, you can still use it in combination with other asynchronous operations to perform parallel tasks when needed.
+
+**Disadvantages of async and await:**
+
+1. **Browser Support:** As with any new JavaScript feature, older browsers may not support `async/await`. However, as of my last update in September 2021, they have good support in modern browsers and most widely used environments.
+
+2. **Error Handling:** While `async/await` simplifies error handling, it's essential to remember that errors within an async function must be caught using try/catch blocks. If you forget to handle errors properly, uncaught promise rejections may occur.
+
+3. **Execution Order:** When using `await`, keep in mind that it pauses the execution of the `async` function until the awaited promise resolves or rejects. This may not always be what you want if you have other parts of the function that could be executed concurrently.
+
+4. **Complexity:** While `async/await` can make code more readable for certain cases, using it for deeply nested or complex asynchronous operations may lead to code that is harder to understand. In such situations, consider breaking down the logic into smaller functions or use alternative approaches like Promise chaining or using `Promise.all`.
+
+5. **Performance Overhead:** In certain situations, using `async/await` can introduce minor performance overhead compared to using regular Promise chaining. This is because of the additional steps involved in handling the asynchronous behavior. However, in most cases, the difference in performance is negligible.
+
+Overall, the advantages of `async/await` usually outweigh the disadvantages, especially in modern JavaScript development. It is an excellent tool for managing asynchronous code, simplifying error handling, and improving code readability. However, like any feature, it should be used judiciously, and developers should be aware of potential pitfalls and best practices.

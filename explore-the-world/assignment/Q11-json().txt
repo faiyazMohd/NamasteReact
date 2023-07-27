@@ -1,0 +1,49 @@
+Q: What is the use of const json = await data.json(); in getRestaurants()?
+
+A: The data object, returned by the await fetch(), is a generic placeholder for multiple data formats. so we can extract the JSON object from a fetch response by using await data.json(). data.json() is a method on the data object that lets you extract a JSON object from the data or response. The method returns a promise because we have used await keyword. so data.json() returns a promise resolved to a JSON object.
+
+
+//GPT
+In JavaScript, the `json()` method is a built-in method provided by the `Response` interface in the Fetch API. The Fetch API is used to make network requests and interact with server resources asynchronously. The `json()` method is specifically used to parse the response body of a Fetch request as JSON (JavaScript Object Notation).
+
+When you make a network request using the Fetch API, the server typically responds with data in a specific format, such as JSON, XML, or plain text. The `json()` method is specifically designed to handle JSON responses.
+
+Here's how the `json()` method works:
+
+1. **Sending a Fetch Request:**
+You use the Fetch API's `fetch()` function to make a request to a server. The response from the server is returned as a `Response` object.
+
+```javascript
+fetch('https://api.example.com/data')
+  .then(response => {
+    // Handle the response
+  })
+  .catch(error => {
+    // Handle errors
+  });
+```
+
+2. **Parsing JSON Response:**
+Once you have the `Response` object, you can use the `json()` method to parse the JSON data from the response body. The `json()` method returns a promise that resolves with the JSON data extracted from the response.
+
+```javascript
+fetch('https://api.example.com/data')
+  .then(response => {
+    return response.json(); // Parse JSON data
+  })
+  .then(data => {
+    // Handle the JSON data
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle errors
+  });
+```
+
+3. **Handling the JSON Data:**
+In the `.then()` callback, you receive the parsed JSON data, which can now be accessed as a JavaScript object.
+
+4. **Error Handling:**
+The `json()` method returns a promise, so it's important to handle errors using `.catch()`. If the response body is not a valid JSON or cannot be parsed, the promise will be rejected, and the error will be caught in the `.catch()` block.
+
+Using the `json()` method allows you to easily work with JSON data returned from the server and convert it into a usable JavaScript object. It simplifies the process of handling JSON responses in Fetch API requests.z

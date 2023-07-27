@@ -1,25 +1,42 @@
-import { IMG_CDN_LINK } from "../constants";
-const RestaurantCard = ({
-    name,
-    cloudinaryImageId,
-    cuisines,
-    lastMileTravel,
-  }) => {
-    // const {name,cloudinaryImageId,cuisines,lastMileTravel} = restaurant.data
-    return (
-      <div className="restaurantCard">
-        <img
-          src={
-            IMG_CDN_LINK +
-            cloudinaryImageId
-          }
-          alt={name}
-        />
-        <h2>{name}</h2>
-        <h3>{cuisines.join(",")}</h3>
-        <span>{lastMileTravel} km</span>
-      </div>
-    );
-  };
+import RatingIcon from "../assets/icons/IconsComponents/RatingIcon";
+import { IMG_CDN_LINK } from "../utils/constants";
 
-  export default RestaurantCard;
+const RestaurantCard = ({
+  name,
+  cloudinaryImageId,
+  avgRatingString,
+  cuisines,
+  areaName,
+  aggregatedDiscountInfoV3,
+}) => {
+  // const {name,cloudinaryImageId,cuisines,lastMileTravel} = restaurant.data
+  return (
+    <div className="restaurantCard">
+      <a href="/">
+        <div className="restaurantImgDiv">
+          <img src={IMG_CDN_LINK + cloudinaryImageId} alt={name.slice(0, 35)} />
+          <div className="offerText">
+            {aggregatedDiscountInfoV3?.length !== 0 &&
+            aggregatedDiscountInfoV3 !== undefined
+              ? aggregatedDiscountInfoV3?.header +
+                " " +
+                aggregatedDiscountInfoV3?.subHeader
+              : ""}
+          </div>
+        </div>
+        <div className="restaurantInfo">
+          {/* <div className="restName">{name.length>23?name.slice(0,23)+"...":name}</div> */}
+          <div className="restName">{name}</div>
+          <div className="restRating">
+            <RatingIcon /> <span> {avgRatingString}</span>
+          </div>
+          {/* <p>{cuisines.join(", ").length>30?cuisines.join(", ").slice(0,30)+"...":cuisines.join(", ")}</p> */}
+          <p>{cuisines.join(", ")}</p>
+          <p>{areaName}</p>
+        </div>
+      </a>
+    </div>
+  );
+};
+
+export default RestaurantCard;

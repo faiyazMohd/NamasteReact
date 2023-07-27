@@ -1,51 +1,97 @@
 import RestaurantCard from "./RestaurantCard";
-import { restrautList } from "../constants";
-import { useState } from "react";
+import restrautList from "../utils/mockData";
+import { useState, useEffect } from "react";
+import ShimmerUI from "./ShimmerUI";
 
-const filterData = (searchText,restaurants)=>{
-  const filterData = restrautList.filter((restaurant)=>{
-    if (searchText==="") {
+const filterData = (searchText, restaurants) => {
+  const filterData = restaurants?.filter((restaurant) => {
+    if (searchText === "") {
       return restrautList;
+    } else {
+      // return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
+      return restaurant?.info?.name
+        ?.toLowerCase()
+        .includes(searchText?.toLowerCase());
     }
-    else{
-      return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
-    }
-  })
+  });
   return filterData;
-}
-const Body = () => {
-//   let searchText = "kFC";
-const [searchText, setSearchText] = useState("");
-const [restaurants, setRestaurants] = useState(restrautList)
+};
 
+const Body = () => {
+  const [searchText, setSearchText] = useState("");
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  async function getAllRestaurants() {
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9727952&lng=73.0296706&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING")//old
+    // const data = await fetch(
+    //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9727952&lng=73.0296706&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    // ); //new
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    ); //new
+    console.log(data);
+    const json = await data.json();
+    console.log(json);
+    // console.log(json?.data?.cards[2]?.data?.data?.cards);
+    // setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards)
+    // setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards)
+    const restaurantsList =
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    // const restaurantsList =
+    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants;
+    console.log(restaurantsList);
+    setAllRestaurants(restaurantsList);
+    setFilteredRestaurants(restaurantsList);
+    return json;
+  }
+  useEffect(() => {
+    getAllRestaurants();
+  }, []);
   return (
-    <>
+    <div className="body">
       <div className="searchBar">
         <input
           type="text"
-          placeholder="search"
+          placeholder="search for the restaurant..."
           value={searchText}
-          onChange={(e) =>{
-            setSearchText(e.target.value)
-            const filteredData = filterData(e.target.value,restaurants);
-            setRestaurants(filteredData);
-
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            const filteredData = filterData(e.target.value, allRestaurants);
+            setFilteredRestaurants(filteredData);
           }}
         />
-        <button onClick={()=>{
+        {/* <button onClick={()=>{
           // setRestaurants(restrautList);
-          const filteredData = filterData(searchText,restaurants);
-          setRestaurants(filteredData);
-        }}>Search</button>
+          const filteredData = filterData(searchText,allRestaurants);
+          setFilteredRestaurants(filteredData);
+        }}>Search</button> */}
       </div>
-      <div className="body">
-        {restaurants.length!==0? restaurants.map((restaurant) => {
-          return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.uuid} />
-          );
-        }):"No result found for \""+searchText+"\""}
+      <div className="restaurants">
+        {/* <h2 class="heading">Restaurants with online food delivery in Mumbai</h2> */}
+        {allRestaurants?.length !== 0 ? (
+          filteredRestaurants?.length !== 0 ? (
+            filteredRestaurants?.map((restaurant) => {
+              return (
+                // <RestaurantCard {...restaurant?.data} key={restaurant?.data?.id} />
+                <RestaurantCard
+                  {...restaurant?.info}
+                  key={restaurant?.info?.id}
+                />
+              );
+            })
+          ) : (
+            <div className="NoResultMsg">
+              <h1>No result found for {searchText}</h1>
+            </div>
+          )
+        ) : (
+          Array(12).fill(1).map((elem,index)=><ShimmerUI key={index}/>)
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

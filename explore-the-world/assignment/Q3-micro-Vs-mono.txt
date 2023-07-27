@@ -1,0 +1,32 @@
+Q: What is the difference between Monolith and Microservice?
+
+A: With monolithic architectures, all processes are tightly coupled and run as a single service. This means that if one process of the application experiences a spike in demand, the entire architecture must be scaled. Adding or improving a monolithic application’s features becomes more complex as the code base grows. This complexity limits experimentation and makes it difficult to implement new ideas. Monolithic architectures add risk for application availability because many dependent and tightly coupled processes increase the impact of a single process failure.
+
+With a microservices architecture, an application is built as independent components that run each application process as a service. These services communicate via a well-defined interface using lightweight APIs. Services are built for business capabilities and each service performs a single function. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application. Monolith and Microservice
+
+
+            Monolith                                            Microservice
+Every service is inside the application 	        Services are scattered
+Single code base                                	Code base is divided into separated applications
+Hard to maintain 	                                Easy to maintain
+Deployment takes more time                      	Deployment is easy
+
+
+//GPT
+Below is a tabular comparison of Monolith and Microservice architectures:
+
+| Aspect                     | Monolith                                            Microservice           |
+|----------------------------|-------------------------------------------|-----------------------------------------|
+| Architecture               | Entire application is a single unit      | Application is broken into small services   |
+| Communication              | Direct function calls or shared memory   | Services communicate through APIs           |
+| Coupling                   | Tightly coupled components               | Loosely coupled, independent services       |
+| Deployment                 | Deployed as a single unit                | Independently deployable services           |
+| Scaling                    | Entire application scales as one unit    | Individual services can scale independently |
+| Development                | Easier development with one codebase     | Separate teams can work on different services|
+| Maintenance                | May become complex and hard to maintain  | Easier to maintain and update independently  |
+| Fault Isolation            | Failure in one component affects others  | Failures in one service do not impact others |
+| Technology Diversity       | Limited technology choices               | Different technologies can be used per service |
+| Deployment Flexibility     | Requires full redeployment for changes   | Individual services can be deployed rapidly  |
+| Monitoring and Debugging   | Centralized monitoring and debugging     | Distributed monitoring and debugging         |
+
+**Note:** The choice between Monolith and Microservice architectures depends on various factors, including the complexity and scale of the application, team structure, deployment requirements, and project goals. Each architecture has its strengths and weaknesses, and it's essential to evaluate the specific needs of the application before making a decision.

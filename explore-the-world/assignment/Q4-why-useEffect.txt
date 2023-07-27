@@ -1,0 +1,59 @@
+Q: Why do we need a useEffect Hook?
+
+A: useEffect Hook is javascript function provided by react. The useEffect Hook allows you to eliminate side effects in your components. Some examples of side effects are: fetching API data, directly updating the DOM, and setting up subscriptions or timers, etc can be lead to unwarranted side-effects. useEffect accepts two arguments, a callback function and a dependency array. The second argument is optional.
+
+useEffect(() => {}, [])
+
+The () => {} is callback function and [] is called a empty dependency array. If anything that we pass (suppose currentState) inside the [] it trigger the callback function and changes the state of the application.
+
+useEffect(() => {
+    setCurrentState("true");
+}, [currentState])
+
+If we do not pass empty dependency array then the useEffect runs everytime when the UI is rendered.
+
+useEffect(() => {})
+
+
+//GPT
+The `useEffect` hook in React is used to perform side effects in functional components. Side effects in this context refer to any operations that affect the external environment outside of the component, such as fetching data from an API, subscribing to events, manipulating the DOM, or setting up timers.
+
+Here are the main reasons why the `useEffect` hook is essential:
+
+1. **Handling Side Effects:** In React, components are primarily responsible for rendering the UI based on the current state and props. However, there are often cases where we need to perform additional tasks that are not directly related to rendering, such as fetching data or updating the document title. The `useEffect` hook allows us to handle these side effects in a declarative manner.
+
+2. **Lifecycle Management:** Prior to React hooks, class components had lifecycle methods like `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` to manage side effects. With functional components, the `useEffect` hook provides a way to handle these lifecycle events.
+
+3. **Replacing componentDidMount and componentDidUpdate:** In class components, `componentDidMount` was used to perform actions when the component was first mounted, and `componentDidUpdate` was used to respond to changes in props or state. With `useEffect`, you can handle both scenarios using the same hook.
+
+4. **Preventing Memory Leaks and Cleanup:** The `useEffect` hook returns a cleanup function that allows you to cancel any ongoing tasks or subscriptions when the component is unmounted or before the effect is re-run. This helps prevent memory leaks and ensures that resources are properly released.
+
+5. **Dependency Tracking:** The `useEffect` hook allows you to specify dependencies, i.e., variables that the effect depends on. If any of these dependencies change, the effect is re-run. This provides fine-grained control over when the effect should be executed.
+
+6. **Asynchronous Operations:** The `useEffect` hook can handle asynchronous operations, such as data fetching with APIs, by using async/await or Promises. This allows you to fetch data and update the component's state once the data is available.
+
+Here's a basic example of using `useEffect` to fetch data:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from an API
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error(error));
+  }, []); // Empty dependency array means this effect runs only once on mount
+
+  return (
+    <div>
+      {/* Render the data */}
+    </div>
+  );
+}
+```
+
+By using the `useEffect` hook, you can manage side effects more cleanly and efficiently within your functional components in React.

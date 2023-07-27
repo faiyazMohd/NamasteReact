@@ -1,0 +1,24 @@
+Q: What is Shimmer UI?
+
+A: A Shimmer UI resembles the page's actual UI, so users will understand how quickly the web or mobile app will load even before the content has shown up. It gives people an idea of what's about to come and what's happening (while UI currently loading) when a page full of content/data takes more than 3 - 5 seconds to load. Shimmer UI is a great way for loading the applications. Instead of showing a loading circle we can design a shimmer UI for our application that is good for user experience.
+
+
+
+//GPT
+Shimmer UI, also known as Skeleton UI or Content Placeholder, is a design pattern used in user interfaces to indicate that content is loading or being fetched. It is a visual placeholder that mimics the appearance of the actual content to give users feedback that something is happening in the background.
+
+The primary purpose of Shimmer UI is to provide a more pleasant user experience by reducing the perception of loading times. Instead of showing a blank or empty screen while waiting for content to load, Shimmer UI displays a lightweight, animated representation of the expected content, which gives the impression that data is actively being loaded.
+
+The typical characteristics of a Shimmer UI include:
+
+1. **Lightweight Animation:** Shimmer UI consists of animated lines or gradients that flow across the screen, providing the illusion of content being loaded.
+
+2. **Replicating Content Structure:** The animation tries to replicate the structure and layout of the actual content that will be displayed once the loading process is complete. For example, in a list view, the shimmer animation will show placeholder rows that match the expected content's dimensions.
+
+3. **Subtle Visuals:** Shimmer UI is usually designed with a subtle and smooth animation to avoid being distracting or overwhelming to users.
+
+4. **Non-Blocking:** The Shimmer animation runs independently of the actual content loading process, ensuring that users can interact with other parts of the interface while waiting for data.
+
+Shimmer UI is commonly used in scenarios where content loading times might be relatively longer, such as when fetching data from servers, loading images, or rendering complex views. It is frequently applied in mobile apps and web applications.
+
+By utilizing Shimmer UI, developers can create a more engaging and responsive user interface, reducing user frustration during content loading and enhancing the overall user experience.
