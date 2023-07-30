@@ -1,0 +1,60 @@
+Q: How will useEffect behave if we don't add a dependency array?
+
+A: Syntax of useEffect is:
+
+useEffect(() => {}, []);
+
+Case 1 : When the dependency array is not included in the arguments of useEffect() hook, the callback function will be executed every time the component is rendered and re-rendered.
+
+useEffect(() => {
+	console.log("I run everytime this component rerenders")
+});
+
+Case 2 : When the dependency array is empty in the arguments of useEffect() hook, the callback function will be executed only one time during the initial render of the component.
+
+useEffect(() => {
+	console.log("I Only run once (When the component gets mounted)")
+}, []);
+
+Case 3 : When the dependency array contains a condition, the callback function will be executed one time during the initial render of the component and also rerender if there is a change in the condition.
+
+useEffect(() => {
+	console.log("I run every-time when my condition changed")
+}, [condition]);
+
+
+//GPT
+If you don't add a dependency array to the `useEffect` Hook, the effect will be executed on every render of the component. This means that the code inside the `useEffect` will run after the initial render and then on every subsequent re-render of the component.
+
+The `useEffect` Hook without a dependency array is similar to the behavior of the `componentDidMount` and `componentDidUpdate` lifecycle methods combined in class components.
+
+Here's an example to illustrate the behavior of `useEffect` without a dependency array:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+const MyComponent = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Effect runs on every render.');
+  });
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+In this example, the `useEffect` Hook does not have a dependency array, so the effect will run after the initial render and every time the component re-renders, including when the state is updated by clicking the "Increment" button.
+
+While this behavior is useful in some scenarios, be cautious when using `useEffect` without a dependency array. Frequent execution of side effects can lead to performance issues, unnecessary API calls, or other unintended behaviors. In most cases, it's a good practice to add dependencies to the `useEffect` to control when the effect should run, thus optimizing the rendering and side effect behavior based on specific changes in the component's state or props.

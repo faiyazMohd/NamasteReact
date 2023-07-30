@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import RatingIcon from "../assets/icons/IconsComponents/RatingIcon";
 import { IMG_CDN_LINK } from "../utils/constants";
 
@@ -8,11 +9,12 @@ const RestaurantCard = ({
   cuisines,
   areaName,
   aggregatedDiscountInfoV3,
+  id
 }) => {
   // const {name,cloudinaryImageId,cuisines,lastMileTravel} = restaurant.data
   return (
     <div className="restaurantCard">
-      <a href="/">
+      <Link to={"/restaurant/"+id}>
         <div className="restaurantImgDiv">
           <img src={IMG_CDN_LINK + cloudinaryImageId} alt={name.slice(0, 35)} />
           <div className="offerText">
@@ -26,7 +28,7 @@ const RestaurantCard = ({
         </div>
         <div className="restaurantInfo">
           {/* <div className="restName">{name.length>23?name.slice(0,23)+"...":name}</div> */}
-          <div className="restName">{name}</div>
+          <div className="restNameContainer restName">{name}</div>
           <div className="restRating">
             <RatingIcon /> <span> {avgRatingString}</span>
           </div>
@@ -34,7 +36,7 @@ const RestaurantCard = ({
           <p>{cuisines.join(", ")}</p>
           <p>{areaName}</p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

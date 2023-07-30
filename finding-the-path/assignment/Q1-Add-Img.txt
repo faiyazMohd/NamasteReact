@@ -1,0 +1,84 @@
+Q: What are various ways to add images into our App? Explain with code examples.
+
+A: Using the full URL of the image for the web (CDN) or any public images. Example :
+
+<img src="https://reactjs.org/logo-og.png" alt="React Image" />
+
+Adding the image into the project Drag your image into your project and import it into the desired component
+
+import reactLogo from "./reactLogo.png";
+export default function App() {
+  return <img src={reactLogo} alt="react logo" />
+}
+
+The correct way to structure images in your project is to add them in an images folder. If you are using other assets than just images, you might want to add all in the assets folders.
+
+import reactLogo from "../../assets/images/reactLogo.png";
+export default function App() {
+  return <img src={reactLogo} alt="react logo" />
+
+
+//GPT
+There are several ways to add images to a React app. Here are three common methods:
+
+1. **Importing Images**:
+You can import images directly into your React components using ES6 module syntax. This method is suitable for small images or when you have a limited number of images to include.
+
+```jsx
+import React from 'react';
+import myImage from './path/to/image.jpg';
+
+const MyComponent = () => {
+  return (
+    <div>
+      <img src={myImage} alt="My Image" />
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+2. **Using Public Folder**:
+You can place your images in the `public` folder of your React app and reference them directly in your JSX without the need to import. This method is useful for large images or when you have many images to manage.
+
+```jsx
+import React from 'react';
+
+const MyComponent = () => {
+  return (
+    <div>
+      <img src="/images/myImage.jpg" alt="My Image" />
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+Note: When using the public folder, the path to the image is relative to the root of the app.
+
+3. **Base64 Encoded Images**:
+You can embed images directly in your code as Base64 encoded data URLs. This method is suitable for small images or when you need to avoid additional HTTP requests for loading images.
+
+```jsx
+import React from 'react';
+
+const MyComponent = () => {
+  const myImageBase64 = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAA...'; // Base64 encoded image data
+
+  return (
+    <div>
+      <img src={myImageBase64} alt="My Image" />
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+Keep in mind that embedding images as Base64 data can increase the size of your JavaScript bundle, so it's best to use this method sparingly.
+
+Regardless of the method you choose, remember to include the `alt` attribute in your `<img>` tags. The `alt` attribute provides alternative text for the image, which is crucial for accessibility and SEO purposes.
+
+Choose the method that best suits your specific use case, considering factors like image size, number of images, and accessibility requirements.

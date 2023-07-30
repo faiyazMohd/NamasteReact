@@ -1,0 +1,35 @@
+Q: What is the difference between Client Side Routing and Server Side Routing?
+
+A: In Server-side routing or rendering (SSR), every change in URL, http request is made to server to fetch the webpage, and replace the current webpage with the older one.
+
+In Client-side routing or rendering (CSR), during the first load, the webapp is loaded from server to client, after which whenever there is a change in URL, the router library navigates the user to the new page without sending any request to backend. All Single Page Applications uses client-side routing.
+
+
+//GPT
+Client-side routing and server-side routing are two different approaches for handling navigation and rendering of content in web applications. Here's a comparison of the two:
+
+**Client-Side Routing:**
+
+1. **Routing Logic on the Client**: In client-side routing, the routing logic is handled on the client-side using JavaScript. When the user clicks on a link or performs an action that should change the content or the URL, the JavaScript router updates the view without requesting a new HTML page from the server.
+
+2. **Single Page Application (SPA) Architecture**: Client-side routing is commonly used in Single Page Applications (SPAs). SPAs load all the necessary code and assets when the user visits the application for the first time. Subsequent navigation within the application does not require full page reloads; instead, the application dynamically updates the content based on the route or URL changes.
+
+3. **Smooth User Experience**: Client-side routing provides a smoother user experience since content updates happen instantly without page refreshes. The application can feel more interactive and responsive to user actions.
+
+4. **Reduced Server Load**: As the routing logic is handled on the client-side, server requests are minimized, leading to reduced server load.
+
+**Server-Side Routing:**
+
+1. **Routing Logic on the Server**: In server-side routing, the routing logic is handled on the server. When the user clicks on a link or performs an action, the request is sent to the server, which then responds with the appropriate HTML page or content based on the requested route.
+
+2. **Traditional Web Applications**: Server-side routing is commonly used in traditional multi-page web applications (MPAs). Each navigation requires a new request to the server, and the server returns a new HTML page with the updated content.
+
+3. **Full Page Reloads**: Server-side routing typically involves full page reloads for each navigation, which can result in slower and less responsive user experiences compared to SPAs.
+
+4. **Better SEO**: Server-side routing can be advantageous for search engine optimization (SEO) since each page is fully rendered on the server and can be crawled by search engine bots.
+
+**Hybrid Approaches:**
+
+It's worth mentioning that modern web applications can also use a hybrid approach that combines both client-side and server-side routing. Some applications use client-side routing within a server-side rendered (SSR) context, allowing the server to render the initial page content and then handing over the routing logic to the client-side JavaScript for subsequent interactions.
+
+The choice between client-side routing and server-side routing depends on the specific requirements of the application. SPAs often benefit from client-side routing, providing a more dynamic and interactive user experience, while traditional MPAs may opt for server-side routing, especially when SEO is a significant concern. Hybrid approaches can also be used to leverage the advantages of both methods.

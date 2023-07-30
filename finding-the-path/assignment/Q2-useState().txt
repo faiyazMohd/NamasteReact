@@ -1,0 +1,28 @@
+Q: What would happen if we do console.log(useState())?
+
+A: If we do console.log(useState()), we get an array [undefined, function] where first item in an array is state is undefined and the second item in an array is setState function is bound dispatchSetState.
+
+
+
+//GPT
+If you call `console.log(useState())`, it will log an array with two elements to the console. The `useState` function in React returns an array with two elements:
+
+1. The first element is the current state value, which is the initial state value you provide when calling `useState`.
+2. The second element is the updater function, which is used to modify the state value.
+
+Here's what the `console.log` would look like:
+
+```javascript
+console.log(useState());
+
+// Output:
+// [initialState, setState]
+```
+
+The `useState` function is typically used with array destructuring to extract the state value and the updater function separately:
+
+```javascript
+const [state, setState] = useState(initialState);
+```
+
+By doing so, you can use the `state` variable to access the current value of the state and the `setState` function to update the state when needed. The `useState` function takes the initial state as an argument and returns the current state and its updater function, allowing you to manage state in functional components.

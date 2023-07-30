@@ -2,7 +2,6 @@ import RestaurantCard from "./RestaurantCard";
 import restrautList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
-
 const filterData = (searchText, restaurants) => {
   const filterData = restaurants?.filter((restaurant) => {
     if (searchText === "") {
@@ -18,6 +17,7 @@ const filterData = (searchText, restaurants) => {
 };
 
 const Body = () => {
+  // console.log(useState("hello"));
   const [searchText, setSearchText] = useState("");
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -30,7 +30,7 @@ const Body = () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     ); //new
-    console.log(data);
+    // console.log(data);
     const json = await data.json();
     console.log(json);
     // console.log(json?.data?.cards[2]?.data?.data?.cards);
@@ -42,9 +42,17 @@ const Body = () => {
     // const restaurantsList =
     //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
     //     ?.restaurants;
-    console.log(restaurantsList);
-    setAllRestaurants(restaurantsList);
-    setFilteredRestaurants(restaurantsList);
+    // console.log(restaurantsList);
+    json?.data?.cards.map((card,index)=>{
+      if (card.card.card.id === "top_brands_for_you") {
+        console.log(card.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log("index is :"+index);
+        setAllRestaurants(card.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(card.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      }
+    })
+    // setAllRestaurants(restaurantsList);
+    // setFilteredRestaurants(restaurantsList);
     return json;
   }
   useEffect(() => {
