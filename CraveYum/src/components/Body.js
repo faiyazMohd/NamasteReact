@@ -1,11 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
-import restrautList from "../utils/mockData";
+// import restrautList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import ShimmerUI from "./ShimmerUI";
 const filterData = (searchText, restaurants) => {
   const filterData = restaurants?.filter((restaurant) => {
     if (searchText === "") {
-      return restrautList;
+      return restaurants;
     } else {
       // return restaurant.data.name.toLowerCase().includes(searchText.toLowerCase());
       return restaurant?.info?.name

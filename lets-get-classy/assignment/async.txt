@@ -1,0 +1,18 @@
+In an asynchronous function declared with the `async` keyword, if there is no explicit `return` statement inside the function, it will implicitly return a resolved Promise with the value of `undefined`.
+
+Here's an example of an async function without an explicit return statement:
+
+```javascript
+async function exampleAsyncFunction() {
+  // No explicit return statement
+}
+
+const result = exampleAsyncFunction();
+console.log(result); // Output: Promise {<resolved>: undefined}
+```
+
+In this example, `exampleAsyncFunction` is an asynchronous function declared with the `async` keyword. Inside the function, there is no `return` statement. When you call the async function and store its return value in the `result` variable, you'll find that `result` holds a Promise that is resolved with the value `undefined`.
+
+The behavior of implicitly returning a resolved Promise with `undefined` allows you to handle the result of the async function consistently, whether it returns a value explicitly or not. In the absence of a specific return value, the resolved Promise ensures that the function call always results in a Promise, making it easier to chain async operations or use the `await` keyword with consistent semantics.
+
+Keep in mind that if you want your async function to return a specific value, you should use the `return` keyword explicitly, just as you would in regular synchronous functions. The `async` keyword is primarily used to enable the use of `await` within the function and to automatically wrap the return value in a Promise.

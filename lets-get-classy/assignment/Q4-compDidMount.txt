@@ -1,0 +1,21 @@
+Q: Why do we use componentDidMount?
+
+A: The componentDidMount() method allows us to execute the React code when the component is already placed in the DOM (Document Object Model). This method is called during the Mounting phase of the React Life-cycle i.e after the component is rendered. Wwe can run any piece of react code to modify the components. For ex. It's the best place to make API calls.
+
+
+//GPT
+`componentDidMount` is a lifecycle method in React Class-Based Components that is called after a component has been rendered to the DOM for the first time. It is commonly used for performing side effects that require interaction with the DOM or external data fetching, making it a crucial part of the component's initialization process. Here are some reasons why we use `componentDidMount`:
+
+1. **Data Fetching:** `componentDidMount` is often used to initiate data fetching from APIs, databases, or other external sources. Since data fetching can be an asynchronous operation, it is not ideal to perform it in the `render` method. Instead, `componentDidMount` allows us to start data fetching after the component has been rendered to the DOM, ensuring the component is ready to receive and display the data once it becomes available.
+
+2. **DOM Manipulation:** If you need to interact with the DOM directly, such as accessing a specific element or setting up third-party libraries that require direct access to DOM elements, `componentDidMount` is the appropriate place to perform these operations. This ensures that the component's elements are already available in the DOM before interacting with them.
+
+3. **Event Listeners:** When adding event listeners to DOM elements, using `componentDidMount` ensures that the listeners are attached only after the component has been mounted to the DOM. Attaching event listeners earlier could lead to potential memory leaks or errors if the DOM element does not exist yet.
+
+4. **Subscriptions:** If your component needs to subscribe to external data sources or events, `componentDidMount` provides a suitable place to set up such subscriptions. This ensures that the subscriptions are established after the component has mounted and is ready to handle incoming data or events.
+
+5. **Animation and Timers:** If you need to start animations or timers that depend on the component's presence in the DOM, `componentDidMount` is the appropriate place to initiate them. This prevents unnecessary operations if the component is not yet mounted or if it gets unmounted later.
+
+6. **Initial Setup:** Sometimes, there are certain actions or configurations that need to be performed only once when the component is first mounted. These could be setting up default state values, initializing third-party libraries, or performing setup tasks that should occur only during the initial rendering phase.
+
+It's important to note that `componentDidMount` is only called once during the lifecycle of a component. After the initial render, subsequent updates to the component will not trigger `componentDidMount` to be called again. If you need to perform side effects after subsequent updates, you may want to consider using `componentDidUpdate` or React Hooks such as `useEffect`.

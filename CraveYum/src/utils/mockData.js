@@ -733,784 +733,784 @@ export default restrautList = [
 */
   
 
-export default restrautList =  [
-  {
-    "info": {
-      "id": "363830",
-      "name": "Meraki",
-      "cloudinaryImageId": "se2tvouywm2mvr8emkcf",
-      "locality": "Sector-8",
-      "areaName": "Ulwe",
-      "costForTwo": "₹500 for two",
-      "cuisines": [
-        "Chinese"
-      ],
-      "avgRating": 4.1,
-      "feeDetails": {
-        "restaurantId": "363830",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 4600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 4600
-      },
-      "parentId": "2356",
-      "avgRatingString": "4.1",
-      "totalRatingsString": "5K+",
-      "promoted": true,
-      "adTrackingId": "cid=7263791~p=1~eid=00000189-8dce-a4c2-0472-2d5500a0010e~srvts=1690301277378~90071",
-      "sla": {
-        "deliveryTime": 24,
-        "lastMileTravel": 3.6,
-        "serviceability": "SERVICEABLE",
-        "slaString": "24 mins",
-        "lastMileTravelString": "3.6 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-26 01:00:00",
-        "opened": true
-      },
-      "badges": {
+// export default restrautList =  [
+//   {
+//     "info": {
+//       "id": "363830",
+//       "name": "Meraki",
+//       "cloudinaryImageId": "se2tvouywm2mvr8emkcf",
+//       "locality": "Sector-8",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹500 for two",
+//       "cuisines": [
+//         "Chinese"
+//       ],
+//       "avgRating": 4.1,
+//       "feeDetails": {
+//         "restaurantId": "363830",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 4600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 4600
+//       },
+//       "parentId": "2356",
+//       "avgRatingString": "4.1",
+//       "totalRatingsString": "5K+",
+//       "promoted": true,
+//       "adTrackingId": "cid=7263791~p=1~eid=00000189-8dce-a4c2-0472-2d5500a0010e~srvts=1690301277378~90071",
+//       "sla": {
+//         "deliveryTime": 24,
+//         "lastMileTravel": 3.6,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "24 mins",
+//         "lastMileTravelString": "3.6 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-26 01:00:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "isOpen": true,
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "aggregatedDiscountInfoV3": {
-        "header": "₹125 OFF",
-        "subHeader": "ABOVE ₹499",
-        "discountTag": "FLAT DEAL"
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "aggregatedDiscountInfoV3": {
+//         "header": "₹125 OFF",
+//         "subHeader": "ABOVE ₹499",
+//         "discountTag": "FLAT DEAL"
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/meraki-sector-8-ulwe-mumbai-363830",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "279908",
-      "name": "Domino's Pizza",
-      "cloudinaryImageId": "pg4c5nvgayfh0cbgstyj",
-      "locality": "SHAGUN, ULWE, NAVI MUMBAI",
-      "areaName": "Ulwe",
-      "costForTwo": "₹400 for two",
-      "cuisines": [
-        "Pizzas",
-        "Italian",
-        "Pastas",
-        "Desserts"
-      ],
-      "avgRating": 4.2,
-      "feeDetails": {
-        "restaurantId": "279908",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "2456",
-      "avgRatingString": "4.2",
-      "totalRatingsString": "1K+",
-      "sla": {
-        "deliveryTime": 25,
-        "serviceability": "SERVICEABLE",
-        "slaString": "25 mins",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-26 00:55:00",
-        "opened": true
-      },
-      "badges": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/meraki-sector-8-ulwe-mumbai-363830",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "279908",
+//       "name": "Domino's Pizza",
+//       "cloudinaryImageId": "pg4c5nvgayfh0cbgstyj",
+//       "locality": "SHAGUN, ULWE, NAVI MUMBAI",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹400 for two",
+//       "cuisines": [
+//         "Pizzas",
+//         "Italian",
+//         "Pastas",
+//         "Desserts"
+//       ],
+//       "avgRating": 4.2,
+//       "feeDetails": {
+//         "restaurantId": "279908",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "2456",
+//       "avgRatingString": "4.2",
+//       "totalRatingsString": "1K+",
+//       "sla": {
+//         "deliveryTime": 25,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "25 mins",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-26 00:55:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "isOpen": true,
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "aggregatedDiscountInfoV3": {
-        "header": "₹125 OFF",
-        "subHeader": "ABOVE ₹999",
-        "discountTag": "FLAT DEAL"
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "aggregatedDiscountInfoV3": {
+//         "header": "₹125 OFF",
+//         "subHeader": "ABOVE ₹999",
+//         "discountTag": "FLAT DEAL"
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/dominos-pizza-shagun-navi-ulwe-mumbai-279908",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "492040",
-      "name": "Pizza Hut",
-      "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
-      "locality": "Ulwe",
-      "areaName": "Ulwe",
-      "costForTwo": "₹350 for two",
-      "cuisines": [
-        "Pizzas"
-      ],
-      "avgRating": 3.7,
-      "feeDetails": {
-        "restaurantId": "492040",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "721",
-      "avgRatingString": "3.7",
-      "totalRatingsString": "500+",
-      "sla": {
-        "deliveryTime": 27,
-        "lastMileTravel": 1,
-        "serviceability": "SERVICEABLE",
-        "slaString": "27 mins",
-        "lastMileTravelString": "1.0 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-26 01:00:00",
-        "opened": true
-      },
-      "badges": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/dominos-pizza-shagun-navi-ulwe-mumbai-279908",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "492040",
+//       "name": "Pizza Hut",
+//       "cloudinaryImageId": "2b4f62d606d1b2bfba9ba9e5386fabb7",
+//       "locality": "Ulwe",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹350 for two",
+//       "cuisines": [
+//         "Pizzas"
+//       ],
+//       "avgRating": 3.7,
+//       "feeDetails": {
+//         "restaurantId": "492040",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "721",
+//       "avgRatingString": "3.7",
+//       "totalRatingsString": "500+",
+//       "sla": {
+//         "deliveryTime": 27,
+//         "lastMileTravel": 1,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "27 mins",
+//         "lastMileTravelString": "1.0 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-26 01:00:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "isOpen": true,
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "aggregatedDiscountInfoV3": {
-        "header": "FREE ITEM"
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "aggregatedDiscountInfoV3": {
+//         "header": "FREE ITEM"
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/pizza-hut-ulwe-mumbai-492040",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "741313",
-      "name": "Shaolin Chow",
-      "cloudinaryImageId": "3e8e1603ba22e31d42dcf76b116231f8",
-      "locality": "Sector 18",
-      "areaName": "Ulwe",
-      "costForTwo": "₹500 for two",
-      "cuisines": [
-        "Chinese"
-      ],
-      "feeDetails": {
-        "restaurantId": "741313",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "439958",
-      "avgRatingString": "NEW",
-      "promoted": true,
-      "adTrackingId": "cid=7559900~p=2~eid=00000189-8dce-a4c2-0472-2d5600a00251~srvts=1690301277378~90071",
-      "sla": {
-        "deliveryTime": 26,
-        "lastMileTravel": 1.2,
-        "serviceability": "SERVICEABLE",
-        "slaString": "26 mins",
-        "lastMileTravelString": "1.2 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-25 23:00:00",
-        "opened": true
-      },
-      "badges": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/pizza-hut-ulwe-mumbai-492040",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "741313",
+//       "name": "Shaolin Chow",
+//       "cloudinaryImageId": "3e8e1603ba22e31d42dcf76b116231f8",
+//       "locality": "Sector 18",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹500 for two",
+//       "cuisines": [
+//         "Chinese"
+//       ],
+//       "feeDetails": {
+//         "restaurantId": "741313",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "439958",
+//       "avgRatingString": "NEW",
+//       "promoted": true,
+//       "adTrackingId": "cid=7559900~p=2~eid=00000189-8dce-a4c2-0472-2d5600a00251~srvts=1690301277378~90071",
+//       "sla": {
+//         "deliveryTime": 26,
+//         "lastMileTravel": 1.2,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "26 mins",
+//         "lastMileTravelString": "1.2 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-25 23:00:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "aggregatedDiscountInfoV2": {
+//       },
+//       "isOpen": true,
+//       "aggregatedDiscountInfoV2": {
         
-      },
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-      "isNewlyOnboarded": true
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/shaolin-chow-sector-18-ulwe-mumbai-741313",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "407506",
-      "name": "BOX8 - Desi Meals",
-      "cloudinaryImageId": "69a061b7e0f951cef2b4947946f94ec6",
-      "locality": "Dream Opal",
-      "areaName": "Ulwe",
-      "costForTwo": "₹250 for two",
-      "cuisines": [
-        "North Indian",
-        "Biryani",
-        "Thalis",
-        "Home Food"
-      ],
-      "avgRating": 4.2,
-      "feeDetails": {
-        "restaurantId": "407506",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "10655",
-      "avgRatingString": "4.2",
-      "totalRatingsString": "1K+",
-      "sla": {
-        "deliveryTime": 17,
-        "lastMileTravel": 0.1,
-        "serviceability": "SERVICEABLE",
-        "slaString": "12-22 mins",
-        "lastMileTravelString": "0.1 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-26 01:00:00",
-        "opened": true
-      },
-      "badges": {
-        "textExtendedBadges": [
-          {
-            "iconId": "guiltfree/GF_Logo_android_3x",
-            "shortDescription": "options available",
-            "fontColor": "#7E808C"
-          }
-        ]
-      },
-      "isOpen": true,
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+//       "isNewlyOnboarded": true
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/shaolin-chow-sector-18-ulwe-mumbai-741313",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "407506",
+//       "name": "BOX8 - Desi Meals",
+//       "cloudinaryImageId": "69a061b7e0f951cef2b4947946f94ec6",
+//       "locality": "Dream Opal",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹250 for two",
+//       "cuisines": [
+//         "North Indian",
+//         "Biryani",
+//         "Thalis",
+//         "Home Food"
+//       ],
+//       "avgRating": 4.2,
+//       "feeDetails": {
+//         "restaurantId": "407506",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "10655",
+//       "avgRatingString": "4.2",
+//       "totalRatingsString": "1K+",
+//       "sla": {
+//         "deliveryTime": 17,
+//         "lastMileTravel": 0.1,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "12-22 mins",
+//         "lastMileTravelString": "0.1 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-26 01:00:00",
+//         "opened": true
+//       },
+//       "badges": {
+//         "textExtendedBadges": [
+//           {
+//             "iconId": "guiltfree/GF_Logo_android_3x",
+//             "shortDescription": "options available",
+//             "fontColor": "#7E808C"
+//           }
+//         ]
+//       },
+//       "isOpen": true,
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
-            "badgeObject": [
-              {
-                "attributes": {
-                  "description": "",
-                  "fontColor": "#7E808C",
-                  "iconId": "guiltfree/GF_Logo_android_3x",
-                  "shortDescription": "options available"
-                }
-              }
-            ]
-          }
-        }
-      },
-      "aggregatedDiscountInfoV3": {
-        "header": "₹125 OFF",
-        "subHeader": "ABOVE ₹499",
-        "discountTag": "FLAT DEAL"
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           },
+//           "textExtendedBadges": {
+//             "badgeObject": [
+//               {
+//                 "attributes": {
+//                   "description": "",
+//                   "fontColor": "#7E808C",
+//                   "iconId": "guiltfree/GF_Logo_android_3x",
+//                   "shortDescription": "options available"
+//                 }
+//               }
+//             ]
+//           }
+//         }
+//       },
+//       "aggregatedDiscountInfoV3": {
+//         "header": "₹125 OFF",
+//         "subHeader": "ABOVE ₹499",
+//         "discountTag": "FLAT DEAL"
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/box8-desi-meals-dream-opal-ulwe-mumbai-407506",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "622151",
-      "name": "MOJO Pizza - 2X Toppings",
-      "cloudinaryImageId": "59b64f9bb67234987652437f21d379c2",
-      "locality": "Dream Opal",
-      "areaName": "Ulwe",
-      "costForTwo": "₹250 for two",
-      "cuisines": [
-        "Pizzas",
-        "Italian",
-        "Fast Food",
-        "Desserts"
-      ],
-      "avgRating": 4.2,
-      "feeDetails": {
-        "restaurantId": "622151",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "11329",
-      "avgRatingString": "4.2",
-      "totalRatingsString": "100+",
-      "sla": {
-        "deliveryTime": 23,
-        "lastMileTravel": 0.1,
-        "serviceability": "SERVICEABLE",
-        "slaString": "18-28 mins",
-        "lastMileTravelString": "0.1 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-26 01:00:00",
-        "opened": true
-      },
-      "badges": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT"
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/box8-desi-meals-dream-opal-ulwe-mumbai-407506",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "622151",
+//       "name": "MOJO Pizza - 2X Toppings",
+//       "cloudinaryImageId": "59b64f9bb67234987652437f21d379c2",
+//       "locality": "Dream Opal",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹250 for two",
+//       "cuisines": [
+//         "Pizzas",
+//         "Italian",
+//         "Fast Food",
+//         "Desserts"
+//       ],
+//       "avgRating": 4.2,
+//       "feeDetails": {
+//         "restaurantId": "622151",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "11329",
+//       "avgRatingString": "4.2",
+//       "totalRatingsString": "100+",
+//       "sla": {
+//         "deliveryTime": 23,
+//         "lastMileTravel": 0.1,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "18-28 mins",
+//         "lastMileTravelString": "0.1 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-26 01:00:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "isOpen": true,
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "aggregatedDiscountInfoV3": {
-        "header": "₹125 OFF",
-        "subHeader": "ABOVE ₹499",
-        "discountTag": "FLAT DEAL"
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "aggregatedDiscountInfoV3": {
+//         "header": "₹125 OFF",
+//         "subHeader": "ABOVE ₹499",
+//         "discountTag": "FLAT DEAL"
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-      "isNewlyOnboarded": true
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/mojo-pizza-2x-toppings-dream-opal-ulwe-mumbai-622151",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  },
-  {
-    "info": {
-      "id": "732025",
-      "name": "My  Mother s Receipe",
-      "cloudinaryImageId": "0d98462a4ff166ee5ac2ee45d0c648d6",
-      "locality": "Om Residency",
-      "areaName": "Ulwe",
-      "costForTwo": "₹300 for two",
-      "cuisines": [
-        "Sweets",
-        "Street Food"
-      ],
-      "feeDetails": {
-        "restaurantId": "732025",
-        "fees": [
-          {
-            "name": "BASE_DISTANCE",
-            "fee": 3600
-          },
-          {
-            "name": "BASE_TIME"
-          },
-          {
-            "name": "ANCILLARY_SURGE_FEE"
-          }
-        ],
-        "totalFee": 3600
-      },
-      "parentId": "434726",
-      "avgRatingString": "NEW",
-      "promoted": true,
-      "adTrackingId": "cid=7502223~p=3~eid=00000189-8dce-a4c2-0472-2d5700a00317~srvts=1690301277378~90071",
-      "sla": {
-        "deliveryTime": 25,
-        "lastMileTravel": 1.4,
-        "serviceability": "SERVICEABLE",
-        "slaString": "25 mins",
-        "lastMileTravelString": "1.4 km",
-        "iconType": "ICON_TYPE_EMPTY"
-      },
-      "availability": {
-        "nextCloseTime": "2023-07-25 22:00:00",
-        "opened": true
-      },
-      "badges": {
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+//       "isNewlyOnboarded": true
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/mojo-pizza-2x-toppings-dream-opal-ulwe-mumbai-622151",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   },
+//   {
+//     "info": {
+//       "id": "732025",
+//       "name": "My  Mother s Receipe",
+//       "cloudinaryImageId": "0d98462a4ff166ee5ac2ee45d0c648d6",
+//       "locality": "Om Residency",
+//       "areaName": "Ulwe",
+//       "costForTwo": "₹300 for two",
+//       "cuisines": [
+//         "Sweets",
+//         "Street Food"
+//       ],
+//       "feeDetails": {
+//         "restaurantId": "732025",
+//         "fees": [
+//           {
+//             "name": "BASE_DISTANCE",
+//             "fee": 3600
+//           },
+//           {
+//             "name": "BASE_TIME"
+//           },
+//           {
+//             "name": "ANCILLARY_SURGE_FEE"
+//           }
+//         ],
+//         "totalFee": 3600
+//       },
+//       "parentId": "434726",
+//       "avgRatingString": "NEW",
+//       "promoted": true,
+//       "adTrackingId": "cid=7502223~p=3~eid=00000189-8dce-a4c2-0472-2d5700a00317~srvts=1690301277378~90071",
+//       "sla": {
+//         "deliveryTime": 25,
+//         "lastMileTravel": 1.4,
+//         "serviceability": "SERVICEABLE",
+//         "slaString": "25 mins",
+//         "lastMileTravelString": "1.4 km",
+//         "iconType": "ICON_TYPE_EMPTY"
+//       },
+//       "availability": {
+//         "nextCloseTime": "2023-07-25 22:00:00",
+//         "opened": true
+//       },
+//       "badges": {
         
-      },
-      "isOpen": true,
-      "aggregatedDiscountInfoV2": {
+//       },
+//       "isOpen": true,
+//       "aggregatedDiscountInfoV2": {
         
-      },
-      "type": "F",
-      "badgesV2": {
-        "entityBadges": {
-          "imageBased": {
+//       },
+//       "type": "F",
+//       "badgesV2": {
+//         "entityBadges": {
+//           "imageBased": {
             
-          },
-          "textBased": {
+//           },
+//           "textBased": {
             
-          },
-          "textExtendedBadges": {
+//           },
+//           "textExtendedBadges": {
             
-          }
-        }
-      },
-      "orderabilityCommunication": {
-        "title": {
+//           }
+//         }
+//       },
+//       "orderabilityCommunication": {
+//         "title": {
           
-        },
-        "subTitle": {
+//         },
+//         "subTitle": {
           
-        },
-        "message": {
+//         },
+//         "message": {
           
-        },
-        "customIcon": {
+//         },
+//         "customIcon": {
           
-        }
-      },
-      "differentiatedUi": {
-        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-        "differentiatedUiMediaDetails": {
-          "maxDuration": "3000",
-          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
-          "lottie": {
+//         }
+//       },
+//       "differentiatedUi": {
+//         "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+//         "differentiatedUiMediaDetails": {
+//           "maxDuration": "3000",
+//           "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+//           "lottie": {
             
-          },
-          "video": {
+//           },
+//           "video": {
             
-          }
-        }
-      },
-      "reviewsSummary": {
+//           }
+//         }
+//       },
+//       "reviewsSummary": {
         
-      },
-      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-      "isNewlyOnboarded": true
-    },
-    "analytics": {
-      "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
-    },
-    "cta": {
-      "link": "https://www.swiggy.com/restaurants/my-mother-s-receipe-om-residency-ulwe-mumbai-732025",
-      "text": "RESTAURANT_MENU",
-      "type": "WEBLINK"
-    },
-    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
-  }
-];
+//       },
+//       "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+//       "isNewlyOnboarded": true
+//     },
+//     "analytics": {
+//       "context": "seo-data-da9635d9-9b64-4e6b-8705-b2efb5f6b9de"
+//     },
+//     "cta": {
+//       "link": "https://www.swiggy.com/restaurants/my-mother-s-receipe-om-residency-ulwe-mumbai-732025",
+//       "text": "RESTAURANT_MENU",
+//       "type": "WEBLINK"
+//     },
+//     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_BCP_byName"
+//   }
+// ];
 

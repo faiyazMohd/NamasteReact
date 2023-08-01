@@ -1,0 +1,7 @@
+Q: Read about createHashRouter, createMemoryRouter from React Router docs.
+
+A: createHashRouter is useful if you are unable to configure your web server to direct all traffic to your React Router application. Instead of using normal URLs, it will use the hash (#) portion of the URL to manage the "application URL". Other than that, it is functionally the same as createBrowserRouter. For more reference 
+https://reactrouter.com/en/main/routers/create-hash-router
+
+createMemoryRouter Instead of using the browsers history a memory router manages it's own history stack in memory. It's primarily useful for testing and component development tools like Storybook, but can also be used for running React Router in any non-browser environment. For more reference 
+https://reactrouter.com/en/main/routers/create-memory-router

@@ -1,0 +1,45 @@
+Q: (Research) Why do we use super(props) in constructor?
+
+A: super(props) is used to inherit the properties and access of variables of the React parent class when we initialize our component. super() is used inside constructor of a class to derive the parent's all properties inside the class that extended it. If super() is not used, then Reference Error : Must call super constructor in derived classes before accessing 'this' or returning from derived constructor is thrown in the console. The main difference between super() and super(props) is the this.props is undefined in child's constructor in super() but this.props contains the passed props if super(props) is used.
+
+//GPTIn JavaScript classes, when you define a constructor in a subclass (a class that inherits from another class), you must call the `super(props)` method inside the constructor before you can access the `this` keyword or set up the component's state. The `super(props)` call is necessary to initialize the parent class (the class being extended) and pass the `props` to it.
+
+Here's why we use `super(props)` in the constructor of a React component:
+
+1. **Calling the Parent Class Constructor:** In React, when you create a class-based component that extends another class (usually `React.Component`), you need to call the constructor of the parent class using `super(props)`. This ensures that the initialization code of the parent class is executed before any code in the subclass's constructor. If you omit the `super(props)` call, `this.props` will be undefined in your component, leading to potential errors.
+
+2. **Passing Props to the Parent Class:** The `super(props)` call ensures that the `props` passed to the subclass's constructor are also passed to the constructor of the parent class. This allows the parent class to initialize the `props` properly, making them available to the component through `this.props` in both the parent and the subclass.
+
+Here's an example to illustrate its usage:
+
+```jsx
+import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  constructor(props) {
+    super(props); // Call the constructor of the parent class with props
+
+    // Now, you can access `this.props` and set up the component's state
+    this.state = {
+      count: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Increment
+        </button>
+      </div>
+    );
+  }
+}
+
+export default MyComponent;
+```
+
+In this example, `MyComponent` extends `React.Component`, so it needs to call `super(props)` in its constructor to properly set up the component and initialize the `props`. The `constructor` method allows us to set the initial state of the component, and without `super(props)`, `this.props` would be undefined in the component, causing an error.
+
+In summary, using `super(props)` in the constructor of a class-based component is essential for initializing the parent class and ensuring that the `props` are correctly passed down to the component hierarchy.

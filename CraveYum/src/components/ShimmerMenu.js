@@ -14,7 +14,7 @@ const ShimmerMenu = () => {
       </div>
       
       <div className="menuItemsContainerShimmer">
-      {Array(6).fill("").map((index)=>{
+      {Array(6).fill("").map((element,index)=>{
         return(<div key={index} className="menuItemShimmer">
         <div className="itemInfoShimmer"></div>
         <div className="itemImageContainerShimmer">

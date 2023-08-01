@@ -1,0 +1,51 @@
+Q: What is the order of life cycle method calls in Class Based Components?
+
+A: Following is the order of lifecycle methods calls in Class Based Components:
+
+    constructor()
+    render ()
+    componentDidMount()
+    componentDidUpdate()
+    componentWillUnmount()
+
+
+//GPT
+In Class-Based Components in React, the lifecycle methods are called in a specific order during the component's creation, update, and destruction. The order of lifecycle method calls is as follows:
+
+1. **Mounting Phase:**
+   These methods are called when the component is being created and added to the DOM.
+
+   a. `constructor`: The constructor is called first when the component is initialized. It is used to set up the component's initial state and bind event handlers.
+
+   b. `static getDerivedStateFromProps`: This method is rarely used, but it may be used to update the state based on changes in props before rendering the component.
+
+   c. `render`: The `render` method is called to create the component's virtual DOM representation. It returns the JSX that will be rendered to the actual DOM.
+
+   d. `componentDidMount`: This method is called after the component has been rendered to the DOM. It is used for performing side effects like fetching data from APIs or modifying the DOM.
+
+2. **Updating Phase:**
+   These methods are called when the component's state or props change, triggering a re-render.
+
+   a. `static getDerivedStateFromProps`: Again, this method may be used to update the state based on changes in props during the update phase.
+
+   b. `shouldComponentUpdate`: This method is called before re-rendering to determine whether the component should update or not. By default, it returns `true`, but it can be overridden to optimize rendering.
+
+   c. `render`: The `render` method is called again to create the updated virtual DOM representation.
+
+   d. `getSnapshotBeforeUpdate`: This method is rarely used, but it can be used to capture information from the DOM before it updates (e.g., scroll position).
+
+   e. `componentDidUpdate`: This method is called after the component's update is reflected in the DOM. It is used for performing additional side effects after an update.
+
+3. **Unmounting Phase:**
+   These methods are called when the component is being removed from the DOM.
+
+   a. `componentWillUnmount`: This method is called just before the component is removed from the DOM. It is used for cleaning up resources and event listeners to avoid memory leaks.
+
+4. **Error Handling Phase:**
+   These methods are called when an error is thrown during rendering or in a lifecycle method of a child component.
+
+   a. `static getDerivedStateFromError`: This method is used to update the state when an error is caught in a child component.
+
+   b. `componentDidCatch`: This method is called when an error is caught within a child component. It is used for logging error information and displaying fallback UIs.
+
+Please note that some lifecycle methods are considered legacy and might not be used frequently in modern React applications. Additionally, with the introduction of React Hooks, many of these lifecycle methods can be replaced with useEffect and other Hook equivalents.

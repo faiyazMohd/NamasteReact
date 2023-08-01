@@ -1,0 +1,45 @@
+//GPT
+Unary plus (`+`) and unary minus (`-`) are JavaScript operators used as unary operators, meaning they take a single operand. Their primary purpose is to perform type coercion, explicitly converting their operand into a number.
+
+1. **Unary Plus (`+`):**
+   The unary plus operator converts its operand into a numeric value. If the operand is already a number, it has no effect. If the operand is a string that represents a valid numeric value, the unary plus operator will convert it into a numeric value.
+
+   Example:
+
+   ```javascript
+   const numString = "42";
+   const num = +numString; // Convert the string "42" to the number 42
+
+   console.log(typeof numString); // Output: "string"
+   console.log(typeof num);      // Output: "number"
+   ```
+
+   In this example, `numString` is a string representing the number "42". The unary plus operator `+` is used before `numString` to convert it into a numeric value, resulting in the number `42`.
+
+2. **Unary Minus (`-`):**
+   The unary minus operator also converts its operand into a numeric value but with the opposite sign. If the operand is already a number, it negates it. If the operand is a string that represents a valid numeric value, the unary minus operator will convert it into a numeric value and negate it.
+
+   Example:
+
+   ```javascript
+   const positiveNum = 42;
+   const negativeNum = -positiveNum; // Negate the positive number 42
+
+   console.log(positiveNum); // Output: 42
+   console.log(negativeNum); // Output: -42
+   ```
+
+   In this example, `positiveNum` is a positive number `42`, and the unary minus operator `-` is used before `positiveNum` to negate it, resulting in the negative number `-42`.
+
+   Unary minus is particularly useful when you want to change the sign of a numeric value, such as when dealing with financial transactions or performing arithmetic operations with negative values.
+
+It's essential to understand that both unary plus and unary minus operators try to convert their operands into numeric values. If the operand cannot be converted into a valid numeric value, the result will be `NaN` (Not-a-Number). For example:
+
+```javascript
+const invalidString = "Hello";
+const result = +invalidString; // Attempt to convert "Hello" to a number
+
+console.log(result); // Output: NaN
+```
+
+In this example, `invalidString` is a string that cannot be converted into a number, so the unary plus operation results in `NaN`. The same applies to the unary minus operator.

@@ -1,0 +1,43 @@
+Q: Why do we use componentWillUnmount? Show with example.
+
+A: componentWillUnmount() is useful for the cleanup of the application when we switch routes from one place to another. Since we are working with a SPA(Single Page Application) the component process always runs in the background even if we switch to another route. So it is required to stop those processes before leaving the page. If we revisit the same page, a new process starts that affects the browser performance. For example, in Repo class, during componentDidMount() a timer is set with an interval of every one second to print in console. When the component is unmounted (users moves to a different page), the timer will be running in the background, which we might not even realize and causing huge performance issue. To avoid such situations the cleanup function can be done in componentWillUnmount, in this example clearInterval(timer) to clear the timer interval before unmounting Repo component.
+
+
+//GPT
+`componentWillUnmount` is a lifecycle method in React Class-Based Components that is called just before a component is removed from the DOM. It provides an opportunity to clean up resources, cancel ongoing operations, or remove event listeners before the component is unmounted. This method is essential for avoiding memory leaks and ensuring that the component's side effects are properly cleaned up when the component is no longer needed.
+
+Here's an example of how to use `componentWillUnmount`:
+
+```jsx
+import React, { Component } from 'react';
+
+class ExampleComponent extends Component {
+  intervalId = null; // Used to store the interval ID for cleanup
+
+  componentDidMount() {
+    console.log('Component mounted');
+    // Start an interval to update the component every second
+    this.intervalId = setInterval(() => {
+      console.log('Interval tick');
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    console.log('Component will unmount');
+    // Clean up resources, cancel the interval, and remove event listeners here
+    clearInterval(this.intervalId);
+  }
+
+  render() {
+    return <div>Example Component</div>;
+  }
+}
+
+export default ExampleComponent;
+```
+
+In this example, we have a class-based component called `ExampleComponent`. When this component mounts, `componentDidMount` is called, which starts a recurring interval using `setInterval` to log "Interval tick" every second.
+
+However, if this component gets unmounted from the DOM (e.g., it is removed from the rendered UI or replaced with another component), React will automatically call the `componentWillUnmount` method before unmounting. In this method, we have added cleanup code to cancel the interval using `clearInterval(this.intervalId)`. This is crucial to prevent the interval from running indefinitely and causing memory leaks.
+
+Whenever the `ExampleComponent` is no longer needed or is removed from the UI, the `componentWillUnmount` method will be triggered, allowing us to clean up any resources, subscriptions, or ongoing processes tied to the component. This ensures that the component's side effects are properly handled and avoids any potential issues after the component is unmounted.

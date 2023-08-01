@@ -1,0 +1,39 @@
+Q: How do you create Nested Routes react-router-dom configuration?
+
+A: We can create a Nested Routes inside a react router configuration as follows: first call createBrowserRouter for routing different pages
+
+const router = createBrowserRouter([
+   {
+      path: "/", // show path for routing
+      element: <Parent />, // show component for particular path
+      errorElement: <Error />, // show error component for path is different
+      children: [ // show children component for routing
+         {
+            path: "/path",
+            element: <Child />
+         }
+      ],
+   }
+])
+
+Now we can create a nested routing for /path using children again as follows:
+
+const router = createBrowserRouter([
+   {
+      path: "/",
+      element: <Parent />,
+      errorElement: <Error />,
+      children: [
+         {
+            path: "/path",
+            element: <Child />,
+            children: [ // nested routing for subchild
+               {
+                  path: "/child",
+                  element: <SubChild />,
+               }
+            ],
+         }
+      ],
+   }
+])
