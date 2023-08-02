@@ -5,48 +5,19 @@ import minutesIcon from "../assets/icons/svgs/minutes.svg";
 import rupeeIcon from "../assets/icons/svgs/rupee.svg";
 // import leafIcon from "../assets/icons/leaves16.png";
 import leafIcon from "../assets/icons/leafIconPNG.png";
-
 import MenuItemCard from "./MenuItemCard";
 import ShimmerMenu from "./ShimmerMenu";
+import useRestMenu from "../utils/hooks/useRestMenu";
+import useOnline from "../utils/hooks/useOnline";
 const RestaurantMenu = () => {
-  const { id } = useParams();
-  const [restMenus, setRestMenus] = useState([]);
-  const [restInfo, setRestInfo] = useState({});
+  const {id } = useParams();
   const [isVeg, setIsVeg] = useState(false);
-  const [filteredMenus, setFilteredMenus] = useState([]);
-  // console.log(id);
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [restMenus,restInfo,filteredMenus, setFilteredMenus] =  useRestMenu(id);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9727952&lng=73.0296706&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
-    );
-    // console.log(data);
-    const json = await data.json();
-    console.log(json);
-    // if (json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.title === "Recommended") {
-    //     const MenusList = json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
-    //     setRestMenus(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards)
-    //     console.log(MenusList);
-    // } else {
-
-    //     setRestMenus(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards)
-    //   }
-    json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map(
-      (card, index) => {
-        if (card.card.card.title === "Recommended") {
-          setRestMenus(card.card.card.itemCards);
-          setFilteredMenus(card.card.card.itemCards);
-          console.log(card.card.card.itemCards);
-          console.log("index is  : " + index);
-        }
-      }
-    );
-    setRestInfo(json?.data?.cards[0]?.card?.card?.info);
-  };
-  
+  const isOnline = useOnline();
+  if(!isOnline){
+    return <h1>🔴Offline ! Please check your internet connection</h1>
+  }
   return (
     <>
       {restMenus.length === 0 ? (

@@ -1,0 +1,58 @@
+5. When do we and why do we need suspense?
+ans:
+When our application grows in size the bundle created by the increases as well. This affects the application performance , when we load a large amount of data when our application loads. So it is better to load the data when we need a specific component to load which is large in size.
+
+
+/GPT
+`Suspense` in React is primarily used to handle asynchronous operations, such as lazy-loading components with `React.lazy()` and code splitting, and data fetching with third-party libraries or custom asynchronous code. It allows you to create a smooth user experience by showing fallback content while the asynchronous operation is in progress.
+
+Here are some scenarios where and why we need `Suspense`:
+
+1. **Lazy Loading Components**: When you have large React applications with many components, the initial bundle size can be significant, resulting in slower load times. By using `React.lazy()` with `Suspense`, you can implement lazy loading, meaning components are loaded on-demand when they are needed. This optimizes the initial loading time by reducing the size of the initial bundle.
+
+```jsx
+const MyLazyComponent = React.lazy(() => import('./MyLazyComponent'));
+
+const App = () => (
+  <div>
+    {/* Other components */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  </div>
+);
+```
+
+2. **Data Fetching**: When fetching data from an API or a server, there might be a short delay while waiting for the data to arrive. By using `Suspense`, you can wrap the data fetching code and display a loading indicator or fallback content while waiting for the data to be fetched.
+
+```jsx
+import { Suspense } from 'react';
+import { fetchData } from './api';
+
+const MyDataComponent = () => {
+  const data = fetchData(); // Some asynchronous function to fetch data
+
+  return (
+    <div>
+      {/* Display data here */}
+    </div>
+  );
+};
+
+const App = () => (
+  <div>
+    {/* Other components */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyDataComponent />
+    </Suspense>
+  </div>
+);
+```
+
+3. **Conditional Rendering**: When you have components that are conditionally rendered based on user interactions or route changes, `Suspense` can be used to wrap these components and handle the loading state elegantly.
+
+4. **Optimizing User Experience**: Suspense helps improve the user experience by allowing you to handle loading states more gracefully. Instead of showing empty or partially loaded UI elements, you can display a loading indicator or fallback content, providing users with feedback that something is happening.
+
+5. **Combining Multiple Async Operations**: If you have multiple asynchronous operations (e.g., data fetching, dynamic imports) happening in parallel, you can use `Suspense` to wrap them together and handle their loading states simultaneously.
+
+It's important to note that as of my last update in September 2021, `Suspense` is primarily used for handling lazy loading and data fetching. However, React's capabilities and API might have evolved beyond this point, so it's always a good idea to check the official React documentation for the latest features and updates related to `Suspense`.

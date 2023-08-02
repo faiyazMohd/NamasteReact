@@ -1,0 +1,4 @@
+Q. Why we got this error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition. How does Suspense fix this error?
+
+
+A: When a lazily-loaded component starts to fetch its code, it can potentially cause this error. To address this problem, React's Concurrent Mode and the Suspense component come into play. When we use lazy loading with components, we can wrap the lazily-loaded component with the Suspense component. The Suspense component allows us to specify what to show to the user while waiting for the lazily-loaded component and its data to be fetched.

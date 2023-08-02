@@ -1,0 +1,31 @@
+Q What is suspense?
+
+Suspence is a component provided by react , it is used to load to add delays when we are performing a dynamic import in our application.
+
+//GPT
+In React, `Suspense` is a component that is used to handle asynchronous operations, such as lazy-loading components using `React.lazy()` or fetching data with the `React.Suspense` component. It allows you to create a smooth user experience by showing a fallback UI while the asynchronous operation is in progress.
+
+The main use case for `Suspense` is in conjunction with `React.lazy()` for code splitting, which was discussed in the previous answer. When you use `lazy()` to dynamically load a component, it returns a Promise that resolves to the component's module. `Suspense` is used to wrap the lazy-loaded component and specify a fallback UI that is displayed while the lazy component is being fetched. Once the lazy component is ready, it will be displayed, replacing the fallback UI.
+
+Here's an example of how `Suspense` is used with `lazy()`:
+
+```jsx
+import React, { Suspense } from 'react';
+
+const MyLazyComponent = React.lazy(() => import('./MyLazyComponent'));
+
+const App = () => (
+  <div>
+    {/* Other components */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  </div>
+);
+```
+
+In this example, when the `MyLazyComponent` is being loaded, the `Suspense` component will display the fallback UI (in this case, the text "Loading..."). Once the lazy component is ready, it will replace the fallback UI and render the actual content of `MyLazyComponent`.
+
+Besides lazy loading, `Suspense` can also be used with the `React.lazy()` function for data fetching using the `useEffect` hook and `fetch` API or third-party libraries like `react-query` or `SWR`. When performing data fetching, you can use `Suspense` to display a loading state while waiting for the data to be fetched, making the user experience more seamless.
+
+It's worth noting that as of my last update in September 2021, `Suspense` can only be used for handling lazy loading and data fetching. However, React's capabilities and API might have evolved beyond this point, so it's always a good idea to check the official React documentation for the latest features and updates.

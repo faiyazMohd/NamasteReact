@@ -1,0 +1,38 @@
+1. When and why do we need lazy()?
+//GPT
+In React, `lazy()` is a function that allows you to implement code splitting for your components. Code splitting is a technique used to optimize the loading of your application by splitting the bundle into smaller chunks, which are loaded on-demand when needed. This can improve the initial loading time and reduce the amount of code that needs to be downloaded upfront.
+
+The `lazy()` function is typically used with dynamic imports to create a separate bundle for a component. Here's the basic syntax:
+
+```jsx
+const MyLazyComponent = React.lazy(() => import('./MyLazyComponent'));
+```
+
+Here's when and why you might need to use `lazy()`:
+
+1. **Optimizing Initial Load Time**: In large React applications, the main bundle can become quite large, resulting in slower initial load times. By using `lazy()`, you can split the components into separate chunks, and only load them when they are needed, reducing the initial load time.
+
+2. **Improved Performance**: Components wrapped in `lazy()` are loaded asynchronously. This means that they are fetched and loaded in the background when required, allowing the rest of the application to render and function more smoothly.
+
+3. **Conditional Loading**: If you have a component that is used in specific scenarios or routes, using `lazy()` allows you to conditionally load that component when it's needed, instead of loading it upfront for every user.
+
+4. **Splitting Large Applications**: In large-scale applications, using `lazy()` can help divide the codebase into smaller, more manageable chunks, making it easier to maintain and update specific parts of the application.
+
+It's important to note that `React.lazy()` can only be used with components that are exported as default (i.e., `export default MyComponent`). Additionally, since `lazy()` returns a Promise, you need to wrap the component rendering with a `Suspense` component to handle the loading state:
+
+```jsx
+import React, { Suspense } from 'react';
+
+const MyLazyComponent = React.lazy(() => import('./MyLazyComponent'));
+
+const App = () => (
+  <div>
+    {/* Other components */}
+    <Suspense fallback={<div>Loading...</div>}>
+      <MyLazyComponent />
+    </Suspense>
+  </div>
+);
+```
+
+The `fallback` prop in `Suspense` is used to render a fallback UI while the lazy-loaded component is being fetched. It's displayed until the lazy component is ready to be rendered.
