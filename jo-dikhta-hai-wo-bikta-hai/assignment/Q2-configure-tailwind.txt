@@ -1,0 +1,33 @@
+Configure Tailwind Css
+
+    INSTALL TAILWIND CSS Install tailwindcss and its peer dependencies via npm, and then run the init command to generate tailwind.config.js.
+
+      npm install -D tailwindcss postcss
+      npx tailwindcss init
+
+Configure PostCSS Create a .postcssrc file in your project root, and enable the tailwindcss plugin.
+
+  {
+    "plugins": {
+    "tailwindcss": {}
+    }
+  }
+
+Configure your template paths Add the paths to all of your template files in your tailwind.config.js file.
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+Add the Tailwind directives to your CSS Create a ./src/index.css file and add the @tailwind directives for each of Tailwind’s layers.
+
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+Start using Tailwind in your project.

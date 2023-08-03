@@ -1,18 +1,23 @@
 // import {Logo,Search,UserIcon} from "./NavItems";
-import NavItems from "./NavItems";
+// import NavItems from "./NavItems";
 // import * as NavItems from "./NavItems"
 // const {Logo,Search,UserIcon}  =  NavItems;
 // import {Logo,Search,UserIcon}  from "./NavItems";
+import UserIcon from "./NavItems";
+import {Logo,Search}   from "./NavItems";
+
 const Header = () => (
+  <>
     <div
       id="header"
-      style={{backgroundColor:"#aed8df", display: "flex", alignItems: "center",justifyContent:"space-between" }}
+      className="flex items-center justify-between bg-blue-300"
     >
-        
-      <NavItems.Logo />
-      <NavItems.Search />
-      <NavItems.UserIcon />
+       
+      <Logo />
+      <Search />
+      <UserIcon />
     </div>
+    </>
   );
 
 export default Header;

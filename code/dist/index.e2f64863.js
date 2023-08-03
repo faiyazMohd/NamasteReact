@@ -27322,44 +27322,42 @@ $parcel$ReactRefreshHelpers$3a58.prelude(module);
 
 try {
 // import {Logo,Search,UserIcon} from "./NavItems";
+// import NavItems from "./NavItems";
+// import * as NavItems from "./NavItems"
+// const {Logo,Search,UserIcon}  =  NavItems;
+// import {Logo,Search,UserIcon}  from "./NavItems";
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _navItems = require("./NavItems");
 var _navItemsDefault = parcelHelpers.interopDefault(_navItems);
-// import * as NavItems from "./NavItems"
-// const {Logo,Search,UserIcon}  =  NavItems;
-// import {Logo,Search,UserIcon}  from "./NavItems";
-const Header = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        id: "header",
-        style: {
-            backgroundColor: "#aed8df",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between"
-        },
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).Logo, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/components/Header.js",
-                lineNumber: 13,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).Search, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/components/Header.js",
-                lineNumber: 14,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default).UserIcon, {}, void 0, false, {
-                fileName: "assignments/session 3/code/Q2/components/Header.js",
-                lineNumber: 15,
-                columnNumber: 7
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "assignments/session 3/code/Q2/components/Header.js",
-        lineNumber: 6,
-        columnNumber: 22
-    }, undefined);
+const Header = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            id: "header",
+            className: "flex items-center justify-between bg-blue-300",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItems.Logo), {}, void 0, false, {
+                    fileName: "assignments/session 3/code/Q2/components/Header.js",
+                    lineNumber: 11,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItems.Search), {}, void 0, false, {
+                    fileName: "assignments/session 3/code/Q2/components/Header.js",
+                    lineNumber: 12,
+                    columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navItemsDefault.default), {}, void 0, false, {
+                    fileName: "assignments/session 3/code/Q2/components/Header.js",
+                    lineNumber: 13,
+                    columnNumber: 7
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "assignments/session 3/code/Q2/components/Header.js",
+            lineNumber: 9,
+            columnNumber: 5
+        }, undefined)
+    }, void 0, false);
 _c = Header;
 exports.default = Header;
 var _c;
@@ -27388,13 +27386,11 @@ const Logo = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 src: "https://endurefit.netlify.app/static/media/logowithname.3f6ee07af81e14903860.png",
                 alt: "Logo",
-                style: {
-                    height: "2rem"
-                }
+                className: "h-8"
             }, void 0, false, {
                 fileName: "assignments/session 3/code/Q2/components/NavItems.js",
                 lineNumber: 2,
-                columnNumber: 7
+                columnNumber: 5
             }, undefined),
             " "
         ]
@@ -27409,33 +27405,24 @@ const Search = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                 type: "text",
-                style: {
-                    margin: "1rem",
-                    width: "21vw",
-                    height: "1.7rem",
-                    borderRadius: "0.5rem"
-                }
+                className: "m-4 w-[21vw] h-7 rounded-lg"
             }, void 0, false, {
                 fileName: "assignments/session 3/code/Q2/components/NavItems.js",
-                lineNumber: 7,
-                columnNumber: 7
+                lineNumber: 5,
+                columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                style: {
-                    backgroundColor: "#63bccb",
-                    borderRadius: "0.5rem",
-                    padding: "0.3rem"
-                },
+                className: " bg-blue-500 rounded-lg p-1 hover:bg-[#63bccb]",
                 children: "Search"
             }, void 0, false, {
                 fileName: "assignments/session 3/code/Q2/components/NavItems.js",
-                lineNumber: 13,
-                columnNumber: 7
+                lineNumber: 6,
+                columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "assignments/session 3/code/Q2/components/NavItems.js",
-        lineNumber: 6,
+        lineNumber: 4,
         columnNumber: 29
     }, undefined);
 _c1 = Search;
@@ -27449,12 +27436,12 @@ const UserIcon = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             alt: "UserIcon"
         }, void 0, false, {
             fileName: "assignments/session 3/code/Q2/components/NavItems.js",
-            lineNumber: 20,
-            columnNumber: 7
+            lineNumber: 11,
+            columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "assignments/session 3/code/Q2/components/NavItems.js",
-        lineNumber: 19,
+        lineNumber: 10,
         columnNumber: 24
     }, undefined);
 _c2 = UserIcon;
