@@ -1,0 +1,12 @@
+1. What is prop drilling?
+
+Prop drilling is a way sending props to a child component which is many components below the parent component. e.g.
+
+<ParentComponent/>
+    <ChildComponent/>
+        <SubChildComponent/>
+
+if we need to pass props from ParentComponent to SubChildComponent , we would require to send the props though ChildComponent also.
+
+//GPT
+Prop drilling refers to the practice of passing data through several layers of components in a software application to reach a specific component that needs that data. This can make the code complex and less maintainable. To avoid this, developers use techniques like state management libraries or context systems to handle data sharing more efficiently.

@@ -1,0 +1,31 @@
+4. If you don’t pass a value to the provider does it take the default value?
+
+ans] If we do not override the values of context it takes the default values form the context , when we initialise the context.
+
+//GPT
+Yes, if you don't pass a value to the Context Provider, it will take the default value that you provide when you create the context using the `React.createContext()` function.
+
+Here's an example:
+
+```jsx
+// Creating a context with a default value
+const MyContext = React.createContext('default value');
+
+// In your component tree
+<MyContext.Provider>
+  {/* Children components */}
+</MyContext.Provider>
+```
+
+In this example, the `MyContext.Provider` component does not have a `value` prop specified. Therefore, it will use the default value of `'default value'` that was set when creating the context. Any components that consume this context using `MyContext.Consumer` will receive `'default value'` as the value.
+
+If you do pass a value to the `MyContext.Provider` component, that value will override the default value for the components that consume the context within the provider's scope. For example:
+
+```jsx
+// In your component tree
+<MyContext.Provider value="custom value">
+  {/* Children components */}
+</MyContext.Provider>
+```
+
+In this case, the components consuming the context within the scope of this `MyContext.Provider` will receive `"custom value"` as the value, instead of the default value.

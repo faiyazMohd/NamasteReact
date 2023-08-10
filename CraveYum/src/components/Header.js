@@ -5,14 +5,17 @@ import aboutOrange from "../assets/icons/aboutOrange.png";
 import aboutBlack from "../assets/icons/aboutBlack.png";
 import cartBlack from "../assets/icons/cartBlack.png";
 import cartOrange from "../assets/icons/cartOrange.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserProfile from "../utils/contexts/userProfile/UserProfile";
+import UserContext from "../utils/contexts/UserContext";
 
 const Header = () => {
   const [signInColor, setSignInColor] = useState("#000000");
   const [aboutColor, setAboutColor] = useState("#000000");
   const [offerColor, setofferColor] = useState("#000000");
   const [cartColor, setCartColor] = useState("#000000");
+  const {user} = useContext(UserContext);
   return (
     <div className="header">
       <div className="logo">
@@ -21,6 +24,11 @@ const Header = () => {
         </Link>
       </div>
       <ul className="list">
+        <a>
+          <li>
+            {user.name}
+          </li>
+        </a>
         <Link to="/about">
           <li
             onMouseOver={() => setAboutColor("#f3630b")}
@@ -58,14 +66,13 @@ const Header = () => {
           </li>
         </Link>
         <Link to="/signIn">
-
-        <li
-          onMouseOver={() => setSignInColor("#f3630b")}
-          onMouseLeave={() => setSignInColor("#000000")}
-        >
-          <SignInIcon color={signInColor} />
-          Sign In
-        </li>
+          <li
+            onMouseOver={() => setSignInColor("#f3630b")}
+            onMouseLeave={() => setSignInColor("#000000")}
+          >
+            <SignInIcon color={signInColor} />
+            Sign In
+          </li>
         </Link>
       </ul>
     </div>

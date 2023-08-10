@@ -1,0 +1,32 @@
+2. What is lifting the state up?
+
+Lifting the state up or State lifting is a methos by which we can get access to the child components from a parent. If we want to perform some type of task that requires a state management between multiple children , we can do so by state lifting to their parent.
+
+//GPT
+Lifting state up is a concept in software development, particularly in the context of React or similar component-based frameworks. It refers to the process of moving the management of a component's state from a lower-level child component to a higher-level parent component.
+
+In a component hierarchy, data can be stored and managed at different levels. When you have a situation where multiple child components need to share and interact with the same data, lifting the state up becomes a useful approach. By moving the shared state to a common parent component, you centralize the management of that state and make it accessible to all the components that need it.
+
+Benefits of lifting state up:
+
+1. **Data Centralization:** By keeping shared state in a single parent component, you avoid duplication of state and ensure that all child components are working with the same data.
+
+2. **Simplicity:** Child components become more focused and easier to manage since they don't need to manage the state themselves. This can lead to cleaner and more maintainable code.
+
+3. **State Management:** It's often easier to manage and update state in a higher-level component, especially when dealing with complex interactions and updates between multiple components.
+
+4. **Communication:** Lifting state up promotes a clear flow of data and communication between components, making it easier to understand how different parts of the application interact.
+
+Here's a simple example to illustrate lifting state up in React:
+
+Suppose you have a parent component and two child components. Both child components need to display the same counter value:
+
+```
+ParentComponent
+  |-- ChildComponentA
+  |-- ChildComponentB
+```
+
+Instead of keeping the counter value in each child component, you can lift the state up by storing the counter value in the `ParentComponent` and passing it as a prop to both `ChildComponentA` and `ChildComponentB`. This way, both child components can access and display the counter value without needing to manage their own states.
+
+Lifting state up is a key concept in React's philosophy of "props down, events up," where data flows from parent components to child components through props and communication flows from child components to parent components through events.
