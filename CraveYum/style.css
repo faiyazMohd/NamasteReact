@@ -12,6 +12,7 @@
   height: 5rem;
   background: #fff;
   box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .logo > a > img {
@@ -29,11 +30,12 @@
   justify-content: center;
 }
 .list > a > li {
-  justify-content: center;
-  padding: 0rem 2.1rem;
-  font-weight: 500;
   display: flex;
-  font-size: 1.13rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 2.1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .list > a > li:hover {
   cursor: pointer;
@@ -42,7 +44,17 @@
 
 .list > a > li > img {
   width: 2rem;
-  padding-right: 0.2rem;
+}
+.CartIconSpan {
+  position: relative;
+  padding-top: 2px;
+}
+.CartItemsLength {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 600;
+  right: 32%;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Body Styling */
@@ -70,6 +82,10 @@
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid black;
+}
+.searchBar > input:focus {
+  border: 2px solid #fc8019;
+  outline: none;
 }
 .searchBar > button {
   border-radius: 0.5rem;
@@ -162,6 +178,7 @@ a {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  height: 1.5rem;
 }
 .restRating {
   font-size: 0.9rem;
@@ -493,6 +510,10 @@ a {
   object-fit: cover;
   border-radius: 6px;
 }
+
+.addBtn {
+  transition: all 0.3s ease;
+}
 .addText {
   color: #60b246;
   width: 5.517rem;
@@ -512,6 +533,10 @@ a {
   position: absolute;
   bottom: -8%;
   right: 12%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: all 0.3sec ease;
 }
 .addText:hover {
   /* box-shadow: 2px 17px 18px #e9e9eb; */
@@ -522,6 +547,35 @@ a {
   position: absolute;
   left: 78%;
   bottom: 15%;
+}
+
+.addItemContainer {
+  width: 30px;
+  height: 30px;
+}
+.addItemContainer > p {
+  color: #60b246;
+  font-size: 1.3rem;
+}
+.addItemContainer:hover > p {
+  color: #60b246;
+  font-size: 1.6rem;
+}
+
+.removeItemContainer {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.removeItemContainer > p {
+  color: #bebfc5;
+  font-size: 2rem;
+}
+.removeItemContainer:hover > p {
+  color: #bebfc5;
+  font-size: 2.2rem;
 }
 
 /* restaurant additional inforation */
@@ -559,24 +613,21 @@ a {
   color: #93959f;
   padding-top: 1rem;
 }
-.restLocation > :nth-child(1){
+.restLocation > :nth-child(1) {
   font-weight: 700;
   color: #93959f;
   text-transform: capitalize;
 }
-.restLocation > :nth-child(2){
+.restLocation > :nth-child(2) {
   font-weight: 600;
   color: #93959f;
   font-size: 0.8rem;
-
 }
-.restLocation > :nth-child(3){
+.restLocation > :nth-child(3) {
   color: #93959f;
   font-size: 0.8rem;
-  margin-top: .7rem;
+  margin-top: 0.7rem;
 }
-
-
 
 /* Menu Page  Shimmer */
 
@@ -589,7 +640,7 @@ a {
 .headerContainerShimmer {
   width: 95%;
   margin: auto;
-  height: 18%;
+  height: 10rem;
   /* background-color: #ebebec; */
   background-color: rgb(240, 240, 245);
   border-radius: 8px;
@@ -677,4 +728,323 @@ a {
 }
 .section > h2 {
   margin: 0.6rem 0;
+}
+
+/* Cart page */
+/* :empty cart  */
+.emptyCartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 3.6rem;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cookingImg {
+}
+.cookingImg > img {
+  width: 17.5rem;
+  height: 16rem;
+}
+
+.emptyCartContainer > p {
+  color: #7e808c;
+  font-size: 0.88rem;
+}
+.emptyCartContainer > h3 {
+  padding: 1.3rem 0 0.7rem 0;
+  font-weight: 600;
+}
+
+.seeAllRestBtn {
+  margin-top: 1.9rem;
+  text-transform: uppercase;
+  background-color: #fc8019;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.6rem;
+}
+
+.seeAllRestBtn:hover {
+  box-shadow: 0 4px 14px #d4d5d9;
+}
+
+/* cart page */
+.cartPage {
+  min-height: 100vh;
+  width: 100%;
+  background: #e9ecee;
+}
+.cartContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  padding-top: 2rem;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+.leftContainer {
+  /* border: 1px solid red; */
+  width: 64%;
+  height: 100%;
+  height: 100vh;
+}
+.rightContainer {
+  /* border: 1px solid green; */
+  width: 33%;
+  height: 100%;
+  /* background-color: #fff; */
+  height: 100vh;
+}
+
+/* .leftContainer */
+.accountContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  /* border: 1px solid brown; */
+  background-color: #fff;
+}
+.leftAccount {
+}
+.leftAccount > h3 {
+  font-weight: 700;
+}
+.leftAccount > p {
+  color: #7e808c;
+  font-weight: 400;
+}
+
+.askingForSignUp {
+  display: flex;
+  margin-top: 2rem;
+}
+.login {
+  width: 10.821rem;
+  height: 3.171rem;
+  border: 1px solid #60b246;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+.login:hover {
+  box-shadow: 0 4px 14px #d4d5d9;
+  cursor: pointer;
+}
+.signup:hover {
+  box-shadow: 0 4px 14px #d4d5d9;
+  cursor: pointer;
+}
+.signup {
+  border: 1px solid #60b246;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 10.821rem;
+  height: 3.171rem;
+  background-color: #60b246;
+  color: #fff;
+}
+
+.addressContainer {
+  color: #93959f;
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+/* right side cart page */
+.checkoutContainer {
+  width: 85%;
+  /* border: 1px solid red; */
+  margin: auto;
+  height: 78vh;
+}
+.checkoutHeader {
+  height: 4rem;
+  /* border: 1px solid brown; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 16%;
+}
+.checkoutHeader > h4 {
+}
+.checkoutHeader > img {
+  width: 2rem;
+  cursor: pointer;
+}
+.checkoutHeader > img:hover {
+  mix-blend-mode: difference;
+  transition: all 0.2s ease;
+}
+.checkoutBody {
+  /* border: 1px solid red; */
+  height: 71%;
+  overflow-y: auto;
+  width: 109%;
+  margin: auto;
+}
+.innerBodyContainer {
+}
+.totalPrice {
+  /* border: 1px solid orange; */
+  height: 13%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.totalPrice > p {
+  font-weight: 700;
+  color: #282c3f;
+  font-size: 1rem;
+}
+
+/* cartItem  */
+
+.itemCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.cartItems {
+  margin-right: 2rem;
+}
+.cartItemName {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  width: 60%;
+}
+.addRemoveAndPrice {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.addRemoveContainer {
+  border: 1px solid #d4d5d9;
+  color: #60b246;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 30px;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+}
+.isVegCartItem {
+  width: 1.12rem;
+  align-self: flex-start;
+}
+.cartPrice {
+  font-size: 13px;
+  color: #535665;
+  font-weight: 600;
+}
+
+.suggestionContainer {
+  margin-top: 1rem;
+  margin-right: 2rem;
+}
+.suggestionTextarea {
+  border: 0;
+  outline: 0;
+  resize: none;
+  width: 94.5%;
+  height: 100%;
+  color: #3d4152;
+  font-weight: 400;
+  font-size: 13px;
+  background: #f9f9f9;
+  border: 1px solid #f5eaea;
+  border-radius: 3px;
+  padding: 0.8rem 0.5rem;
+}
+
+.deliveryAdviseContainer {
+  cursor: pointer;
+  border: 1px solid #a9abb2;
+  display: flex;
+  gap: 1rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  padding: .5rem 0;
+}
+.deliveryAdviseContainer:hover {
+  box-shadow: 1px 1px 8px #d4d5d9;}
+
+.checkboxContainer {
+}
+.checkboxContainer > label {
+  width: 18px;
+  height: 18px;
+  /* border: 1px solid #7e808c; */
+  cursor: pointer;
+  margin: .4rem 0 0 .5rem;
+}
+
+.deliveryAdviseTextContainer{
+
+}
+
+.deliveryAdviseTextHeading{
+  color: #3e4152;
+  font-weight: 600;
+  font-size: .94rem;
+
+}
+
+.deliveryAdviseTextPara{
+  color: #282c3f;
+  opacity: .8;
+  font-size: .8rem;color: #282c3f;
+  opacity: .8;
+  font-size: .8rem;
+
+}
+
+
+
+.billDetailsContainer {
+  margin-right: 2rem;
+  margin-top: 1rem;
+  border-bottom: 2px solid #282c3f;
+}
+.billDetails {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #282c3f;
+}
+
+.itemTotalContainer {
+  color: #686b78;
+  font-size: 13px;
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemTotal {
+  font-size: 13px;
+  color: #686b78;
+}
+.itemTotalPrice {
+  font-size: 13px;
+  color: #686b78;
 }

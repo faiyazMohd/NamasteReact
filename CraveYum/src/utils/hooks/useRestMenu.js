@@ -39,7 +39,7 @@ const useRestMenu = (restId) => {
       // console.log(restAdditionalInfo);
       setRestInfo(json?.data?.cards[0]?.card?.card?.info);
       setItemCategories(ItemCategoriesData);
-      console.log(restAdditionalInfoData);
+      // console.log(restAdditionalInfoData);
       setRestAdditionalInfo(restAdditionalInfoData)
 
     // console.log(json?.data?.cards[0]?.card?.card?.info);
