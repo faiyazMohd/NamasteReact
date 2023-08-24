@@ -30,6 +30,7 @@ const AppLayout = () => {
           setUser: setUser,
         }}
       >
+        <div className="headerPlaceholder"></div>
         <Header />
         <UserProfileState>
           <Outlet />

@@ -16,7 +16,7 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-  calculateGstCharges = (totalItemPrice) => {
+  const calculateGstCharges = (totalItemPrice) => {
     const result = (5 / 100) * totalItemPrice;
     return result;
   };
@@ -47,10 +47,11 @@ const Cart = () => {
           currentElement.quantity;
       return (accumulator += totalPricePerItem);
     }, 0);
-    return totalItemPrice.toFixed(2);
+    return totalItemPrice;
   };
+
   return cartItems.length === 0 ? (
-    <div className="emptyCartContainer">
+    <div className="emptyCartContainer" data-testid="empty-cart">
       <div className="cookingImg">
         <img src={cookingPng} alt="Empty Cart" />
       </div>
@@ -65,7 +66,7 @@ const Cart = () => {
       </Link>
     </div>
   ) : (
-    <div className="cartPage">
+    <div className="cartPage" data-testid="cart-page">
       <div className="cartContainer">
         <div className="leftContainer">
           <div className="accountContainer">
@@ -121,16 +122,16 @@ const Cart = () => {
               <div className="checkoutHeader">
                 <h4>Cart Items ({cartItems.length})</h4>
                 <img
+                  data-testid="clear-cart"
                   src={emptyCart}
                   onClick={handleClearCart}
                   alt=""
-                  srcset=""
                 />
               </div>
               <div className="checkoutBody">
                 {/* <div className="innerBodyContainer"> */}
 
-                <div className="cartItems">
+                <div className="cartItems" data-testid="cart-items-cart-page">
                   {cartItems?.map((item) => {
                     return (
                       <CartItem
@@ -144,7 +145,7 @@ const Cart = () => {
                   <textarea
                     className="suggestionTextarea"
                     placeholder="❝ Any suggestions? We will pass it on..."
-                    maxlength="140"
+                    maxLength="140"
                   ></textarea>
                 </div>
                 <div className="deliveryAdviseContainer">
@@ -152,7 +153,8 @@ const Cart = () => {
                     <label htmlFor="">
                       <input
                         type="checkbox"
-                        onChange={(e) => setIsAdviseChecked(e.target.checked)}
+                        data-testid="checkbox-cart-page"
+                        onClick={(e) => setIsAdviseChecked(e.target.checked)}
                       />
                     </label>
                   </div>
@@ -160,18 +162,16 @@ const Cart = () => {
                     <div className="deliveryAdviseTextHeading">
                       Opt in for No-contact Delivery
                     </div>
-                    {isAdviseChecked ? (
-                      <div className="deliveryAdviseTextPara">
-                        Our delivery partner will call to confirm. Please ensure
-                        that your address has all the required details.
-                      </div>
-                    ) : (
-                      <div className="deliveryAdviseTextPara">
-                        Unwell, or avoiding contact? Please select no-contact
-                        delivery. Partner will safely place the order outside
-                        your door (not for COD)
-                      </div>
-                    )}
+                    <div
+                      className="deliveryAdviseTextPara"
+                      data-testid="delevery-text"
+                    >
+                      {isAdviseChecked ? 
+                          "Our delivery partner will call to confirm. Pleaseensure that your address has all the required details."
+                       : 
+                         "Unwell, or avoiding contact? Please select no-contact delivery. Partner will safely place the order outside your door (not for COD)"
+                      }
+                    </div>
                   </div>
                 </div>
                 <div className="billDetailsContainer">

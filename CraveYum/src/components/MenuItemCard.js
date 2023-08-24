@@ -4,7 +4,7 @@ import nonVegIcon from "../assets/icons/nonVegIcon.png";
 import { IMG_CDN_LINK } from "../utils/constants";
 import starSvg from "../assets/icons/svgs/star.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem,removeItem } from "../utils/store/cartSlice";
+import { addItem, removeItem } from "../utils/store/cartSlice";
 const MenuItemCard = ({ item }) => {
   // const [cartItem, setCartItem] = useState(null);
   // console.log(item);
@@ -22,7 +22,6 @@ const MenuItemCard = ({ item }) => {
     dispatch(removeItem(item));
   };
 
-
   const cartItemsStore = useSelector((store) => store.cart.cartItems);
   // console.log(cartItemsStore);
   let cartItem = null;
@@ -33,7 +32,7 @@ const MenuItemCard = ({ item }) => {
     }
   });
   return (
-    <div className="menuItem">
+    <div className="menuItem" data-testid="menuItem">
       <div className="itemInfo">
         <div className="iconsContainer">
           {item.card?.info?.itemAttribute?.vegClassifier === "VEG" ? (
@@ -68,13 +67,31 @@ const MenuItemCard = ({ item }) => {
           {cartItem ? (
             <div className="addBtn">
               <p className="addText">
-                <span className="removeItemContainer"  onClick={() => handleRemoveItem()}><p>-</p></span>
+                <span
+                  className="removeItemContainer"
+                  data-testid="remove-item"
+                  onClick={() => handleRemoveItem()}
+                >
+                  <span className="removeItemInItemCard" >-</span>
+                </span>
+                <span data-testid="item-quantity-in-menu-item" >
                 {cartItem?.quantity}
-                <span className="addItemContainer" onClick={() => handleAddItem()}><p>+</p></span>
+                </span>
+                <span
+                  className="addItemContainer"
+                  data-testid="updateItem"
+                  onClick={() => handleAddItem()}
+                >
+                  <span className="addItemInItemCard">+</span>
+                </span>
               </p>
             </div>
           ) : (
-            <div className="addBtn" onClick={() => handleAddItem()}>
+            <div
+              className="addBtn"
+              data-testid="add-item"
+              onClick={() => handleAddItem()}
+            >
               <p className="addText">ADD</p>
               <p className="plusSign">+</p>
             </div>

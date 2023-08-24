@@ -29,7 +29,7 @@ const MenuCategory = ({ category }) => {
       <ItemList category={category} />
     </div>
   )  :filteredMenus.length===0 ? "":(
-    <div className="categoriesContainer">
+    <div className="categoriesContainer" id={category?.title}>
       <div className="catHeader" onClick={() => setShowItemList(!showItemList)}>
         <h3 className="categoryTitle">
           {category?.title} <span>({filteredMenus.length})</span>

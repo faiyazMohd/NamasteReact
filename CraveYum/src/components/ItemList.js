@@ -22,7 +22,7 @@ const ItemList = ({ category ,countLength, setCountLength,itemCards}) => {
       ) : (
         <>
           {itemCards?.map((item) => {
-            return <MenuItemCard item={item} key={item?.card?.info?.id} />;
+            return <MenuItemCard item={item}  key={item?.card?.info?.id} />;
           })}
         </>
       )}

@@ -10,28 +10,30 @@ import useOnline from "../utils/hooks/useOnline";
 import MenuCategory from "./MenuCategory";
 import VegOnlyContext from "../utils/contexts/VegOnlyContext";
 import { IMG_CDN_LINK } from "../utils/constants";
-import LocationIcon from "../assets/icons/svgs/LocationIcon.svg"
+import LocationIcon from "../assets/icons/svgs/LocationIcon.svg";
+import ModalMenuItem from "./ModalMenuItem";
+import ForkAndKnife from "../assets/icons/svgs/ForkAndKnife.svg"
 const RestaurantMenu = () => {
   const { id } = useParams();
   const [isVeg, setIsVeg] = useState(false);
-  const [AllCategories, setAllCategories] = useState([])
-  const [
-    restInfo,
-    ItemCategories,
-    restAdditionalInfo,
-  ] = useRestMenu(id);
+  const [openModal, setOpenModal] = useState(false);
+  const [AllCategories, setAllCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("Recommended")
+  const [restInfo, ItemCategories, restAdditionalInfo] = useRestMenu(id);
   const isOnline = useOnline();
-
-
   if (!isOnline) {
-    return <h1>🔴Offline ! Please check your internet connection</h1>;
+    return (
+      <h1 data-testid="offlineHeadingMenuPage">
+        🔴Offline ! Please check your internet connection
+      </h1>
+    );
   }
   return (
-    <VegOnlyContext.Provider value={{isVeg}}>
+    <VegOnlyContext.Provider value={{ isVeg }}>
       {ItemCategories.length === 0 ? (
         <ShimmerMenu />
       ) : (
-        <div className="menuContainer">
+        <div className="menuContainer" data-testid="menuContainer" >
           <div className="headerContainer">
             <div className="menuHeader">
               <div className="restInfo">
@@ -42,8 +44,8 @@ const RestaurantMenu = () => {
                   </p>
                   <p className="areaAndDistance">
                     {restInfo?.areaName +
-                      ", " +
-                      restInfo?.sla?.lastMileTravelString?"":restInfo?.sla?.lastMileTravelString}
+                    ", " +
+                    restInfo?.sla?.lastMileTravelString}
                   </p>
                 </div>
               </div>
@@ -84,6 +86,7 @@ const RestaurantMenu = () => {
                   <p>Veg Only</p>
                   <div
                     className="vegOnlyTogleContainer"
+                    data-testid="vegOnlyTogleContainer"
                     onClick={(e) => {
                       if (isVeg) {
                         e.currentTarget.style.backgroundColor = "#d4d5d9";
@@ -120,33 +123,68 @@ const RestaurantMenu = () => {
             </div>
             <hr style={{ borderTop: "9px solid #f1f1f6", marginTop: "1rem" }} />
           </div>
-          <div className="menuItemsContainer">
-            {ItemCategories.map((category) => {
+          <div className="menuItemsContainer"  style={{scrollBehavior:"smooth"}}>
+            {ItemCategories?.map((category) => {
               return (
                 <MenuCategory
                   key={category.card.card.title}
+                  id={category.card.card.title}
+                  selectedCategory={selectedCategory}
                   category={category.card.card}
                 />
               );
             })}
           </div>
           <div className="restAdditionalInfo">
-
             <div className="restLicense">
               <div className="licenceImg">
-                <img src={IMG_CDN_LINK+restAdditionalInfo[0].card.card.imageId} />
+                <img
+                  src={IMG_CDN_LINK + restAdditionalInfo[0].card.card.imageId}
+                />
               </div>
               <div className="licenceInfo">
                 <p>{restAdditionalInfo[0].card.card.text[0]}</p>
               </div>
-            {/* <hr style={{ border: "2px solid #d3d3d3", marginTop: ".5rem" }} /> */}
+              {/* <hr style={{ border: "2px solid #d3d3d3", marginTop: ".5rem" }} /> */}
             </div>
             <div className="restLocation">
-              <p className="outletName">{restAdditionalInfo[1].card.card.name}</p>
+              <p className="outletName">
+                {restAdditionalInfo[1].card.card.name}
+              </p>
               <p>(Outlet:{restAdditionalInfo[1].card.card.area})</p>
-              <p><img src={LocationIcon} alt="location :  " /> {restAdditionalInfo[1].card.card.completeAddress}</p>
+              <p>
+                <img src={LocationIcon} alt="location :  " />{" "}
+                {restAdditionalInfo[1].card.card.completeAddress}
+              </p>
+            </div>
+          </div>
 
+          <div className="menuModalBtnContainer">
+            <div
+              className="menuModalBtn"
+              onClick={() => setOpenModal(true)}
+              style={openModal ? { display: "none" } : {}}
+            >
+              <img src={ForkAndKnife} alt="ForkAndKnife" /> Browse Menu
+            </div>
+          </div>
+          <div
+            className="modalCloseBtn"
+            onClick={() => setOpenModal(false)}
+            style={openModal ? {} : { display: "none" }}
+          >
 
+            <div className="modalContainer" onClick={(e)=>e.stopPropagation()}>
+              {ItemCategories?.map((category)=>{
+                  return <ModalMenuItem
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                  setOpenModal={setOpenModal}
+
+                  key={category.card.card.title}
+                  category={category.card.card}
+                />
+              })}
             </div>
           </div>
         </div>

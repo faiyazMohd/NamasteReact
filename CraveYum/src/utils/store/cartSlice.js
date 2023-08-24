@@ -30,14 +30,13 @@ const cartSlice = createSlice({
           }
           if (element.quantity === 0){
               toRemove= true;
-              console.log("yes 0");
               indexToRemove=index;
           }
         });
         if (toRemove) {
-            console.log(indexToRemove);
+            // console.log(indexToRemove);
             state.cartItems.splice(indexToRemove,1)
-             console.log(current( state.cartItems))
+            //  console.log(current( state.cartItems))
         }
     },
     clearCart: (state) => {

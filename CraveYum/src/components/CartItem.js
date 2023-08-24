@@ -36,35 +36,46 @@ const CartItem = ({ item }) => {
       <div className="cartItemName">
         {item.card?.info?.itemAttribute?.vegClassifier === "VEG" ? (
           <>
-            <img
-              className="isVegCartItem"
-              src={vegIcon}
-              alt="veg"
-            />
+            <img className="isVegCartItem" src={vegIcon} alt="veg" />
           </>
         ) : (
           <>
             <img className="isVeg" src={nonVegIcon} alt="nonVeg" />
           </>
         )}
-        <p style={{marginLeft: ".5rem"}}>{item.card?.info?.name}</p>
+        <p style={{ marginLeft: ".5rem" }}>{item.card?.info?.name}</p>
       </div>
 
       <div className="addRemoveAndPrice">
-        <div className="addRemoveContainer">
-          <span className="" onClick={() => handleRemoveItem()}>
-            <p>-</p>
+        <div
+          className="addRemoveContainer"
+          
+        >
+          <span
+            className="removeItemContainer"
+            data-testid="remove-item-cart-page"
+            onClick={() => handleRemoveItem()}
+          >
+            <span className="removeItemInItemCard">-</span>
           </span>
+          <span data-testid="quantityCartPage"> 
           {cartItem?.quantity}
-          <span className="" onClick={() => handleAddItem()}>
-            <p>+</p>
+          </span>
+          <span
+            className="addItemContainer"
+            data-testid="add-item-cart-page"
+            onClick={() => handleAddItem()}
+          >
+            <p className="addItemInItemCard">+</p>
           </span>
         </div>
 
         <p className="cartPrice">
           {item.card?.info?.price
             ? "₹" + (item.card?.info?.price / 100) * cartItem.quantity
-            : "₹" + (item.card?.info?.variantsV2?.pricingModels[0]?.price / 100)* cartItem.quantity}
+            : "₹" +
+              (item.card?.info?.variantsV2?.pricingModels[0]?.price / 100) *
+                cartItem.quantity}
         </p>
       </div>
     </div>

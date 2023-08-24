@@ -2,7 +2,7 @@ import React from "react";
 
 const ShimmerMenu = () => {
   return (
-    <div className="menuContainerShimmer">
+    <div className="menuContainerShimmer"  data-testid="shimmer-menu">
       <div className="headerContainerShimmer">
         <div className="menuHeaderShimmer">
           <div className="restInfoShimmer">
