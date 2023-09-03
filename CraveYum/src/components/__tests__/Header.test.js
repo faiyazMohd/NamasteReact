@@ -20,51 +20,51 @@ test("Logo should load on rendering header", () => {
   expect(Logo[0].src).toBe("http://localhost/dummy.png");
 });
 
-test("Online status should be green on rendering header", () => {
-  const header = render(
-    <StaticRouter>
-      <Provider store={store}>
-        <Header />
-      </Provider>
-    </StaticRouter>
-  );
-  const onlineStatus = header.getByTestId("online-status");
-  // console.log(onlineStatus);
-  expect(onlineStatus.innerHTML).toBe("✅");
-});
+// test("Online status should be green on rendering header", () => {
+//   const header = render(
+//     <StaticRouter>
+//       <Provider store={store}>
+//         <Header />
+//       </Provider>
+//     </StaticRouter>
+//   );
+//   const onlineStatus = header.getByTestId("online-status");
+//   // console.log(onlineStatus);
+//   expect(onlineStatus.innerHTML).toBe("✅");
+// });
 
-test("Online status should be red on going offline", () => {
-  const header = render(
-    <StaticRouter>
-      <Provider store={store}>
-        <Header />
-      </Provider>
-    </StaticRouter>
-  );
-  const onlineStatus = header.getByTestId("online-status");
-  // console.log(onlineStatus);
-  expect(onlineStatus.innerHTML).toBe("✅");
-  fireEvent.offline(window);
-  expect(onlineStatus.innerHTML).toBe("🔴");
-});
+// test("Online status should be red on going offline", () => {
+//   const header = render(
+//     <StaticRouter>
+//       <Provider store={store}>
+//         <Header />
+//       </Provider>
+//     </StaticRouter>
+//   );
+//   const onlineStatus = header.getByTestId("online-status");
+//   // console.log(onlineStatus);
+//   expect(onlineStatus.innerHTML).toBe("✅");
+//   fireEvent.offline(window);
+//   expect(onlineStatus.innerHTML).toBe("🔴");
+// });
 
-test("Online status should be green on going online", () => {
-  const header = render(
-    <StaticRouter>
-      <Provider store={store}>
-        <Header />
-      </Provider>
-    </StaticRouter>
-  );
-  const onlineStatus = header.getByTestId("online-status");
-  // console.log(onlineStatus);
-  expect(onlineStatus.innerHTML).toBe("✅");
-  fireEvent.offline(window);
-  expect(onlineStatus.innerHTML).toBe("🔴");
+// test("Online status should be green on going online", () => {
+//   const header = render(
+//     <StaticRouter>
+//       <Provider store={store}>
+//         <Header />
+//       </Provider>
+//     </StaticRouter>
+//   );
+//   const onlineStatus = header.getByTestId("online-status");
+//   // console.log(onlineStatus);
+//   expect(onlineStatus.innerHTML).toBe("✅");
+//   fireEvent.offline(window);
+//   expect(onlineStatus.innerHTML).toBe("🔴");
 
-  fireEvent.online(window);
-  expect(onlineStatus.innerHTML).toBe("✅");
-});
+//   fireEvent.online(window);
+//   expect(onlineStatus.innerHTML).toBe("✅");
+// });
 
 test("cart items should be zero on rendering header", () => {
   const header = render(

@@ -4,10 +4,6 @@
   color: #282c3f;
 }
 /* Header Styling */
-.headerPlaceholder{
-  height: 5rem;
-
-}
 .header {
   /* border: 1px solid black; */
   display: flex;
@@ -17,12 +13,16 @@
   background: #fff;
   box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
   font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 1; */
+}
+
+.bottomNavbar {
+  display: none;
 }
 
 .logo > a > img {
@@ -80,20 +80,28 @@
   background: rgb(255, 255, 255);
 }
 
+.offerHeading {
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 1rem;
+}
 /* Search Bar */
 
 .searchBar {
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  width: 40%;
+  width: 80%;
   display: flex;
   margin: 1.5rem auto auto auto;
 }
 .searchBar > input {
-  width: 70%;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  width: 34%;
+  padding: 0.77rem;
+  border-radius: 18px;
   border: 1px solid black;
+  margin-right: 10px;
 }
 .searchBar > input:focus {
   border: 2px solid #fc8019;
@@ -109,6 +117,32 @@
 .searchBar > button:hover {
   background-color: #efa375;
   cursor: pointer;
+}
+.filterContainer {
+  display: flex;
+  width: 63%;
+  overflow-x: auto;
+}
+.filterContainer::-webkit-scrollbar {
+  /* width: 10px; Width of the scrollbar */
+  height: 0px;
+}
+
+.filters {
+  cursor: pointer;
+  background-color: #fff;
+
+  border: 1px solid #a4a4ad;
+  border-radius: 18px;
+  width: auto;
+  margin: 0 0.5rem;
+  padding: 0.67rem 0.7rem;
+  font-size: 14px;
+  font-weight: 300;
+  /* color: rgba(2, 6, 12, 0.75); */
+  color: #000000bf;
+
+  white-space: nowrap;
 }
 
 .NoResultMsg {
@@ -453,7 +487,7 @@ a {
 
 .menuItem {
   width: 100%;
-  height: 9.625rem;
+  /* height: 10.8rem; */
   /* border: 1px solid red; */
   display: flex;
   /* border: 1px solid #d3d3d3; */
@@ -461,8 +495,8 @@ a {
   margin-top: 1.2rem;
 }
 .itemInfo {
-  width: 82%;
-  height: 70%;
+  width: 77%;
+  height: 100%;
   /* border: 1px solid darkgreen; */
 }
 .iconsContainer {
@@ -510,7 +544,7 @@ a {
 }
 
 .itemImageContainer {
-  width: 18%;
+  width: 23%;
   /* border: 1px solid orange; */
   display: flex;
   justify-content: flex-end;
@@ -1144,13 +1178,6 @@ a {
   font-size: 1rem;
   color: #3d4152;
 }
-.modalItemTitle {
-}
-.modalItemLength {
-}
-
-.selectedCategory {
-}
 .tiltedSquare {
   background: #5d8ed5;
   width: 9.4px;
@@ -1160,3 +1187,18 @@ a {
   left: -4%;
   transform: rotateZ(45deg);
 }
+
+.displayNoneAtLarge {
+  display: none;
+}
+
+
+  .custom-scroll {
+    -ms-overflow-style: none; /* Hide Internet Explorer scrollbar */
+    scrollbar-width: none; /* Hide Firefox scrollbar */
+    overflow: -moz-scrollbars-none; /* Hide scrollbar in Firefox */
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
+  }

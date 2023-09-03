@@ -47,8 +47,9 @@ test("Search Results on Homepage", async () => {
   const searchBar =  body.getByTestId("searchBar");
   await waitFor(() => expect(body.getByTestId("searchBar")));
   const restaurants =  body.getByTestId("restaurants");
-  //   console.log(restaurants);
+    console.log(restaurants.children);
   expect(restaurants.children.length).toBe(20);
+  // expect(restaurants.children.length).toBe(20);
   //   console.log(restaurants);
 });
 

@@ -1,0 +1,73 @@
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+@keyframes sidebarAnimation {
+    from {
+        transform: translateX(-101%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+.translateSlidebar{
+    animation: .25s  1 forwards ease sidebarAnimation;
+}
+
+
+
+/* width */
+.sidebarContainer::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+.sidebarContainer::-webkit-scrollbar-track {
+  /* background: #f1f1f1; */
+}
+
+/* Handle */
+.sidebarContainer::-webkit-scrollbar-thumb {
+  background: #878585;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+.sidebarContainer::-webkit-scrollbar-thumb:hover {
+  /* background: #555; */
+}
+
+
+
+/* width */
+.locationsContainer::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.locationsContainer::-webkit-scrollbar-track {
+  /* background: #f1f1f1; */
+}
+
+/* Handle */
+.locationsContainer::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #939292;
+
+}
+
+/* Handle on hover */
+.locationsContainer::-webkit-scrollbar-thumb:hover {
+  background: #878585;
+
+}
+
+

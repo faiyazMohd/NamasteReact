@@ -8,6 +8,8 @@ import { addItem, removeItem } from "../utils/store/cartSlice";
 const MenuItemCard = ({ item }) => {
   // const [cartItem, setCartItem] = useState(null);
   // console.log(item);
+  const [showMore, setshowMore] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleAddItem = () => {
@@ -32,7 +34,11 @@ const MenuItemCard = ({ item }) => {
     }
   });
   return (
-    <div className="menuItem" data-testid="menuItem">
+    <div
+      className="menuItem"
+      style={showMore ? { height: "auto" } : { height: "9.625rem" }}
+      data-testid="menuItem"
+    >
       <div className="itemInfo">
         <div className="iconsContainer">
           {item.card?.info?.itemAttribute?.vegClassifier === "VEG" ? (
@@ -59,7 +65,24 @@ const MenuItemCard = ({ item }) => {
             ? "₹" + item.card?.info?.price / 100
             : "₹" + item.card?.info?.variantsV2?.pricingModels[0]?.price / 100}
         </p>
-        <p className="itemDesc">{item.card?.info?.description}</p>
+        <p className="itemDesc">
+          {!showMore
+            ? item.card?.info?.description?.length > 52
+              ? item.card?.info?.description?.slice(0, 63) + "..."
+              : item.card?.info?.description
+            : item.card?.info?.description}
+        </p>
+        {item.card?.info?.description ? (
+          !showMore ? (
+            <p className="moreBtn" onClick={() => setshowMore(true)}>
+              More
+            </p>
+          ) : (
+            ""
+          )
+        ) : (
+          ""
+        )}
       </div>
       <div className="itemImageContainer">
         <div className="itemImage">
@@ -72,10 +95,10 @@ const MenuItemCard = ({ item }) => {
                   data-testid="remove-item"
                   onClick={() => handleRemoveItem()}
                 >
-                  <span className="removeItemInItemCard" >-</span>
+                  <span className="removeItemInItemCard">-</span>
                 </span>
-                <span data-testid="item-quantity-in-menu-item" >
-                {cartItem?.quantity}
+                <span data-testid="item-quantity-in-menu-item">
+                  {cartItem?.quantity}
                 </span>
                 <span
                   className="addItemContainer"

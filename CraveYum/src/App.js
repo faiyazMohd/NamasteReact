@@ -15,7 +15,7 @@ import UserContext from "./utils/contexts/UserContext";
 import UserProfileState from "./utils/contexts/userProfile/UserProfileState";
 import { Provider } from "react-redux";
 import store from "./utils/store/store";
-
+import BottomNavbar from "./components/BottomNavbar";
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
   const [user, setUser] = useState({
@@ -30,11 +30,11 @@ const AppLayout = () => {
           setUser: setUser,
         }}
       >
-        <div className="headerPlaceholder"></div>
         <Header />
         <UserProfileState>
           <Outlet />
           {/* <Footer /> */}
+          <BottomNavbar/>
         </UserProfileState>
       </UserContext.Provider>
     </Provider>

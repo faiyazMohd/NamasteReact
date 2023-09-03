@@ -1,36 +1,58 @@
-import React, { Component } from "react";
-import UserContext from "../utils/contexts/UserContext";
-import UserProfileState from "../utils/contexts/userProfile/UserProfileState";
-import UserProfile from "../utils/contexts/userProfile/UserProfile";
+import RestaurantCard from "./RestaurantCard";
+import ShimmerUI from "./ShimmerUI";
+import { filterData } from "../utils/helper";
+import useAllRest from "../utils/hooks/useAllRest";
+import { useEffect, useState } from "react";
+import CrossIcon from "../assets/icons/IconsComponents/CrossIcon";
+import useFilterRest from "../utils/hooks/useFilterRest";
+const Offers = () => {
+  const [searchText, setSearchText] = useState("");
+  const [allRestaurants, filteredRestaurants, setFilteredRestaurants] =
+    useAllRest();
+  useEffect(() => {
+    const filteredData = allRestaurants?.filter((restaurant) => {
+      return restaurant?.info?.aggregatedDiscountInfoV3
+        ? restaurant?.info?.aggregatedDiscountInfoV3?.header !== undefined
+        : restaurant?.info?.aggregatedDiscountInfoV2
+        ? restaurant?.info?.aggregatedDiscountInfoV2.header !== undefined
+        : "";
+    });
+    setFilteredRestaurants(filteredData);
+  }, [allRestaurants]);
 
-class Offer extends Component {
-  render() {
-    return (
-      <div>
-        <h1>This is a Offer Page</h1>
-        <UserContext.Consumer>
-          {({ user }) => (
-            <>
-              <h2>name:{user.name}</h2> <h2>email:{user.email}</h2>
-            </>
-          )}
-        </UserContext.Consumer>
-        <UserProfile.Consumer>
-          {({ UserDetails }) => <h2>userName : {UserDetails.userName}</h2>}
-        </UserProfile.Consumer>
-        <hr />
-        <UserContext.Consumer>
-          {({ user, setUser }) => (
-            <>
-              <input type="text" value={user.name} onChange={(e) => {
-                setUser({...user,name:e.target.value})
-              }} />
-            </>
-          )}
-        </UserContext.Consumer>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="body">
+      <div className="offerHeading">Restaurants with Offers</div>
+      {allRestaurants?.length !== 0 ? (
+        <div className="restaurantsList">
+          <div className="restaurants" data-testid="restaurants">
+            {filteredRestaurants?.length !== 0 ? (
+              filteredRestaurants?.map((restaurant) => {
+                return (
+                  <RestaurantCard
+                    {...restaurant?.info}
+                    key={restaurant?.info?.id}
+                  />
+                );
+              })
+            ) : (
+              <div className="NoResultMsg">
+                <h1>No result found.</h1>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="restaurants" data-testid="rest-shimmer">
+          {Array(12)
+            .fill(1)
+            .map((elem, index) => (
+              <ShimmerUI key={index} />
+            ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default Offer;
+export default Offers;

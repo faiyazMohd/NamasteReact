@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
           <div className="headerContainer">
             <div className="menuHeader">
               <div className="restInfo">
-                <div className="restName">{restInfo?.name}</div>
+                <div className="restMenuName">{restInfo?.name}</div>
                 <div className="restCuisinesContainer">
                   <p className="restCuisines">
                     {restInfo?.cuisines?.join(", ")}
@@ -139,22 +139,22 @@ const RestaurantMenu = () => {
             <div className="restLicense">
               <div className="licenceImg">
                 <img
-                  src={IMG_CDN_LINK + restAdditionalInfo[0].card.card.imageId}
+                  src={IMG_CDN_LINK + restAdditionalInfo[0]?.card?.card?.imageId}
                 />
               </div>
               <div className="licenceInfo">
-                <p>{restAdditionalInfo[0].card.card.text[0]}</p>
+                <p>{restAdditionalInfo[0]?.card?.card?.text[0]}</p>
               </div>
               {/* <hr style={{ border: "2px solid #d3d3d3", marginTop: ".5rem" }} /> */}
             </div>
             <div className="restLocation">
               <p className="outletName">
-                {restAdditionalInfo[1].card.card.name}
+                {restAdditionalInfo[1]?.card?.card?.name}
               </p>
-              <p>(Outlet:{restAdditionalInfo[1].card.card.area})</p>
+              <p>(Outlet:{restAdditionalInfo[1]?.card?.card?.area})</p>
               <p>
                 <img src={LocationIcon} alt="location :  " />{" "}
-                {restAdditionalInfo[1].card.card.completeAddress}
+                {restAdditionalInfo[1]?.card?.card?.completeAddress}
               </p>
             </div>
           </div>
@@ -181,8 +181,8 @@ const RestaurantMenu = () => {
                   setSelectedCategory={setSelectedCategory}
                   setOpenModal={setOpenModal}
 
-                  key={category.card.card.title}
-                  category={category.card.card}
+                  key={category?.card?.card?.title}
+                  category={category?.card?.card}
                 />
               })}
             </div>

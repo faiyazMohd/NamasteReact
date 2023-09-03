@@ -9,6 +9,7 @@ const RestaurantCard = ({
   cuisines,
   areaName,
   aggregatedDiscountInfoV3,
+  aggregatedDiscountInfoV2,
   id,
 }) => {
   // const {name,cloudinaryImageId,cuisines,lastMileTravel} = restaurant.data
@@ -18,7 +19,7 @@ const RestaurantCard = ({
         <div className="restaurantImgDiv">
           <img src={IMG_CDN_LINK + cloudinaryImageId} alt={name.slice(0, 35)} />
           <div className="offerText">
-            {aggregatedDiscountInfoV3?.header !== undefined ||
+            {aggregatedDiscountInfoV3? aggregatedDiscountInfoV3?.header !== undefined ||
             aggregatedDiscountInfoV3?.subHeader !== undefined
               ? aggregatedDiscountInfoV3?.header +
                 " " +
@@ -26,7 +27,7 @@ const RestaurantCard = ({
               : aggregatedDiscountInfoV3?.discountCalloutInfo !== undefined &&
                 aggregatedDiscountInfoV3 !== undefined
               ? aggregatedDiscountInfoV3?.discountCalloutInfo.message
-              : ""}
+              : ""  : aggregatedDiscountInfoV2?.descriptionList !== undefined?aggregatedDiscountInfoV2.header ?aggregatedDiscountInfoV2.header : aggregatedDiscountInfoV2?.descriptionList[0].meta    : ""}
           </div>
         </div>
         <div className="restaurantInfo">
