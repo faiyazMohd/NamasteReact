@@ -1,6 +1,6 @@
 import React from "react";
-import ManOnSpaceIcon from "../assets/icons/svgs/SvgComponents/ManOnSpaceIcon";
-import OfflineCloudIcon from "../assets/icons/svgs/SvgComponents/OfflineCloudIcon";
+import ManOnSpaceIcon from "../../assets/icons/svgs/SvgComponents/ManOnSpaceIcon";
+import OfflineCloudIcon from "../../assets/icons/svgs/SvgComponents/OfflineCloudIcon";
 const OfflinePage = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full md:h-[90vh]">

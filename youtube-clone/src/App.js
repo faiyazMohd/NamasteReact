@@ -1,14 +1,11 @@
-import Body from "./components/Body";
-import SideBar from "./components/SideBar";
-import MobileHeader from "./components/MobileHeader";
+import Body from "./components/body/Main Container/videosContainer/Body";
 import { Provider } from "react-redux";
 import store from "./utils/store/store";
 import "./app.css";
-import Header from "./components/Header";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import VideosContainer from "./components/VideosContainer";
-import WatchVideoPage from "./components/WatchVideoPage";
-import MobileAccount from "./components/MobileAccount";
+import VideosContainer from "./components/body/Main Container/videosContainer/VideosContainer";
+import WatchVideoPage from "./components/body/Main Container/watchPage/WatchVideoPage";
+
 
 const appRouter = createBrowserRouter([
   {

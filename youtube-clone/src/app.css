@@ -22,6 +22,31 @@
 }
 
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #0f0f0f;
+  opacity: 0 ;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #878585;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #555; */
+}
+
+
+
 
 /* width */
 .sidebarContainer::-webkit-scrollbar {
@@ -30,7 +55,7 @@
 
 /* Track */
 .sidebarContainer::-webkit-scrollbar-track {
-  /* background: #f1f1f1; */
+  background: transparent !important;
 }
 
 /* Handle */
@@ -54,7 +79,7 @@
 
 /* Track */
 .locationsContainer::-webkit-scrollbar-track {
-  /* background: #f1f1f1; */
+  background: transparent !important;
 }
 
 /* Handle */

@@ -1,48 +1,37 @@
 import React, { useState } from "react";
-import SettingIcon from "../assets/icons/svgs/SvgComponents/SettingIcon";
-import RightIcon from "../assets/icons/svgs/SvgComponents/RightIcon";
-import CrossIcon from "../assets/icons/svgs/SvgComponents/CrossIcon";
-import ArrowRightIcon from "../assets/icons/svgs/SvgComponents/ArrowRightIcon";
-
-import DownArrowIcon from "../assets/icons/svgs/SvgComponents/DownArrowIcon";
-import UpArrowIcon from "../assets/icons/svgs/SvgComponents/UpArrowIcon";
-import useThemeDetector from "../utils/hooks/useThemeDetector";
+import RightIcon from "../../../assets/icons/svgs/SvgComponents/RightIcon";
+import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
+import ArrowRightIcon from "../../../assets/icons/svgs/SvgComponents/ArrowRightIcon";
+import useThemeDetector from "../../../utils/hooks/useThemeDetector";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentTheme,
   setDarkTheme,
   setThemeToDark,
   setThemeToLight,
-} from "../utils/store/themeSlice";
-import RightDirectionIcon from "../assets/icons/svgs/SvgComponents/RightDirectionIcon";
+} from "../../../utils/store/themeSlice";
 
-const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
+const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
   const dispatch = useDispatch();
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-  // console.log(darkTheme);
   const currentTheme = useSelector((store) => store.theme.currentTheme);
   console.log(currentTheme);
 
   const isDeviceDarkTheme = useThemeDetector();
-  // console.log(isDeviceDarkTheme);
   const handleToDarkTheme = () => {
     dispatch(setCurrentTheme("Dark theme"));
     dispatch(setThemeToDark());
-    // dispatch(setDarkTheme(true));
   };
   const handleTolightTheme = () => {
     dispatch(setCurrentTheme("Light theme"));
     dispatch(setThemeToLight());
-    // dispatch(setDarkTheme(false));
   };
   const handleDeviceTheme = () => {
     dispatch(setCurrentTheme("Use device theme"));
     if (isDeviceDarkTheme) {
       dispatch(setThemeToDark());
-      // dispatch(setDarkTheme(true));
     } else {
       dispatch(setThemeToLight());
-      // dispatch(setDarkTheme(false));
     }
   };
   return (
@@ -50,7 +39,7 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
       {/* for small to medium devices */}
       <div
         className={`AccountContainer md:hidden ${
-          darkTheme ? "bg-yellow-100" : "bg-white"
+          darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
         }   w-full h-full fixed  top-0 right-0 bottom-0 left-0  z-40`}
       >
         <div className="px-3 h-14 shadow-[0px_4px_2px_-2px_#00000033] flex justify-between items-center">
@@ -58,9 +47,9 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             className="closeAccount  w-1/12 "
             onClick={() => setShowAppearance(false)}
           >
-            <CrossIcon />
+            <CrossIcon color={darkTheme ? "#fff" : "#000"} />
           </div>
-          <div className="text-lg  w-11/12">Appearance</div>
+          <div className="text-lg ml-2 w-11/12">Appearance</div>
         </div>
         <div className="">
           <div
@@ -73,7 +62,7 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             <div className="text-lg  w-10/12">Use device theme</div>
             {currentTheme === "Use device theme" ? (
               <div className=" w-2/12 flex justify-end">
-                <RightIcon />
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
               </div>
             ) : (
               ""
@@ -89,7 +78,7 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             <div className="text-lg  w-10/12">Dark theme</div>
             {currentTheme === "Dark theme" ? (
               <div className=" w-2/12 flex justify-end">
-                <RightIcon />
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
               </div>
             ) : (
               ""
@@ -105,44 +94,36 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             <div className="text-lg  w-10/12">Light theme</div>
             {currentTheme === "Light theme" ? (
               <div className=" w-2/12 flex justify-end">
-                <RightIcon />
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
               </div>
             ) : (
               ""
             )}
           </div>
         </div>
-
-        <div className="py-4  border-b border-[rgba(0,0,0,0.1)]">
-          <div className="h-12 bg-white flex  justify-center items-center absolute bottom-0 right-0 left-0">
-            <div className="font-semibold text-[#050505]">
-              YouTube, a Google company
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* for large devices */}
       <div
-        className={`AccountContainer hidden md:block ${
-          darkTheme ? "bg-yellow-50" : "bg-white"
-        }  rounded-xl backdrop-blur   w-full h-full  z-40`}
+        className={`AccountContainer hidden md:block  ${
+          darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+        }   rounded-xl backdrop-blur   w-full h-full  z-40`}
       >
         <div className="px-3 h-14  flex justify-between items-center">
           <div
             className="closeAccount rounded-full p-[5px]   active:bg-[#f2f2f2]   w-2/12 cursor-pointer"
             onClick={() => {
               setShowAppearance(false);
-              setshowMoreSettings(false)
+              setshowMoreSettings(false);
             }}
           >
-            <ArrowRightIcon />
+            <ArrowRightIcon color={darkTheme ? "#fff" : "#000"} />
           </div>
           <div className="text-base font-normal  w-10/12">Appearance</div>
         </div>
 
         <hr className="border-b border-[rgba(0,0,0,0.1) " />
-        <div className="px-5 text-xs my-3 text-gray-500 font-medium">
+        <div className="px-5 text-xs my-3 text-gray-400 font-medium">
           Setting applies to this browser only
         </div>
         <div className="">
@@ -150,12 +131,20 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             onClick={() => {
               handleDeviceTheme();
               setShowAppearance(false);
-              setshowMoreSettings(false)
+              setshowMoreSettings(false);
             }}
-            className="px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
+              darkTheme
+                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            }`}
           >
             <div className=" w-2/12 flex justify-center items-center">
-              {currentTheme === "Use device theme" ? <RightIcon /> : ""}
+              {currentTheme === "Use device theme" ? (
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
+              ) : (
+                ""
+              )}
             </div>
             <div className="text-base  w-10/12">Use device theme</div>
           </div>
@@ -164,12 +153,20 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             onClick={() => {
               handleToDarkTheme();
               setShowAppearance(false);
-              setshowMoreSettings(false)
+              setshowMoreSettings(false);
             }}
-            className="px-3 h-12 cursor-pointer  flex py-4 justify-between items-center hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
+              darkTheme
+                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            }`}
           >
             <div className=" w-2/12 flex justify-center items-center">
-              {currentTheme === "Dark theme" ? <RightIcon /> : ""}
+              {currentTheme === "Dark theme" ? (
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
+              ) : (
+                ""
+              )}
             </div>
             <div className="text-base  w-10/12">Dark theme</div>
           </div>
@@ -178,13 +175,20 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
             onClick={() => {
               handleTolightTheme();
               setShowAppearance(false);
-              setshowMoreSettings(false)
+              setshowMoreSettings(false);
             }}
-            className="px-3 h-12 cursor-pointer  flex py-4 justify-between items-center hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]
-            "
+            className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
+              darkTheme
+                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            }`}
           >
             <div className=" w-2/12 flex justify-center items-center">
-              {currentTheme === "Light theme" ? <RightIcon /> : ""}
+              {currentTheme === "Light theme" ? (
+                <RightIcon color={darkTheme ? "#fff" : "#000"} />
+              ) : (
+                ""
+              )}
             </div>
             <div className="text-base  w-10/12">Light theme</div>
           </div>
@@ -194,4 +198,4 @@ const AppearanceMobile = ({ setShowAppearance, setshowMoreSettings }) => {
   );
 };
 
-export default AppearanceMobile;
+export default Appearance;
