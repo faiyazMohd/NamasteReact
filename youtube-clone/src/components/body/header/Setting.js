@@ -88,7 +88,7 @@ const Setting = ({ setShowSetting }) => {
       ) : (
         ""
       )}
-      {showLocations ? <Locations setShowLocations={setShowLocations} /> : ""}
+      {showLocations ? <Locations  setShowLocations={setShowLocations} /> : ""}
     </>
   );
 };

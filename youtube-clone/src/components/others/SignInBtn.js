@@ -19,8 +19,8 @@ const SignInBtn = ({ color }) => {
       </div>
       <div
         className={`${
-          darkTheme ? "text-[#4988dcf3]" : "text-[#065fd4]"
-        } text-[#065fd4] ml-2 text-sm font-semibold whitespace-nowrap`}
+          darkTheme ? "text-blue-400" : "text-[#065fd4]"
+        }  ml-2 text-sm font-semibold whitespace-nowrap`}
       >
         Sign in
       </div>

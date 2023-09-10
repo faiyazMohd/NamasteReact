@@ -114,4 +114,60 @@ export const daysAgo = (dateAndTime) => {
 
 // console.log(daysAgo("2023-08-31T006:30:11Z"))
 // console.log(daysAgo("2023-09-29T12:30:25Z"))
-console.log(daysAgo("2012-01-29T12:30:25Z"));
+// console.log(daysAgo("2012-01-29T12:30:25Z"));
+ 
+export const preetifyDuration = (durationISOString) => {
+  let result = durationISOString.slice(2);
+  let H_Index = result.match(/H/);
+  let M_Index = result.match(/M/);
+  let S_Index = result.match(/S/);
+  let hours = null;
+  let mins = null;
+  let secs = null;
+  if (H_Index) {
+    H_Index = result.match(/H/);
+    hours = result.slice(0, H_Index.index);
+    result = result.slice(H_Index.index + 1);
+  }
+  if (M_Index) {
+    M_Index = result.match(/M/);
+    mins = result.slice(0, M_Index.index);
+    result = result.slice(M_Index.index + 1);
+  }
+  if (S_Index) {
+    S_Index = result.match(/S/);
+    secs = result.slice(0, S_Index.index);
+    result = result.slice(S_Index.index + 1);
+  }
+
+  if (durationISOString.match(/H/)) {
+    // let finalResult =  null;
+    // if (mins) {
+
+    // }
+    // return `${hours}:${mins>9? mins:"0"+mins}:${secs>9? secs:"0"+secs }`
+    return `${hours}:${mins ? (mins > 9 ? mins : "0" + mins) : "00"}:${
+      secs ? (secs > 9 ? secs : "0" + secs) : "00"
+    }`;
+  } else if (durationISOString.match(/M/)) {
+    // return mins + ":" + secs;
+    return `${mins}:${secs?  secs > 9 ? secs : "0" + secs : "00"}`;
+  } else {
+    if (secs > 9) {
+      return "0:" + secs;
+    } else {
+      return "0:0" + secs;
+    }
+  }
+};
+
+// console.log(preetifyDuration("PT11H58M30S"));
+// console.log(preetifyDuration("PT58M30S"));
+
+// console.log(preetifyDuration("PT11H4M7S"));
+
+// console.log(preetifyDuration("PT2H3M"));
+// console.log(preetifyDuration("PT2H4S"));
+// console.log(preetifyDuration("PT4H"));
+// console.log(preetifyDuration("PT6M"));
+// console.log(preetifyDuration("PT8S"));

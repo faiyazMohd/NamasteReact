@@ -23,6 +23,7 @@ let filterButtons = [
 ];
 const ButtonList = () => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
+  const showSidebar = useSelector((store) => store.app.showSidebar);
 
   const dispatch = useDispatch();
   const handleOpenSidebar = () => {
@@ -31,23 +32,33 @@ const ButtonList = () => {
   const isScrollUp = useScrollUp();
   return (
     <div
-      className={`buttonlistContainer  ${
+      className={`buttonlistContainer z-10 ${
         darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
-      }  fixed top-11 md:top-12 right-0 left-0 md:left-20 h-12  md:h-14  flex items-center mt-1 transition-transform ease-linear  duration-200 ${
+      }  fixed top-11 md:top-12 right-0 left-0 md:left-20 h-12  md:h-14  flex items-center mt-1 transition-transform ease-linear   duration-200 ${
         isScrollUp ? "translate-y-0 " : "-translate-y-[200%] md:translate-y-0"
-      } `}
+      }  
+      ${
+        showSidebar ? "xl:translate-x-44 xl:transition-none" : "xl:transition-none"
+      }
+      `}
     >
       <div className="exploreIcon ml-2 h-8 w-[4.5rem]  md:hidden   flex justify-center items-center">
         <div
           onClick={handleOpenSidebar}
-          className={`exploreIconCont h-8 w-11 ${darkTheme? "bg-[#222222]": "bg-[#0000000d]"}  flex justify-center items-center`}
+          className={`exploreIconCont h-8 w-11 ${
+            darkTheme ? "bg-[#222222]" : "bg-[#0000000d]"
+          }  flex justify-center items-center`}
         >
           <div className="exploreIcon w-6">
-            <ExploreIcon color={darkTheme ? "#fff" : "#000"}/>
+            <ExploreIcon color={darkTheme ? "#fff" : "#000"} />
           </div>
         </div>
       </div>
-      <div className={` h-8 ml-2  ${darkTheme? " border border-[#3f3f3f]": " border bg-[#0000000d] "}`}></div>
+      <div
+        className={` h-8 ml-2 md:hidden ${
+          darkTheme ? " border border-[#3f3f3f]" : " border bg-[#0000000d] "
+        }`}
+      ></div>
       <div className="ButtonList  flex overflow-auto hide-scrollbar ">
         {filterButtons.map((btnName, index) => {
           return <FilterButton key={index} name={btnName} />;

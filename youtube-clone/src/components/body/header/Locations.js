@@ -38,6 +38,7 @@ const Locations = ({ setShowLocations, setshowMoreSettings }) => {
                 key={country.code}
                 code={country.code}
                 setShowLocations={setShowLocations}
+                
               />
             );
           })}
@@ -76,6 +77,7 @@ const Locations = ({ setShowLocations, setshowMoreSettings }) => {
                 key={country.code}
                 code={country.code}
                 setShowLocations={setShowLocations}
+                setshowMoreSettings={setshowMoreSettings}
               />
             );
           })}
