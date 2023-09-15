@@ -48,11 +48,11 @@ const Locations = ({ setShowLocations, setshowMoreSettings }) => {
       {/* for large device */}
       <div
         className={`locationsContainer hidden md:block  AccountContainer overflow-y-auto   ${
-          darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+          darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"
         }   w-full h-[100vh] fixed  -top-16 right-0 bottom-0 left-0 rounded-xl backdrop-blur  z-40`}
       >
         <div
-          className={`px-3 rounded-xl backdrop-blur h-14 ${darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"} sticky top-0 right-0 left-0  flex justify-between items-center`}
+          className={`px-3 rounded-xl backdrop-blur h-14 ${darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"} sticky top-0 right-0 left-0  flex justify-between items-center`}
         >
           <div
             className="closeAccount cursor-pointer  w-2/12 "

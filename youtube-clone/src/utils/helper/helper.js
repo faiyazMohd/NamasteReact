@@ -4,59 +4,190 @@ const removeZeroAfterDecimal = (num) => {
   //  console.log(dotIndex);
   if (numString[dotIndex + 1] === "0") {
     // console.log(numString[dotIndex+1]);
-    let noZeroAfterPoint = numString.substring(0, dotIndex);
+    // let noZeroAfterPoint = numString.substring(0, dotIndex);
+    let noZeroAfterPoint = Math.trunc(numString);
     // console.log("no decimal is "+noZeroAfterPoint);
     return noZeroAfterPoint;
   } else {
     return num;
   }
 };
-export const preetifyViews = (viewCount) => {
-  let preetifiedViews = viewCount;
-  //1k to 9k
-  if (999 < viewCount && viewCount < 9999) {
-    let views = viewCount / 1000;
-    let fixedOne = views.toFixed(1);
-    preetifiedViews = removeZeroAfterDecimal(fixedOne) + "K";
+
+const removeZeroForSubscribers = (num) => {
+  let numString = num.toString();
+  let dotIndex = numString.indexOf(".");
+  //  console.log(dotIndex);
+  if (numString[dotIndex + 1] === "0" && numString[dotIndex + 2] === "0") {
+    // console.log(numString[dotIndex+1]);
+    // let noZeroAfterPoint = numString.substring(0, dotIndex);
+    let noZeroAfterPoint = Math.trunc(numString);
+    // console.log("no decimal is "+noZeroAfterPoint);
+    return noZeroAfterPoint;
   }
-  //10k to 999k
-  else if (9999 < viewCount && viewCount < 999999) {
+  else if(numString[dotIndex + 2] === "0"){
+    let noZeroAfterPoint = Math.trunc(numString);
+    // console.log("no decimal is "+noZeroAfterPoint);
+    return noZeroAfterPoint;
+  }
+  else {
+    return num;
+  }
+};
+// console.log(removeZeroAfterDecimal(123.31));
+export const preetifyViews = (viewCount) => {
+  let preetifiedViews = +viewCount;
+  // console.log(typeof preetifiedViews);
+  //1k to 9k
+  if (999 < viewCount && viewCount <= 9999) {
     let views = viewCount / 1000;
-    let fixedOne = views.toFixed(0);
+    // console.log(views);
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 10) / 10;
+    // console.log(fixedOne);
     preetifiedViews = fixedOne + "K";
   }
+  //10k to 999k
+  else if (9999 < viewCount && viewCount <= 999999) {
+    let views = viewCount / 1000;
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = Math.trunc(fixedOne) + "K";
+  }
   //1M to 9M
-  else if (999999 < viewCount && viewCount < 9999999) {
+  else if (999999 < viewCount && viewCount <= 9999999) {
     let views = viewCount / 1000000;
-    let fixedOne = views.toFixed(1);
-    preetifiedViews = removeZeroAfterDecimal(fixedOne) + "M";
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = fixedOne + "M";
   }
   //10M to 999M
-  else if (9999999 < viewCount && viewCount < 999999999) {
+  else if (9999999 < viewCount && viewCount <= 999999999) {
     let views = viewCount / 1000000;
-    let fixedOne = views.toFixed(0);
-    preetifiedViews = removeZeroAfterDecimal(fixedOne) + "M";
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    // console.log(fixedOne);
+    preetifiedViews = Math.trunc(fixedOne) + "M";
   }
 
   //1B to 9B
-  else if (999999999 < viewCount && viewCount < 9999999999) {
+  else if (999999999 < viewCount && viewCount <= 9999999999) {
     let views = viewCount / 1000000000;
-    let fixedOne = views.toFixed(1);
-    preetifiedViews = removeZeroAfterDecimal(fixedOne) + "B";
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 10) / 10;
+    // console.log("billion is "+ fixedOne);
+    preetifiedViews = fixedOne + "B";
   }
 
   //10B to 999B
-  else if (999999999 < viewCount && viewCount < 999999999999) {
+  else if (999999999 < viewCount && viewCount <= 999999999999) {
     let views = viewCount / 1000000000;
-    let fixedOne = views.toFixed(0);
-    preetifiedViews = removeZeroAfterDecimal(fixedOne) + "B";
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = Math.trunc(fixedOne) + "B";
   }
 
   return preetifiedViews;
 };
-// console.log(preetifyViews(2031677556));
+export const preetifySubcribers = (viewCount) => {
+  let preetifiedViews = +viewCount;
+  // console.log(typeof preetifiedViews);
+  //1k to 9k
+  if (999 < viewCount && viewCount <= 9999) {
+    let views = viewCount / 1000;
+    // console.log(views);
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 100) / 100;
+    console.log(fixedOne);
+    preetifiedViews = fixedOne + "K";
+  }
+  //10k to 999k
+  else if (9999 < viewCount && viewCount <= 999999) {
+    let views = viewCount / 1000;
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = Math.trunc(fixedOne) + "K";
+  }
+  //1M to 9M
+  else if (999999 < viewCount && viewCount <= 9999999) {
+    let views = viewCount / 1000000;
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 100) / 100;
+    preetifiedViews = fixedOne + "M";
+  }
+  //10M to 999M
+  else if (9999999 < viewCount && viewCount <= 99999999) {
+    let views = viewCount / 1000000;
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    // console.log(fixedOne);
+    preetifiedViews = fixedOne + "M";
+  }
+  //10M to 999M
+  else if (99999999 < viewCount && viewCount <= 999999999) {
+    let views = viewCount / 1000000;
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    // console.log(fixedOne);
+    preetifiedViews = Math.trunc(fixedOne) + "M";
+  }
+
+  //1B to 9B
+  else if (999999999 < viewCount && viewCount <= 9999999999) {
+    let views = viewCount / 1000000000;
+    // let fixedOne = views.toFixed(1);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = fixedOne + "B";
+  }
+
+  //10B to 999B
+  else if (999999999 < viewCount && viewCount <= 999999999999) {
+    let views = viewCount / 1000000000;
+    // let fixedOne = views.toFixed(0);
+    let fixedOne = Math.floor(views * 10) / 10;
+    preetifiedViews = Math.trunc(fixedOne) + "B";
+  }
+
+  return preetifiedViews;
+}
+// preetifyViews
+// console.log(preetifyViews("4085"));
+// console.log(preetifyViews("4205"));
+// console.log(preetifyViews("4005"));
+// console.log(preetifyViews("40859"));
+// console.log(preetifyViews("42059"));
+// console.log(preetifyViews("40050"));
+// console.log(preetifyViews("408599"));
+// console.log(preetifyViews("420596"));
+// console.log(preetifyViews("400506"));
+// console.log(preetifyViews("4085997"));
+// console.log(preetifyViews("4205968"));
+// console.log(preetifyViews("4005068"));
+// console.log(preetifyViews("4895068"));
+// console.log(preetifyViews("40859974"));
+// console.log(preetifyViews("42059655"));
+// console.log(preetifyViews("40050685"));
+// console.log(preetifyViews("48950683"));
+// console.log(preetifyViews("408599748"));
+// console.log(preetifyViews("420596558"));
+// console.log(preetifyViews("400506858"));
+// console.log(preetifyViews("489506838"));
+// console.log(preetifyViews("4085997486"));
+// console.log(preetifyViews("4205965586"));
+// console.log(preetifyViews("4005068586"));
+// console.log(preetifyViews("4895068386"));
+// console.log(preetifyViews("14585911"));
+// console.log(preetifyViews("98985911"));
+// console.log(preetifyViews("99274555"));
+// console.log(preetifyViews("98900859"));
+// console.log(preetifyViews("9808591"));
+// console.log(preetifyViews("989859"));
+// console.log(preetifyViews("980859"));
+// console.log(preetifyViews(2920));
+// console.log(preetifyViews("9999"));
+// console.log(preetifyViews("11199"));
+// console.log(preetifyViews(2931677556));
 // const number = 231677556748;
-// console.log(number.toLocaleString("en-in"));
+// console.log(number.toLocaleString("en-us"));
 
 export const daysAgo = (dateAndTime) => {
   const currentDateAndTime = new Date();
@@ -80,7 +211,7 @@ export const daysAgo = (dateAndTime) => {
               return year + " years ago";
             }
           } else {
-            if (months === 0) {
+            if (months === 1) {
               return months + " month ago";
             } else {
               return months + " months ago";

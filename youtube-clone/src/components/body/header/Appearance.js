@@ -106,12 +106,12 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
       {/* for large devices */}
       <div
         className={`AccountContainer hidden md:block  ${
-          darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+          darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"
         }   rounded-xl backdrop-blur   w-full h-full  z-40`}
       >
         <div className="px-3 h-14  flex justify-between items-center">
           <div
-            className="closeAccount rounded-full p-[5px]   active:bg-[#f2f2f2]   w-2/12 cursor-pointer"
+            className="closeAccount rounded-full p-[5px]   hover:bg-[#3a3a3a]  active:bg-[#575656]   w-2/12 cursor-pointer"
             onClick={() => {
               setShowAppearance(false);
               setshowMoreSettings(false);
@@ -122,7 +122,7 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
           <div className="text-base font-normal  w-10/12">Appearance</div>
         </div>
 
-        <hr className="border-b border-[rgba(0,0,0,0.1) " />
+        <hr className="border-b border-[rgba(209,203,203,0.1)]  " />
         <div className="px-5 text-xs my-3 text-gray-400 font-medium">
           Setting applies to this browser only
         </div>
@@ -135,7 +135,7 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
             }}
             className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
               darkTheme
-                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                 : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
             }`}
           >
@@ -157,7 +157,7 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
             }}
             className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
               darkTheme
-                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                 : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
             }`}
           >
@@ -179,7 +179,7 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
             }}
             className={`px-3 h-12 cursor-pointer  flex py-4 justify-between items-center  ${
               darkTheme
-                ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                 : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
             }`}
           >

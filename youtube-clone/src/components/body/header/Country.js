@@ -53,7 +53,7 @@ const Country = ({ name, code, setShowLocations, setshowMoreSettings }) => {
         }}
         className={`px-3 h-12 w-full  hidden md:flex  py-4 cursor-pointer justify-between items-center ${
           darkTheme
-            ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+            ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
             : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
         }}`}
       >

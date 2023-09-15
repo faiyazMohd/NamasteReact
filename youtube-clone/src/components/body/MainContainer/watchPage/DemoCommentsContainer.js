@@ -302,7 +302,7 @@ const CommentList = ({ commentsData }) => {
   ));
 };
 
-const CommentsContainer = () => {
+const DemoCommentsContainer = () => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
 
   return (
@@ -319,4 +319,4 @@ const CommentsContainer = () => {
   );
 };
 
-export default CommentsContainer;
+export default DemoCommentsContainer;

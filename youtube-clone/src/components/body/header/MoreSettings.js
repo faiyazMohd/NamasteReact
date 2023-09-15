@@ -30,7 +30,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
           // e.stopPropagation()
         }}
         className={`w-[290px] h-[277px] fixed top-16 right-32 rounded-xl backdrop-blur  shadow-[0px_4px_32px_0px_#0000001a]  ${
-          darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+          darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"
         }  z-40`}
       >
         <div className="Container w-full">
@@ -42,7 +42,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
                 onClick={() => setShowAppearance(true)}
                 className={`px-3 h-10 mt-1 cursor-pointer  py-2 ${
                   darkTheme
-                    ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    ? "  hover:bg-[#3a3a3a]  active:bg-[#575656]"
                     : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
                 }} flex  items-center `}
               >
@@ -71,7 +71,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
                 onClick={() => setShowLocations(true)}
                 className={`px-3 h-10 mt-1 cursor-pointer  py-2 ${
                   darkTheme
-                    ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                     : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
                 }} flex  items-center `}
               >
@@ -98,7 +98,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
               />{" "}
               <div className={`px-3 h-10 mt-1 cursor-pointer  py-2 ${
                   darkTheme
-                    ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                     : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
                 }} flex  items-center `}>
                 <div className="w-2/12">
@@ -119,7 +119,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
               />
               <div className={`px-3 h-10 mt-1 cursor-pointer  py-2 ${
                   darkTheme
-                    ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                     : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
                 }} flex  items-center `}>
                 <div className="w-2/12">
@@ -133,7 +133,7 @@ const MoreSettings = ({ setshowMoreSettings }) => {
               </div>
               <div className={`px-3 h-10 mt-1 cursor-pointer  py-2 ${
                   darkTheme
-                    ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    ? " hover:bg-[#3a3a3a]  active:bg-[#575656]"
                     : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
                 }} flex  items-center `}>
                 <div className="w-2/12">

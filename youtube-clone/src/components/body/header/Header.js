@@ -27,7 +27,7 @@ const Header = () => {
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
-// console.log(cacheSearches);
+  // console.log(cacheSearches);
   const dispatch = useDispatch();
   const handleOpenSideBar = () => {
     dispatch(openSidebar());
@@ -37,12 +37,14 @@ const Header = () => {
   };
 
   const getSuggestions = async () => {
-    if (searchQuery.length !==0) {
+    if (searchQuery.length !== 0) {
       console.log(cachedSearch);
       if (cachedSearch[searchQuery]) {
         setsuggestions(cachedSearch[searchQuery]);
       } else {
-        const data = await fetch(`https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`);
+        const data = await fetch(
+          `https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`
+        );
         // console.log(data);
         const json = await data.json();
         console.log(json);
@@ -54,8 +56,7 @@ const Header = () => {
         );
         setsuggestions(json[1]);
       }
-      
-    } 
+    }
   };
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -145,6 +146,10 @@ const Header = () => {
                   darkTheme
                     ? "bg-[#222222] border border-[#282828]"
                     : "bg-[#0000000d] border border-[#ccc] shadow-[0px_1px_2px_#eee] "
+                } ${
+                  darkTheme
+                    ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                    : "  hover:bg-[#e9e7e7]  active:bg-[#e5e3e3] hover:shadow-[0px_1px_2px_#eee]"
                 } h-full px-5 py-5 flex items-center rounded-r-full cursor-pointer`}
               >
                 <SearchIcon color={darkTheme ? "#fff" : "#000"} />
@@ -181,7 +186,9 @@ const Header = () => {
 
             <div
               className={` ${
-                darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                darkTheme
+                  ? "bg-[#ffffff1a] hover:bg-[#3a3a3a]  active:bg-[#575656]"
+                  : "bg-[#0000000d] hover:bg-[#e9e7e7]  active:bg-[#e5e3e3]"
               } cursor-pointer rounded-full p-[10px] mx-4 `}
             >
               <MicIcon color={darkTheme ? "#fff" : "#000"} />

@@ -13,8 +13,8 @@ const VideoCard = ({ item }) => {
   const showSidebar = useSelector((store) => store.app.showSidebar);
   const [isHoverTitle, setIsHoverTitle] = useState(false);
   const [isHoverThumbnail, setIsHoverThumbnail] = useState(false);
-  const [channelDetails, setchannelDetails] = useState([])
   const [timer, setTimer] = useState(null)
+  const [channelDetails, setchannelDetails] = useState([])
   const { id, snippet, statistics, contentDetails } = item;
   const { title, thumbnails, channelTitle, publishedAt,channelId } = snippet;
   const { viewCount } = statistics;
@@ -162,7 +162,7 @@ const VideoCard = ({ item }) => {
               } font-medium text-[.9rem] `}
             >
               <Link to={"watch?v=" + id}>
-                {preetifyViews(viewCount) + " views"}
+                {preetifyViews(viewCount) + " views"}  
               </Link>
             </div>
             <div
