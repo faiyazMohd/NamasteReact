@@ -7,7 +7,7 @@ import ArrowRightIcon from "../../../assets/icons/svgs/SvgComponents/ArrowRightI
 import MicIcon from "../../../assets/icons/svgs/SvgComponents/MicIcon";
 import MobileAccount from "./MobileAccount";
 import useScrollUp from "../../../utils/hooks/useScrollUp";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
 import { cacheSearches } from "../../../utils/store/searchSlice";
@@ -22,10 +22,10 @@ const MobileHeader = () => {
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
-
+  const path = useLocation()
   const dispatch = useDispatch();
   // console.log("isScrollUp in header is :" + isScrollUp);
-
+  
   const getSuggestions = async () => {
     if (searchQuery.length !== 0) {
       console.log(cachedSearch);
@@ -67,7 +67,7 @@ const MobileHeader = () => {
               : "bg-[#0f0f0f] text-white"
             : "bg-white text-black"
         }   px-3 h-12 shadow-[0px_4px_2px_-2px_#00000033] flex justify-between items-center transition-transform ease-linear duration-200 ${
-          isScrollUp ? "translate-y-0" : "-translate-y-full"
+          path.pathname==="/watch"? "" : isScrollUp ? "translate-y-0" : "-translate-y-full"
         } `}
       >
         <div className="logo w-28 ">

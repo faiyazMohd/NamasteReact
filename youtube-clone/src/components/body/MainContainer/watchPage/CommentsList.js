@@ -10,11 +10,11 @@ const CommentsList = ({
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const [showSortPopper, setShowSortPopper] = useState(false);
-  console.log(comments);
+  // console.log(comments);
   return (
     <>
       {comments ? (
-        comments?.length === 0 ? (
+        videoDetails?.statistics?.commentCount == "0" ? (
           <div className="commentsContainer w-full  mt-2  ">
             <div className="w-full  flex justify-start items-center gap font-medium my-5">
               No comments yet

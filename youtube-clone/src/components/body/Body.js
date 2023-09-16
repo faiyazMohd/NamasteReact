@@ -17,7 +17,7 @@ const Body = () => {
     <div
       className={`body   ${
         darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
-      }  flex justify-end w-full `}
+      }  flex justify-end w-full min-h-screen`}
     >
       <div className="md:hidden ">
         <MobileHeader />

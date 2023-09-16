@@ -243,6 +243,60 @@ export const daysAgo = (dateAndTime) => {
   }
 };
 
+export const daysAgoForComment = (dateAndTime) => {
+  const currentDateAndTime = new Date();
+  const publishedDateAndTime = new Date(dateAndTime);
+  const diffInMilliseconds = currentDateAndTime - publishedDateAndTime;
+  // console.log((diffInMilliseconds/1000)/60/60/24/30/12 +" year");
+  const seconds = Math.floor(diffInMilliseconds / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const year = Math.floor(months / 12);
+  if (seconds > 59) {
+    if (minutes > 59) {
+      if (hours > 24) {
+        if (days > 30) {
+          if (months > 11) {
+            if (year === 1) {
+              return year + " year ago";
+            } else {
+              return year + " years ago";
+            }
+          } else {
+            if (months === 1) {
+              return months + " month ago";
+            } else {
+              return months + " months ago";
+            }
+          }
+        } else {
+          if (days === 1) {
+            return days + " day ago";
+          } else {
+            return days + " days ago";
+          }
+        }
+      } else {
+        if (hours === 1) {
+          return hours + " hour ago";
+        } else {
+          return hours + " hours ago";
+        }
+      }
+    } else {
+      if (minutes === 1) {
+        return minutes + " minute ago";
+      } else {
+        return minutes + " minutes ago";
+      }
+    }
+  } else {
+    return seconds+" seconds ago";
+  }
+};
+
 // console.log(daysAgo("2023-08-31T006:30:11Z"))
 // console.log(daysAgo("2023-09-29T12:30:25Z"))
 // console.log(daysAgo("2012-01-29T12:30:25Z"));

@@ -1,8 +1,9 @@
 import React from 'react'
 
-const SaveIcon = () => {
+const SaveIcon = ({color}) => {
   return (
-<svg height="24" viewBox="0 0 24 24" width="24" focusable="false" ><path d="M22 13h-4v4h-2v-4h-4v-2h4V7h2v4h4v2zm-8-6H2v1h12V7zM2 12h8v-1H2v1zm0 4h8v-1H2v1z"></path></svg>  )
+<svg fill={color} xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><path d="M4,20h14v1H3V6h1V20z M18,10h-4V6h-1v4H9v1h4v4h1v-4h4V10z M21,3v15H6V3H21z M20,4H7v13h13V4z"></path></svg>
+  )
 }
 
 export default SaveIcon

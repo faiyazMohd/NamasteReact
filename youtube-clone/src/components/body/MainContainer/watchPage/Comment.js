@@ -1,5 +1,5 @@
 import React, { useState, useTransition } from "react";
-import { daysAgo, preetifyViews } from "../../../../utils/helper/helper";
+import { daysAgo, daysAgoForComment, preetifyViews } from "../../../../utils/helper/helper";
 import { useSelector } from "react-redux";
 import DislikeIcon from "../../../../assets/icons/svgs/SvgComponents/VideoPage/DislikeIcon";
 import LikeIcon from "../../../../assets/icons/svgs/SvgComponents/VideoPage/LikeIcon";
@@ -31,7 +31,7 @@ const Comment = ({ comment,totalReplies,snippet }) => {
               darkTheme ? "text-[#a4a3a3]" : "text-[#565555]"
             }  text-xs font-medium`}
           >
-            {daysAgo(snippet?.publishedAt)}
+            {daysAgoForComment(snippet?.publishedAt)}
           </div>
         </div>
         <div className="comment w-full my-2">

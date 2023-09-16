@@ -8,7 +8,7 @@ import useOnline from "../../../../utils/hooks/useOnline";
 import ShimmerVideoCard from "./ShimmerVideoCard";
 import { Link } from "react-router-dom";
 const VideosContainer = () => {
-  const [allVideos, setAllVideos] = useState([]);
+  const [allVideos, setAllVideos] = useState(null);
   const showSidebar = useSelector((store) => store.app.showSidebar);
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
@@ -50,7 +50,7 @@ const VideosContainer = () => {
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
         }  `}
       >
-        {allVideos?.length !== 0
+        {allVideos
           ? allVideos.items?.map((video) => {
               return  <VideoCard key={video?.id} item={video} />;
             })
