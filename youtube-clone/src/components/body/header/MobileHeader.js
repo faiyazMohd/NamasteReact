@@ -166,7 +166,7 @@ const MobileHeader = () => {
             <div
               className={`w-[100%] py-2   ${
                 darkTheme ? "bg-[#222222] text-white" : "bg-white text-black"
-              }   fixed top-11 right-0 left-0 z-20 `}
+              }   fixed top-11 right-0 left-0 z-30 `}
             >
               {suggestions.map((suggestion) => {
                 return (

@@ -21,8 +21,8 @@
     animation: .25s  1 forwards ease sidebarAnimation;
 }
 
-
-/* width */
+@media screen and (min-width: 900px) {
+  /* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -44,6 +44,32 @@
 ::-webkit-scrollbar-thumb:hover {
   /* background: #555; */
 }
+
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #0f0f0f;
+  opacity: 0 ;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #878585;
+  border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #555; */
+}
+
 
 
 

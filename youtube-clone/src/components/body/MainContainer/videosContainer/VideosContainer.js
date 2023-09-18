@@ -12,10 +12,11 @@ const VideosContainer = () => {
   const showSidebar = useSelector((store) => store.app.showSidebar);
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const getData = async () => {
     // debugger;
     // console.log("inside  getData");
+
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=${locationCode}&maxResults=50&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
     );
@@ -28,7 +29,7 @@ const VideosContainer = () => {
   useEffect(() => {
     getData();
   }, [locationCode]);
-  
+
   // console.log("Videos Container rendered");
   const isOnline = useOnline();
   if (!isOnline) {
@@ -37,28 +38,29 @@ const VideosContainer = () => {
 
   return (
     <>
-    <div
-      className={`right mt-12 w-full md:w-[93%]  ${
-        darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
-      }   ${
-        showSidebar ? "xl:w-[82%]" : ""
-      }  `}
-    > 
-      <ButtonList />
       <div
-        className={`videoContainer  mt-14 md:mt-20 mb-16 md:mb-0 flex sm:justify-center flex-wrap gap-2  md:justify-normal   md:gap-5   ${
+        className={`right mt-12 w-full md:w-[93%]  ${
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
-        }  `}
+        }   ${showSidebar ? "xl:w-[82%]" : ""}  `}
       >
-        {allVideos
-          ? allVideos.items?.map((video) => {
-              return  <VideoCard key={video?.id} item={video} />;
-            })
-          :  Array(12).fill("").map((shimmerCard,index)=>{
-            return <ShimmerVideoCard key={index} />
-          }) }
+        <ButtonList />
+        <div
+          className={`videoContainer  mt-14 md:mt-20 mb-16 md:mb-0 flex sm:justify-center flex-wrap gap-2  md:justify-normal   md:gap-5   ${
+            darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
+          }  `}
+        >
+          {!allVideos || allVideos?.error
+            ? Array(12)
+                .fill("")
+                .map((shimmerCard, index) => {
+                  console.log("helloe");
+                  return <ShimmerVideoCard key={index} />;
+                })
+            : allVideos.items?.map((video) => {
+                return <VideoCard key={video?.id} item={video} />;
+              })}
+        </div>
       </div>
-    </div>
     </>
   );
 };

@@ -15,7 +15,7 @@ const ShimmerVideoCard = () => {
       ></div>
 
       {/* for small device */}
-      <div className="infoContainer md:hidden my-3 mt-3">
+      <div className="infoContainer sm:hidden my-3 mt-3">
         <div
           className={`w-[85%] ${
             darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"

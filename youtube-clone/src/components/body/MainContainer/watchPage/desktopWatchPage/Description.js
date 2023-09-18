@@ -37,7 +37,7 @@ const Description = ({ videoDetails, channelDetails }) => {
                 {videoDetails?.snippet?.description}
               </pre>
               <div
-                className={`channelInfo border-t-[6px] my-5   h-40  ${
+                className={`channelInfo h-40 border-t-[6px] my-5     ${
                   darkTheme ? "border-[#ffffff33]" : "border-[#0000001a]"
                 } `}
               >

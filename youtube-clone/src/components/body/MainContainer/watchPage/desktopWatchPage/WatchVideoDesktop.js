@@ -214,10 +214,10 @@ const WatchVideoDesktop = ({
           </div>
           
           <div className="recommendationVideosContainer w-full mt-6">
-            {recommendations?.length !== 0 ? (
+            {recommendations ? (
               <>
-                {recommendations.map((item) => {
-                  if (item?.id.videoId === videoDetails.id) {
+                {recommendations?.map((item) => {
+                  if (item?.id?.videoId === videoDetails?.id) {
                     return "";
                   } else {
                     return (

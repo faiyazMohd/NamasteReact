@@ -13,7 +13,7 @@ const SideNavbar = () => {
     <>
       {/* small to medium devices */}
       <div
-        className={` md:hidden border border-[#0000001a]  w-full h-12 fixed z-30 bottom-0 right-0  ${
+        className={` md:hidden border border-[#0000001a]  w-full h-12 fixed z-20 bottom-0 right-0  ${
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
         }  flex `}
       >

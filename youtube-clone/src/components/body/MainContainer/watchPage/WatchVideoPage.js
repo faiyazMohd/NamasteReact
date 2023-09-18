@@ -11,7 +11,7 @@ const WatchVideoPage = () => {
   const locationCode = useSelector((store) => store.app.locationCode);
   const [videoDetails, setVideoDetails] = useState(null);
   const [channelDetails, setChannelDetails] = useState(null);
-  const [recommendations, setRecommendations] = useState([]);
+  const [recommendations, setRecommendations] = useState(null);
   const [comments, setComments] = useState(null);
   const [topComments, setTopComments] = useState(true);
   const [searchParams] = useSearchParams();
@@ -28,7 +28,7 @@ const WatchVideoPage = () => {
     console.log(topComments);
   }, [topComments]);
   const deviceWidth = useWidth();
-  console.log(deviceWidth);
+  console.log("device width is " + deviceWidth);
   const getVideoData = async () => {
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cstatus&id=${videoId}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
@@ -36,9 +36,9 @@ const WatchVideoPage = () => {
     const json = await data.json();
     setVideoDetails(json?.items[0]);
     getChannelData(json?.items[0]?.snippet?.channelId);
-    getComments()
+    // getComments();
     console.log(json?.items[0]?.snippet?.title);
-    getRecommendation(json?.items[0]?.snippet?.title)
+    // getRecommendation(json?.items[0]?.snippet?.title);
     console.log(json);
   };
 
@@ -71,7 +71,8 @@ const WatchVideoPage = () => {
         process.env.REACT_APP_GOOGLE_API_KEY
     );
     const json = await data.json();
-    setComments(json?.items);
+
+    setComments(json?.items ? json?.items : json);
     console.log(json);
 
     // } catch (error) {

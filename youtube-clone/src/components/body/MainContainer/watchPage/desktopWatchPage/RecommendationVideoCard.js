@@ -138,11 +138,11 @@ const RecommendationVideoCard = ({ item }) => {
           </div>
         </div>
       </div>
-
+      {/* for small to medium devices */}
       <div
         onMouseOver={() => setIsHover(true)}
         onMouseOut={() => setIsHover(false)}
-        className={`w-full md:hidden  sm:w-[45%] mt-5    cursor-pointer `}
+        className={`w-full md:hidden  sm:w-[43%] mt-5    cursor-pointer `}
       >
         <div className={`thumbnail w-full h-[56vw] sm:h-[25.5vw] relative `}>
           <div className=" md:hidden">
@@ -155,7 +155,7 @@ const RecommendationVideoCard = ({ item }) => {
               />
             </Link>
             <Link to={"watch?v=" + videoDetails?.id}>
-              <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-1 bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
+              <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
                 <span className=" text-xs font-medium tracking-wide">
                   {preetifyDuration(videoDetails?.contentDetails?.duration)}
                 </span>
@@ -192,12 +192,13 @@ const RecommendationVideoCard = ({ item }) => {
                     darkTheme ? "text-[#969696]" : "text-[#737373]"
                   }  text-[.8rem]`}
                 >
-                  {videoDetails?.snippet?.channelTitle} • {preetifyViews(videoDetails?.statistics?.viewCount) + " views"} •{" "}
-                  {daysAgo(videoDetails?.snippet?.publishedAt)}
+                  {videoDetails?.snippet?.channelTitle} •{" "}
+                  {preetifyViews(videoDetails?.statistics?.viewCount) +
+                    " views"}{" "}
+                  • {daysAgo(videoDetails?.snippet?.publishedAt)}
                 </div>
               </Link>
             </div>
-
           </div>
 
           {/* for small devices */}
