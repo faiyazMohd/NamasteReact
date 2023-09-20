@@ -23,7 +23,7 @@ const VideosContainer = () => {
     // const data = await fetch(YOUTUBE_API_POPULAR_VIDEO_URL);
     // console.log(data);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setAllVideos(json);
   };
   useEffect(() => {
@@ -53,7 +53,6 @@ const VideosContainer = () => {
             ? Array(12)
                 .fill("")
                 .map((shimmerCard, index) => {
-                  console.log("helloe");
                   return <ShimmerVideoCard key={index} />;
                 })
             : allVideos.items?.map((video) => {

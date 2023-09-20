@@ -59,7 +59,7 @@ const SideNavbar = () => {
       </div>
 
       {/* from large devices */}
-      {path.pathname === "/watch" ? (
+      {path.pathname === "/watch" || path.pathname === "/results" ? (
         ""
       ) : (
         <div

@@ -17,17 +17,19 @@ import SignInBtn from "../../others/SignInBtn";
 import { Link } from "react-router-dom";
 import MoreSettings from "./MoreSettings";
 import { cacheSearches } from "../../../utils/store/searchSlice";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 const Header = () => {
   const [showSearchIcon, setShowSearchIcon] = useState(false);
   const [showMoreSettings, setshowMoreSettings] = useState(false);
+  const [showSuggestion, setShowSuggestion] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setsuggestions] = useState([]);
   const showSidebar = useSelector((store) => store.app.showSidebar);
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
-  // console.log(cacheSearches);
+  console.log(searchQuery);
   const dispatch = useDispatch();
   const handleOpenSideBar = () => {
     dispatch(openSidebar());
@@ -56,6 +58,8 @@ const Header = () => {
         );
         setsuggestions(json[1]);
       }
+    } else {
+      setsuggestions([]);
     }
   };
   useEffect(() => {
@@ -116,8 +120,12 @@ const Header = () => {
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setShowSearchIcon(true)}
-                onBlur={() => setShowSearchIcon(false)}
+                onFocus={() => {
+                  setShowSearchIcon(true);
+                }}
+                onBlur={() => setTimeout(() => {
+                  setShowSearchIcon(false)
+                },200 )}
                 className={`${
                   showSearchIcon
                     ? "rounded-none border-l-0  px-0  py-5 border-blue-700"
@@ -133,7 +141,7 @@ const Header = () => {
                   onClick={() => setSearchQuery("")}
                   className={`absolute right-12  ${
                     darkTheme ? "hover:bg-[#ffffff1a]" : "bg-[#0000000d]"
-                  } cursor-pointer rounded-full p-[8px] mx-4 `}
+                  } cursor-pointer rounded-full  p-[8px] mx-4 `}
                 >
                   <CrossIcon color={darkTheme ? "#fff" : "#000"} />
                 </div>
@@ -141,7 +149,8 @@ const Header = () => {
                 ""
               )}
 
-              <div
+              <Link
+                to={"/results?search_query=" + searchQuery}
                 className={` ${
                   darkTheme
                     ? "bg-[#222222] border border-[#282828]"
@@ -150,36 +159,47 @@ const Header = () => {
                   darkTheme
                     ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
                     : "  hover:bg-[#e9e7e7]  active:bg-[#e5e3e3] hover:shadow-[0px_1px_2px_#eee]"
-                } h-full px-5 py-5 flex items-center rounded-r-full cursor-pointer`}
+                } h-full px-5 py-5  flex items-center rounded-r-full cursor-pointer`}
               >
                 <SearchIcon color={darkTheme ? "#fff" : "#000"} />
-              </div>
+              </Link>
             </div>
 
             {showSearchIcon && suggestions.length !== 0 ? (
-              <div
-                className={`w-[46%]  py-4  ${
-                  darkTheme ? "bg-[#222222] text-white" : "bg-white text-black"
-                }   absolute top-14 z-30 rounded-xl shadow-[0px_4px_24px_#00000026]`}
-              >
-                {suggestions.map((suggestion) => {
-                  return (
-                    <div
-                      onClick={() => {}}
-                      className={`px-3  w-full  hidden md:flex  py-1 cursor-pointer justify-between items-center ${
-                        darkTheme
-                          ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
-                          : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
-                      }}`}
-                    >
-                      <div className=" w-1/12 flex justify-center">
-                        <SearchIcon color={darkTheme ? "#fff" : "#000"} />
-                      </div>
-                      <div className="text-base w-11/12">{suggestion}</div>
-                    </div>
-                  );
-                })}
-              </div>
+              <>
+                <div
+                  className={`w-[46%]  py-4  ${
+                    darkTheme
+                      ? "bg-[#222222] text-white"
+                      : "bg-white text-black"
+                  }   absolute top-14 z-40 rounded-xl shadow-[0px_4px_24px_#00000026]`}
+                >
+                  {suggestions.map((suggestion) => {
+                    return (
+                      <Link
+                      
+                        to={"/results?search_query=" + suggestion}
+                      >
+                        <div
+                          onClick={() => {
+                            setSearchQuery(suggestion);
+                          }}
+                          className={`px-3  w-full  hidden md:flex  py-1 cursor-pointer justify-between items-center ${
+                            darkTheme
+                              ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                              : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+                          }}`}
+                        >
+                          <div className=" w-1/12 flex justify-center">
+                            <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+                          </div>
+                          <div className="text-base w-11/12">{suggestion}</div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </>
             ) : (
               ""
             )}
