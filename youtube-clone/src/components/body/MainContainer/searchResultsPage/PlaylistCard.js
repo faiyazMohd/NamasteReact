@@ -39,7 +39,7 @@ const PlaylistCard = ({ item }) => {
   useEffect(() => {
     // getChannelData();
     getPlaylistItemsData();
-  }, []);
+  }, [item.id.videoId]);
   return playlistItems ? (
     <>
       {/* for small to medium devices */}

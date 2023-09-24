@@ -20,7 +20,7 @@ const ChannelCard = ({ item }) => {
   };
   useEffect(() => {
     getChannelData();
-  }, []);
+  }, [item.id.videoId]);
   return channelDetails ? (
     <>
       <div

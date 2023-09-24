@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MoreSettingIcon from "../../../../../assets/icons/svgs/SvgComponents/MoreSettingIcon";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useFetcher, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   daysAgo,
@@ -9,7 +9,7 @@ import {
 } from "../../../../../utils/helper/helper";
 import ShimmerRecommendation from "./ShimmerRecommendation";
 
-const RecommendationVideoCard = ({ item }) => {
+const RecommendationVideoCard = ({ item, searchFilters }) => {
   const [videoDetails, setVideoDetails] = useState(null);
   const [isHover, setIsHover] = useState(false);
   const [isHoverThumbnail, setIsHoverThumbnail] = useState(false);
@@ -18,7 +18,10 @@ const RecommendationVideoCard = ({ item }) => {
 
   const path = useLocation();
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-  // console.log(item);
+  console.log(item?.id?.videoId);
+  // console.log(videoDetails);
+  // console.log(videoDetails?.snippet?.title);
+  // console.log(videoDetails?.contentDetails?.duration);
   // console.log(item?.snippet?.thumbnails?.medium?.url);
   const getVideoData = async () => {
     const data = await fetch(
@@ -26,6 +29,7 @@ const RecommendationVideoCard = ({ item }) => {
     );
     const json = await data.json();
     setVideoDetails(json?.items[0]);
+    console.log(item?.snippet?.title);
     console.log(json);
   };
   const channelImgUrl =
@@ -44,8 +48,14 @@ const RecommendationVideoCard = ({ item }) => {
   useEffect(() => {
     // getChannelData();
     getVideoData();
-  }, []);
-
+    return () => {
+      // console.log("I am returning");
+      // console.log(item?.id?.videoId);
+      // console.log(videoDetails);
+      // console.log(videoDetails?.snippet?.title);
+      // console.log(videoDetails?.contentDetails?.duration);
+    };
+  }, [item.id.videoId]);
   return videoDetails ? (
     <>
       {/* for small to medium devices */}
@@ -65,13 +75,17 @@ const RecommendationVideoCard = ({ item }) => {
                   srcset=""
                 />
               </Link>
-              <Link to={"watch?v=" + item?.id?.videoId}>
-                <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
-                  <span className=" text-xs font-medium tracking-wide">
-                    {preetifyDuration(videoDetails?.contentDetails?.duration)}
-                  </span>
-                </div>
-              </Link>
+              {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
+                ""
+              ) : (
+                <Link to={"watch?v=" + item?.id?.videoId}>
+                  <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
+                    <span className=" text-xs font-medium tracking-wide">
+                      {preetifyDuration(videoDetails?.contentDetails?.duration)}
+                    </span>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -265,21 +279,25 @@ const RecommendationVideoCard = ({ item }) => {
                 <div className="w-full h-full">
                   <Link to={"/watch?v=" + item?.id?.videoId}>
                     <img
-                      className="w-full rounded-lg object-cover"
+                      className="w-full h-full rounded-lg object-cover"
                       src={item?.snippet?.thumbnails?.medium?.url}
                       alt="thumbnail"
                       srcset=""
                     />
                   </Link>
-                  <Link to={"/watch?v=" + item?.id?.videoId}>
-                    <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-1 bottom-1 w-fit flex justify-center items-center absolute px-1 py-2">
-                      <span className=" text-xs font-medium tracking-wide">
-                        {preetifyDuration(
-                          videoDetails?.contentDetails?.duration
-                        )}
-                      </span>
-                    </div>
-                  </Link>
+                  {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
+                    ""
+                  ) : (
+                    <Link to={"/watch?v=" + item?.id?.videoId}>
+                      <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-1 bottom-1 w-fit flex justify-center items-center absolute px-1 py-2">
+                        <span className=" text-xs font-medium tracking-wide">
+                          {preetifyDuration(
+                            videoDetails?.contentDetails?.duration
+                          )}
+                        </span>
+                      </div>
+                    </Link>
+                  )}
                 </div>
               )}
             </div>
@@ -295,6 +313,8 @@ const RecommendationVideoCard = ({ item }) => {
        ${darkTheme ? "text-[#f1f1f1]" : "text-[#4e4e4e]"}   `}
                     >
                       {item.snippet.title}
+                      {/* {item?.id?.videoId}{"/"} */}
+                      {/* {videoDetails?.snippet?.title} */}
                     </div>
                   </Link>
                 </div>
@@ -361,7 +381,8 @@ const RecommendationVideoCard = ({ item }) => {
                   />
                 </Link>
                 <Link to={"/watch?v=" + item?.id?.videoId}>
-                  {item?.snippet?.channelTitle}
+                  {/* {item?.snippet?.channelTitle} */}
+                  {videoDetails?.snippet?.channelTitle}
                 </Link>
               </div>
               <Link to={"/watch?v=" + item?.id?.videoId}>
@@ -374,6 +395,26 @@ const RecommendationVideoCard = ({ item }) => {
                 </div>
               </Link>
               <div className="w-full flex gap-3">
+                {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
+                  <div
+                    className={`text-white bg-red-700 cursor-pointer rounded-sm  p-1 font-medium uppercase text-xs h-6 w-fit flex justify-center items-center`}
+                  >
+                    <div className="icon mr-1.5">
+                      <svg
+                        fill="#fff"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        focusable="false"
+                      >
+                        <path d="M9 8c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm1.11 2.13.71.71C11.55 10.11 12 9.11 12 8c0-1.11-.45-2.11-1.18-2.84l-.71.71c.55.55.89 1.3.89 2.13 0 .83-.34 1.58-.89 2.13Zm-4.93.71.71-.71C5.34 9.58 5 8.83 5 8c0-.83.34-1.58.89-2.13l-.71-.71C4.45 5.89 4 6.89 4 8c0 1.11.45 2.11 1.18 2.84Zm7.05 1.41.71.71C14.21 11.69 15 9.94 15 8s-.79-3.69-2.06-4.96l-.71.71C13.32 4.84 14 6.34 14 8c0 1.66-.68 3.16-1.77 4.25Zm-9.17.71.71-.71C2.68 11.16 2 9.66 2 8c0-1.66.68-3.16 1.77-4.25l-.71-.71C1.79 4.31 1 6.06 1 8s.79 3.69 2.06 4.96Z"></path>
+                      </svg>
+                    </div>
+                    Live
+                  </div>
+                ) : (
+                  ""
+                )}
                 {videoDetails?.contentDetails?.definition ? (
                   <div
                     className={` ${
