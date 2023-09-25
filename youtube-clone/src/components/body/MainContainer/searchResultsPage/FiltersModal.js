@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CrossIcon from "../../../../assets/icons/svgs/SvgComponents/CrossIcon";
+import DownArrowIcon from "../../../../assets/icons/svgs/SvgComponents/DownArrowIcon";
 
 const FiltersModal = ({
   showFilters,
@@ -9,6 +10,27 @@ const FiltersModal = ({
   setSearchFilters,
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
+  const [showInnerModals, setShowInnerModals] = useState(false);
+  const [showSortBy, setShowSortBy] = useState(false);
+  const [showType, setShowType] = useState(false);
+  const [showUploadDate, setshowUploadDate] = useState(false);
+  const [showDuration, setShowDuration] = useState(false);
+  const [modalSearchFilters, setModalSearchFilters] = useState(searchFilters);
+
+  console.log(modalSearchFilters);
+  const handleApplyFilters = () => {
+    console.log(modalSearchFilters);
+    setSearchFilters({ ...modalSearchFilters });
+    setShowFilters(false);
+  };
+  console.log("showSortBy is : ");
+  console.log(showSortBy);
+  console.log("showType is : ");
+  console.log(showType);
+  console.log("showUploadDate is : ");
+  console.log(showUploadDate);
+  console.log("showDuration is : ");
+  console.log(showDuration);
   return (
     <>
       <div>
@@ -17,8 +39,577 @@ const FiltersModal = ({
           className="fixed top-0 bottom-0 left-0 right-0 z-30 w-full h-full bg-[rgba(0,0,0,0.6)]"
         ></div>
       </div>
+
+      {showInnerModals ? (
+        <div
+          onClick={() => {
+            setShowInnerModals(false);
+            setShowSortBy(false);
+            setShowType(false);
+            setshowUploadDate(false);
+            setShowDuration(false);
+          }}
+          className="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full bg-transparent"
+        ></div>
+      ) : (
+        ""
+      )}
+
+      {/* for mobile devices */}
       <div
-        className={`w-[696px] h-[517.67px] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2    rounded-xl backdrop-blur  shadow-[0px_4px_32px_0px_#0000001a]  ${
+        className={` sm:hidden w-[280px] h-[350px] fixed top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3  backdrop-blur  shadow-[0px_4px_32px_0px_#0000001a]  ${
+          darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"
+        }  z-40`}
+      >
+        {showInnerModals ? (
+          <div
+            onClick={() => {
+              setShowInnerModals(false);
+              setShowSortBy(false);
+              setShowType(false);
+              setshowUploadDate(false);
+              setShowDuration(false);
+            }}
+            className="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full bg-transparent"
+          ></div>
+        ) : (
+          ""
+        )}
+        <div className="innerContainer w-[85%] m-auto">
+          <div className="w-full mt-6 mb-1 flex justify-between ">
+            <div className="text-xl">Search filters</div>
+          </div>
+          <div className="w-full flex items-center mt-3">
+            <div className="w-[40%]  my-3">
+              <div
+                className={`  ${
+                  darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
+                } font-medium text-sm cursor-pointer flex items-center gap-2`}
+              >
+                Sort by
+              </div>
+            </div>
+            <div
+              onClick={() => {
+                setShowInnerModals(true);
+                setShowSortBy(true);
+              }}
+              className="w-[60%] relative text-lg my-3 flex justify-between"
+            >
+              <div className="">
+                {modalSearchFilters.sortBy === "relevance"
+                  ? "Relevance"
+                  : modalSearchFilters.sortBy === "date"
+                  ? "Upload date"
+                  : modalSearchFilters.sortBy === "viewCount"
+                  ? "View count"
+                  : "Rating"}
+              </div>
+              <DownArrowIcon color={darkTheme ? "#fff" : "#000"} />
+
+              {showSortBy && showInnerModals ? (
+                <>
+                  <div
+                    className={` absolute backdrop-blur  z-50 w-full top-0 shadow-[2px_4px_38px_5px_#0000001a]  ${
+                      darkTheme
+                        ? "bg-[#2b2a2a] text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    <div className=" flex flex-col ">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            sortBy: "relevance",
+                          });
+                          setShowSortBy(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Relevance</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            sortBy: "date",
+                          });
+                          setShowSortBy(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Upload date</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            sortBy: "viewCount",
+                          });
+                          setShowSortBy(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">View count</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            sortBy: "rating",
+                          });
+                          setShowSortBy(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Rating</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="w-full flex items-center ">
+            <div className="w-[40%]  my-3">
+              <div
+                className={`  ${
+                  darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
+                } font-medium text-sm cursor-pointer flex items-center gap-2`}
+              >
+                Type
+              </div>
+            </div>
+            <div
+              onClick={() => {
+                setShowInnerModals(true);
+                setShowType(true);
+              }}
+              className="w-[60%] relative text-lg my-3 flex justify-between"
+            >
+              <div className="capitalize">{modalSearchFilters.type}</div>
+              <DownArrowIcon color={darkTheme ? "#fff" : "#000"} />
+              {showType && showInnerModals ? (
+                <>
+                  <div
+                    className={` absolute backdrop-blur  z-50 w-full top-0 shadow-[2px_4px_38px_5px_#0000001a]  ${
+                      darkTheme
+                        ? "bg-[#2b2a2a] text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    <div className=" flex flex-col ">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            type: "all",
+                          });
+                          setShowType(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">All</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            type: "video",
+                          });
+                          setShowType(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Video</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            type: "channel",
+                          });
+                          setShowType(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Channel</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            type: "playlist",
+                          });
+                          setShowType(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Playlist</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="w-full flex items-center ">
+            <div className="w-[40%]  my-3">
+              <div
+                className={`  ${
+                  darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
+                } font-medium text-sm cursor-pointer flex items-center gap-2`}
+              >
+                Upload date
+              </div>
+            </div>
+            <div
+              onClick={() => {
+                setShowInnerModals(true);
+                setshowUploadDate(true);
+              }}
+              className="w-[60%] relative text-lg my-3 flex justify-between"
+            >
+              <div className="">
+                {modalSearchFilters.uploadDate === "any"
+                  ? "Anytime"
+                  : modalSearchFilters.uploadDate === "lastHour"
+                  ? "Last hour"
+                  : modalSearchFilters.uploadDate === "today"
+                  ? "Today"
+                  : modalSearchFilters.uploadDate === "thisWeek"
+                  ? "This week"
+                  : modalSearchFilters.uploadDate === "thisMonth"
+                  ? "This month"
+                  : "This year"}
+              </div>
+              <DownArrowIcon color={darkTheme ? "#fff" : "#000"} />
+              {showUploadDate && showInnerModals ? (
+                <>
+                  <div
+                    className={` absolute backdrop-blur  z-50 w-full top-0 shadow-[2px_4px_38px_5px_#0000001a]  ${
+                      darkTheme
+                        ? "bg-[#2b2a2a] text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    <div className=" flex flex-col ">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "any",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Anytime</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "lastHour",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Last hour</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "today",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Today</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "thisWeek",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">This week</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "thisMonth",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">This month</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            uploadDate: "thisYear",
+                          });
+                          setshowUploadDate(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">This year</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="w-full flex items-center ">
+            <div className="w-[40%]  my-3">
+              <div
+                className={`  ${
+                  darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
+                } font-medium text-sm cursor-pointer flex items-center gap-2`}
+              >
+                Duration
+              </div>
+            </div>
+            <div
+              onClick={() => {
+                setShowInnerModals(true);
+                setShowDuration(true);
+              }}
+              className="w-[60%] relative text-lg my-3 flex justify-between"
+            >
+              <div className="">
+                {modalSearchFilters.duration === "any"
+                  ? "Any"
+                  : modalSearchFilters.duration === "short"
+                  ? "Under 4 minutes"
+                  : modalSearchFilters.duration === "medium"
+                  ? "4 - 20 minutes"
+                  : "Over 20 minutes"}
+              </div>
+              <DownArrowIcon color={darkTheme ? "#fff" : "#000"} />
+              {showDuration && showInnerModals ? (
+                <>
+                  <div
+                    className={` absolute backdrop-blur  z-50 w-full top-0 shadow-[2px_4px_38px_5px_#0000001a]  ${
+                      darkTheme
+                        ? "bg-[#2b2a2a] text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    <div className=" flex flex-col ">
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            duration: "any",
+                          });
+                          setShowDuration(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Any</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            duration: "short",
+                          });
+                          setShowDuration(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Under 4 minutes</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            duration: "medium",
+                          });
+                          setShowDuration(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">4 - 20 minutes</div>
+                      </div>
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalSearchFilters({
+                            ...modalSearchFilters,
+                            duration: "long",
+                          });
+                          setShowDuration(false);
+                          setShowInnerModals(false);
+                        }}
+                        className={`text-lg py-2 pl-4 flex  ${
+                          darkTheme
+                            ? "  active:bg-[#3a3a3a]"
+                            : "  active:bg-[#e5e3e3]"
+                        }`}
+                      >
+                        <div className="">Over 20 minutes</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        </div>
+
+        <hr
+          className={`w-full my-2  ${
+            darkTheme ? "border-b border-[#e4e1e1]" : "border-b border-black"
+          } `}
+        />
+        <div className="w-[85%] m-auto flex justify-end items-center gap-2">
+          <div
+            onClick={() => setShowFilters(false)}
+            className={`w-[60px] active:border active:border-slate-600 flex justify-center items-center h-[50px] ${
+              darkTheme ? "text-blue-400" : "text-[#065fd4]"
+            } `}
+          >
+            Cancel
+          </div>
+          <div
+            onClick={handleApplyFilters}
+            className={`w-[60px] active:border active:border-slate-600 flex justify-center items-center h-[50px] ${
+              darkTheme ? "text-blue-400" : "text-[#065fd4]"
+            } `}
+          >
+            Apply
+          </div>
+        </div>
+      </div>
+
+      {/* from sm breakpoints */}
+      <div
+        className={`hidden sm:block sm:w-[576px] md:w-[696px] sm:h-[517.67px] md:h-[517.67px] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2    rounded-xl backdrop-blur  shadow-[0px_4px_32px_0px_#0000001a]  ${
           darkTheme ? "bg-[#272727] text-white" : "bg-white text-black"
         }  z-40`}
       >
@@ -262,9 +853,13 @@ const FiltersModal = ({
                   onClick={() => {
                     setShowFilters(false);
                     if (searchFilters.type === "channel") {
-                      setSearchFilters({ ...searchFilters, type: "all"});
+                      setSearchFilters({ ...searchFilters, type: "all" });
                     } else {
-                      setSearchFilters({ ...searchFilters, type: "channel" ,duration: "any"});
+                      setSearchFilters({
+                        ...searchFilters,
+                        type: "channel",
+                        duration: "any",
+                      });
                     }
                   }}
                   className={`  ${
@@ -295,7 +890,11 @@ const FiltersModal = ({
                     if (searchFilters.type === "playlist") {
                       setSearchFilters({ ...searchFilters, type: "all" });
                     } else {
-                      setSearchFilters({ ...searchFilters, type: "playlist",duration: "any" });
+                      setSearchFilters({
+                        ...searchFilters,
+                        type: "playlist",
+                        duration: "any",
+                      });
                     }
                   }}
                   className={`  ${

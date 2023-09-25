@@ -187,8 +187,8 @@ const MobileHeader = () => {
                  
                   ${
                     darkTheme
-                      ? " hover:bg-[#272727]  active:bg-[#3a3a3a] border-b border-[rgba(255,255,255,0.2)]"
-                      : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3] border-b border-[rgba(0,0,0,0.1)]"
+                      ? " hover:bg-[#272727]  active:bg-[#3a3a3a] "
+                      : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3] "
                   }}`}
                       >
                         <div className=" w-1/12 flex justify-center">
@@ -199,13 +199,13 @@ const MobileHeader = () => {
                         </div>
                       </div>
                     </Link>
-                    {/* <hr
+                    <hr
                       className={`  ${
                         darkTheme
                           ? "border-b border-[rgba(255,255,255,0.2)]"
                           : "border-b border-[rgba(0,0,0,0.1)]"
                       } `}
-                    /> */}
+                    />
                   </>
                 );
               })}

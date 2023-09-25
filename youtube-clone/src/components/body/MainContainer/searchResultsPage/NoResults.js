@@ -7,7 +7,7 @@ const NoResults = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full h-screen`}
+      className={`flex flex-col items-center justify-center w-full h-[70vvh] md:h-screen`}
     >
       <div className="icon  sm:hidden">
         <NoResultsIcon width={224} height={140}/>

@@ -18,7 +18,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
 
   const path = useLocation();
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-  console.log(item?.id?.videoId);
+  // console.log(item?.id?.videoId);
   // console.log(videoDetails);
   // console.log(videoDetails?.snippet?.title);
   // console.log(videoDetails?.contentDetails?.duration);
@@ -29,7 +29,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
     );
     const json = await data.json();
     setVideoDetails(json?.items[0]);
-    console.log(item?.snippet?.title);
+    // console.log(item?.snippet?.title);
     console.log(json);
   };
   const channelImgUrl =
