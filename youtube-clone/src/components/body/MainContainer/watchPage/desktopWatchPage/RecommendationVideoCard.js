@@ -72,7 +72,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-full h-fit   object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
-                  srcset=""
                 />
               </Link>
               {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
@@ -96,7 +95,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-10 rounded-full"
                   src={channelImgUrl}
                   alt="channelName"
-                  srcset=""
+                  
                 />
               </Link>
             </div>
@@ -164,7 +163,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-full h-fit  sm:rounded-xl object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
-                  srcset=""
+                  
                 />
               </Link>
               <Link to={"watch?v=" + item?.id?.videoId}>
@@ -184,7 +183,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-10 rounded-full"
                   src={channelImgUrl}
                   alt="channelName"
-                  srcset=""
+                  
                 />
               </Link>
             </div>
@@ -282,7 +281,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                       className="w-full h-full rounded-lg object-cover"
                       src={item?.snippet?.thumbnails?.medium?.url}
                       alt="thumbnail"
-                      srcset=""
+                      
                     />
                   </Link>
                   {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
@@ -377,7 +376,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                     className="w-6 h-6  rounded-full object-cover"
                     src={channelImgUrl}
                     alt="channelImg"
-                    srcset=""
+                    
                   />
                 </Link>
                 <Link to={"/watch?v=" + item?.id?.videoId}>
@@ -458,7 +457,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-full rounded-lg object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
-                  srcset=""
+                  
                 />
               </Link>
               <Link to={"/watch?v=" + item?.id?.videoId}>

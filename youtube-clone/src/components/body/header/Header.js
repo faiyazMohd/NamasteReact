@@ -123,9 +123,11 @@ const Header = () => {
                 onFocus={() => {
                   setShowSearchIcon(true);
                 }}
-                onBlur={() => setTimeout(() => {
-                  setShowSearchIcon(false)
-                },200 )}
+                onBlur={() =>
+                  setTimeout(() => {
+                    setShowSearchIcon(false);
+                  }, 200)
+                }
                 className={`${
                   showSearchIcon
                     ? "rounded-none border-l-0  px-0  py-5 border-blue-700"
@@ -149,20 +151,36 @@ const Header = () => {
                 ""
               )}
 
-              <Link
-                to={"/results?search_query=" + searchQuery}
-                className={` ${
-                  darkTheme
-                    ? "bg-[#222222] border border-[#282828]"
-                    : "bg-[#0000000d] border border-[#ccc] shadow-[0px_1px_2px_#eee] "
-                } ${
-                  darkTheme
-                    ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
-                    : "  hover:bg-[#e9e7e7]  active:bg-[#e5e3e3] hover:shadow-[0px_1px_2px_#eee]"
-                } h-full px-5 py-5  flex items-center rounded-r-full cursor-pointer`}
-              >
-                <SearchIcon color={darkTheme ? "#fff" : "#000"} />
-              </Link>
+              {searchQuery.length === 0 ? (
+                <div
+                  className={` ${
+                    darkTheme
+                      ? "bg-[#222222] border border-[#282828]"
+                      : "bg-[#0000000d] border border-[#ccc] shadow-[0px_1px_2px_#eee] "
+                  } ${
+                    darkTheme
+                      ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                      : "  hover:bg-[#e9e7e7]  active:bg-[#e5e3e3] hover:shadow-[0px_1px_2px_#eee]"
+                  } h-full px-5 py-5  flex items-center rounded-r-full cursor-pointer`}
+                >
+                  <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+                </div>
+              ) : (
+                <Link
+                  to={"/results?search_query=" + searchQuery}
+                  className={` ${
+                    darkTheme
+                      ? "bg-[#222222] border border-[#282828]"
+                      : "bg-[#0000000d] border border-[#ccc] shadow-[0px_1px_2px_#eee] "
+                  } ${
+                    darkTheme
+                      ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                      : "  hover:bg-[#e9e7e7]  active:bg-[#e5e3e3] hover:shadow-[0px_1px_2px_#eee]"
+                  } h-full px-5 py-5  flex items-center rounded-r-full cursor-pointer`}
+                >
+                  <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+                </Link>
+              )}
             </div>
 
             {showSearchIcon && suggestions.length !== 0 ? (
@@ -176,10 +194,7 @@ const Header = () => {
                 >
                   {suggestions.map((suggestion) => {
                     return (
-                      <Link
-                      
-                        to={"/results?search_query=" + suggestion}
-                      >
+                      <Link to={"/results?search_query=" + suggestion}>
                         <div
                           onClick={() => {
                             setSearchQuery(suggestion);

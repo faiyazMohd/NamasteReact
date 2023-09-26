@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
 import { cacheSearches } from "../../../utils/store/searchSlice";
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
+import MoreSettingIcon from "../../../assets/icons/svgs/SvgComponents/MoreSettingIcon";
 const MobileHeader = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
@@ -23,6 +24,7 @@ const MobileHeader = () => {
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
+  const playlistName = useSelector((store) => store.content.playlistName);
   const path = useLocation();
   const dispatch = useDispatch();
   // console.log("isScrollUp in header is :" + isScrollUp);
@@ -59,6 +61,7 @@ const MobileHeader = () => {
       clearTimeout(timer);
     };
   }, [searchQuery]);
+  console.log(window.screenY);
 
   return (
     <>
@@ -66,37 +69,94 @@ const MobileHeader = () => {
         className={`Mobile-Header fixed top-0 right-0 left-0 z-20  ${
           darkTheme
             ? showSearch
-              ? "bg-[#212121]   "
+              ? "bg-[#212121] "
               : "bg-[#0f0f0f] text-white"
-            : "bg-white text-black"
-        }   px-3 h-12 shadow-[0px_4px_2px_-2px_#00000033] flex justify-between items-center transition-transform ease-linear duration-200 ${
-          path.pathname === "/watch"
+            : `${
+                path.pathname === "/playlist"
+                  ? window.scrollY < 22
+                    ? "bg-transparent shadow-none"
+                    : "bg-white"
+                  : "bg-white"
+              }} text-black`
+        }   px-3 h-12 shadow-[0px_4px_2px_-2px_#00000033] flex justify-between items-center transition-transform ease-linear duration-200  ${
+          path.pathname === "/watch" || path.pathname === "/playlist"
             ? ""
             : isScrollUp
             ? "translate-y-0"
             : "-translate-y-full"
+        } ${
+          path.pathname === "/playlist"
+            ? window.scrollY < 22
+              ? "bg-transparent shadow-none"
+              : darkTheme
+              ? "bg-[#0f0f0f ] "
+              : "bg-white"
+            : ""
         } `}
       >
-        <div className="logo w-28 ">
-          <Link to="/">
-            <div className="relative">
-              <div className="text-[.6rem] absolute -top-2 right-3">
-                {locationCode}
-              </div>
-              <img
-                src={darkTheme ? YoutubeLogoDark : YoutubeLogoLight}
-                className="w-[89px]"
-                alt="Youtube"
-              />
+        <div className="leftside flex ">
+          {path.pathname === "/playlist" ? (
+            <div className="logo w-9 ">
+              <Link to={"/"}>
+                <ArrowRightIcon
+                  color={
+                    window.scrollY < 22 ? "#fff" : darkTheme ? "#fff" : "#000"
+                  }
+                />
+              </Link>
             </div>
-          </Link>
+          ) : (
+            <div className="logo w-28 ">
+              <Link to="/">
+                <div className="relative">
+                  <div className="text-[.6rem] absolute -top-2 right-3">
+                    {locationCode}
+                  </div>
+                  <img
+                    src={darkTheme ? YoutubeLogoDark : YoutubeLogoLight}
+                    className="w-[89px]"
+                    alt="Youtube"
+                  />
+                </div>
+              </Link>
+            </div>
+          )}
+
+          {path.pathname === "/playlist" ? (
+            window.scrollY > 22 ? (
+              <div className="line-clamp-1">{playlistName} </div>
+            ) : (
+              ""
+            )
+          ) : (
+            ""
+          )}
         </div>
+
         <div className="rightSide flex justify-between items-center gap-6 ">
           <div className="searchBar" onClick={() => setShowSearch(true)}>
-            <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+            <SearchIcon
+              color={window.scrollY < 22 ? "#fff" : darkTheme ? "#fff" : "#000"}
+            />
           </div>
           <div className="account" onClick={() => setShowAccount(true)}>
-            <ProfileIcon color={darkTheme ? "#fff" : "#000"} />
+            {path.pathname === "/playlist" ||
+            path.pathname === "/watch" ||
+            path.pathname === "/results" ? (
+              <div
+                className={`rounded-full px-[5px]   py-[5px]  h-9 cursor-pointer ${
+                  darkTheme ? "active:bg-[#ffffff1a]" : "active:bg-[#f2f2f2]"
+                } `}
+              >
+                <MoreSettingIcon
+                  color={
+                    window.scrollY < 22 ? "#fff" : darkTheme ? "#fff" : "#000"
+                  }
+                />
+              </div>
+            ) : (
+              <ProfileIcon color={darkTheme ? "#fff" : "#000"} />
+            )}
           </div>
         </div>
       </div>
@@ -182,7 +242,7 @@ const MobileHeader = () => {
                   <>
                     <Link to={"/results?search_query=" + suggestion}>
                       <div
-                      onClick={()=>setSearchQuery(suggestion)}
+                        onClick={() => setSearchQuery(suggestion)}
                         className={`px-3 z-30 w-full  flex md:hidden  py-1.5 cursor-pointer justify-between items-center
                  
                   ${

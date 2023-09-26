@@ -36,9 +36,9 @@ const WatchVideoPage = () => {
     const json = await data.json();
     setVideoDetails(json?.items[0]);
     getChannelData(json?.items[0]?.snippet?.channelId);
-    // getComments();
+    getComments(); 
     console.log(json?.items[0]?.snippet?.title);
-    // getRecommendation(json?.items[0]?.snippet?.title);
+    getRecommendation(json?.items[0]?.snippet?.title);
     console.log(json);
   };
 
@@ -84,7 +84,7 @@ const WatchVideoPage = () => {
     <>
       {deviceWidth < 900 ? (
         <div
-          className={`mobile w-full  min-h-screen${
+          className={`mobile w-full  min-h-screen ${
             darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
           }  md:hidden`}
         >

@@ -11,6 +11,7 @@ import SubscriptionsPage from "./components/body/MainContainer/subscriptions/Sub
 import LibraryPage from "./components/body/MainContainer/libraryPage/LibraryPage";
 import HistoryPage from "./components/body/MainContainer/history/HistoryPage";
 import SearchResultPage from "./components/body/MainContainer/searchResultsPage/SearchResultPage";
+import PlaylistPage from "./components/body/MainContainer/playlistPage/PlaylistPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -30,21 +31,25 @@ const appRouter = createBrowserRouter([
         element: <SearchResultPage />,
       },
       {
+        path: "playlist",
+        element: <PlaylistPage />,
+      },
+      {
         path: "shorts",
         element: <ShortsPage />,
       },
       {
-        path:"subscriptions",
-        element:<SubscriptionsPage/>
+        path: "subscriptions",
+        element: <SubscriptionsPage />,
       },
       {
-        path:"library",
-        element:<LibraryPage/>
+        path: "library",
+        element: <LibraryPage />,
       },
       {
-        path:"history",
-        element:<HistoryPage/>
-      }
+        path: "history",
+        element: <HistoryPage />,
+      },
     ],
   },
 ]);

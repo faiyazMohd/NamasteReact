@@ -32,16 +32,17 @@ const SideNavbar = () => {
           {/* </div> */}
         </Link>
 
-        <Link to="/shorts" className="shorts    px-2 pt-4 pb-3    cursor-pointer w-full flex items-center flex-col justify-center">
-          
-            <div className="icon">
-              <ShortsIcon
-                color={darkTheme ? "#fff" : "#000"}
-                filled={path.pathname === "/shorts"}
-              />
-            </div>
-            <div className="home text-xs  mb-1">Shorts</div>
-          
+        <Link
+          to="/shorts"
+          className="shorts    px-2 pt-4 pb-3    cursor-pointer w-full flex items-center flex-col justify-center"
+        >
+          <div className="icon">
+            <ShortsIcon
+              color={darkTheme ? "#fff" : "#000"}
+              filled={path.pathname === "/shorts"}
+            />
+          </div>
+          <div className="home text-xs  mb-1">Shorts</div>
         </Link>
 
         <Link
@@ -59,11 +60,11 @@ const SideNavbar = () => {
       </div>
 
       {/* from large devices */}
-      {path.pathname === "/watch" || path.pathname === "/results" ? (
+      {path.pathname === "/watch" ? (
         ""
       ) : (
         <div
-          className={` hidden md:block  w-[4.5rem] h-full fixed z-20 left-0 bottom-0 top-14  ${
+          className={` hidden ${path.pathname === "/results"? "xl:block" : "md:block"}    w-[4.5rem] h-full fixed z-20 left-0 bottom-0 top-14  ${
             darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
           } `}
         >
