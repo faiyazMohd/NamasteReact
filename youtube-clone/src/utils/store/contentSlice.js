@@ -5,17 +5,20 @@ const constentSlice = createSlice({
     name:"content",
     initialState:{
         playlistName:"",
-        channelName:""
+        channelName:"",
+        uploadsId:"",
+        channelDetails:null
     },
     reducers:{
         modifyPlaylistName:(state,action)=>{
             state.playlistName = action.payload;
         },
-        modifyChannelName:(state,action)=>{
-            state.channelName = action.payload;
-        }
+        modifyChannelDetails:(state,action)=>{
+            state.channelDetails = action.payload;
+        },
+
     }
 })
 
-export const {modifyPlaylistName,modifyChannelName}  = constentSlice.actions;
+export const {modifyPlaylistName,modifyChannelDetails}  = constentSlice.actions;
 export default constentSlice.reducer;

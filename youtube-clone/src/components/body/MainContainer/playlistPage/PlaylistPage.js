@@ -11,6 +11,8 @@ const PlaylistPage = () => {
   const [searchParams] = useSearchParams();
   const playlistId = searchParams.get("list");
   const darkTheme = useSelector((store) => store.theme.darkTheme);
+  const showSidebar = useSelector((store) => store.app.showSidebar);
+
   const [playlistItems, setPlaylistItems] = useState(null);
   const [playlistDetails, setPlaylistDetails] = useState(null);
   const [showPlaylistDesc, setShowPlaylistDesc] = useState(false);
@@ -74,7 +76,9 @@ const PlaylistPage = () => {
                   {playlistDetails?.snippet?.title}
                 </div>
                 <div className="playlistTitle w-full  text-base font-medium mt-3 line-clamp-1">
-                  <Link to="/">{playlistDetails?.snippet?.channelTitle}</Link>
+                  <Link to={"/channel/" + playlistDetails?.snippet?.channelId}>
+                    {playlistDetails?.snippet?.channelTitle}
+                  </Link>
                 </div>
                 <div className="mt-1 w-full flex gap-2">
                   <div className={` font-medium text-[#d5d2d2] text-sm`}>
@@ -148,24 +152,33 @@ const PlaylistPage = () => {
               })}
             </div>
           ) : (
-            Array(10)
-              .fill("")
-              .map((shimmer, index) => {
-                return <ShimmerRecommendation key={index} />;
-              })
+            <div className="w-[95%] m-auto">
+              {Array(10)
+                .fill("")
+                .map((shimmer, index) => {
+                  return <ShimmerRecommendation key={index} />;
+                })}
+            </div>
           )}
         </div>
       </div>
 
       {/* for large devices */}
       <div
-        className={`playlistPageDesktop hidden md:flex w-full min-h-screen pl-16  justify-end  ${
+        className={`playlistPageDesktop border border-yellow-400 hidden md:flex w-full ${
+          showSidebar ? "xl:w-[88%]" : ""
+        } min-h-screen pl-16  justify-end  ${
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
         } `}
       >
         {playlistDetails ? (
           <>
-            <div className="w-[360px]  h-[83vh] text-white rounded-xl fixed lg:top-20 xl:top-24  left-24   overflow-y-auto">
+            <div
+              className={`w-[360px]  h-[83vh]  text-white rounded-xl fixed lg:top-20 xl:top-24   
+            ${
+              showSidebar ? "xl:left-[20%] 2xl:left-[17%]" : "left-24"
+            }  overflow-y-auto`}
+            >
               {/* <div className=" relative w-full h-full text-white "> */}
               <div
                 className={`w-full h-full overflow-hidden sticky top-0 right-0 left-0 bottom-0 `}
@@ -192,7 +205,9 @@ const PlaylistPage = () => {
                   {playlistDetails?.snippet?.title}
                 </div>
                 <div className="playlistTitle w-full  text-base font-medium mt-3 line-clamp-1">
-                  <Link to="/">{playlistDetails?.snippet?.channelTitle}</Link>
+                  <Link to={"/channel/" + playlistDetails?.snippet?.channelId}>
+                    {playlistDetails?.snippet?.channelTitle}
+                  </Link>
                 </div>
                 <div className="mt-1 w-full flex gap-2">
                   <div className={` font-medium text-[#d5d2d2] text-sm`}>
@@ -219,7 +234,11 @@ const PlaylistPage = () => {
             </div>
           </>
         ) : (
-          <div className="w-[360px]  h-[83vh] text-white rounded-xl fixed lg:top-20 xl:top-24  left-24   overflow-y-auto">
+          <div
+            className={`w-[360px]  h-[83vh] text-white rounded-xl fixed lg:top-20 xl:top-24 ${
+              showSidebar ? "xl:left-[20%] 2xl:left-[17%]" : "left-24"
+            }   overflow-y-auto`}
+          >
             <div className="w-[95%]  m-auto absolute top-0 left-1/2 -translate-x-1/2">
               <div
                 className={`w-full h-[175.5px] ${
@@ -234,7 +253,7 @@ const PlaylistPage = () => {
         <div className="w-[calc(100%-455px)] min-h-screen mt-16 lg:mt-20 xl:mt-24 mr-8  ">
           {playlistItems ? (
             <div className={`playlistItemsContainer  w-full`}>
-              {playlistItems.items?.map((item,index) => {
+              {playlistItems.items?.map((item, index) => {
                 return (
                   <PlaylistItemCard
                     key={item.contentDetails?.videoId}

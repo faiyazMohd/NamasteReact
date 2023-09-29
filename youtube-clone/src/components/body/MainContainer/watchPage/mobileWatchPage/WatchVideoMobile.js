@@ -35,8 +35,8 @@ const WatchVideoMobile = ({
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const [showAllComments, setShowAllComments] = useState(false);
-  const [showDescripton, setShowDescripton] = useState(false)
-  console.log(recommendations);
+  const [showDescripton, setShowDescripton] = useState(false);
+  console.log(channelDetails);
   const snippet = comments
     ? comments[0]?.snippet?.topLevelComment?.snippet
     : null;
@@ -65,8 +65,9 @@ const WatchVideoMobile = ({
         </div>
         {/* video title */}
         <div
-        onClick={()=>setShowDescripton(true)}
-        className="w-full flex justify-center ">
+          onClick={() => setShowDescripton(true)}
+          className="w-full flex justify-center "
+        >
           <div className="w-[92%] ">
             <div className="w-full ">
               {/* video Title */}
@@ -104,8 +105,7 @@ const WatchVideoMobile = ({
         </div>
 
         {/* channel info */}
-        <div 
-        className="w-full flex justify-center mt-3">
+        <div className="w-full flex justify-center mt-3">
           <div className="w-[92%] ">
             {/* channel info */}
             {channelDetails ? (
@@ -113,7 +113,7 @@ const WatchVideoMobile = ({
                 <div className="left flex w-full  justify-between items-center gap-2">
                   <div className="channelInfo w-[75%] flex items-center  gap-2">
                     <div className="channelImg  ">
-                      <Link to={"/"}>
+                      <Link to={"/channel/" + channelDetails?.id}>
                         <img
                           className="w-9 h-9 rounded-full "
                           src={channelDetails?.snippet?.thumbnails?.medium?.url}
@@ -123,7 +123,9 @@ const WatchVideoMobile = ({
                       </Link>
                     </div>
                     <div className="channelName line-clamp-1 max-w-[68%] text-sm font-medium  ">
-                      {channelDetails?.snippet?.title}
+                      <Link to={"/channel/" + channelDetails?.id}>
+                        {channelDetails?.snippet?.title}
+                      </Link>
                     </div>
                     <div
                       className={`subcribers viewCount  ${
@@ -360,7 +362,12 @@ const WatchVideoMobile = ({
         videoDetails={videoDetails}
         comments={comments}
       />
-      <DescriptionMobile showDescripton={showDescripton}  setShowDescripton={setShowDescripton} videoDetails={videoDetails} channelDetails={channelDetails} />
+      <DescriptionMobile
+        showDescripton={showDescripton}
+        setShowDescripton={setShowDescripton}
+        videoDetails={videoDetails}
+        channelDetails={channelDetails}
+      />
     </>
   );
 };

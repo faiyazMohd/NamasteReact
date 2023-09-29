@@ -15,7 +15,7 @@ import ShoppingIcon from "../../../assets/icons/svgs/SvgComponents/Explore/Shopp
 import HomeIcon from "../../../assets/icons/svgs/SvgComponents/HomeIcon";
 import ShortsIcon from "../../../assets/icons/svgs/SvgComponents/ShortsIcon";
 import { useDispatch } from "react-redux";
-import { closeSidebar, openSidebar } from "../../../utils/store/appSlice";
+import { closeSidebar } from "../../../utils/store/appSlice";
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import HamBurgerIcon from "../../../assets/icons/svgs/SvgComponents/HamBurgerIcon";
 import SubcriptionsIcon from "../../../assets/icons/svgs/SvgComponents/SubcriptionsIcon";

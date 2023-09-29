@@ -46,7 +46,7 @@ const PlaylistCard = ({ item }) => {
       <div className={`w-full md:hidden  mt-3    cursor-pointer `}>
         <div className={`thumbnail w-full h-[56vw]   `}>
           <div className="relative">
-            <Link to={"/playlist?list=" +item?.id?.playlistId}>
+            <Link to={"/playlist?list=" + item?.id?.playlistId}>
               <img
                 className="w-full h-fit   object-cover"
                 src={item?.snippet?.thumbnails?.medium?.url}
@@ -68,7 +68,7 @@ const PlaylistCard = ({ item }) => {
 
         <div className="infoContainer my-2 mt-3 flex w-full">
           <div className="w-[90%] ">
-            <Link to={"/playlist?list=" +item?.id?.playlistId}>
+            <Link to={"/playlist?list=" + item?.id?.playlistId}>
               <div
                 className={`title ml-3 text-base leading-5  line-clamp-2 md:text-base font-medium 
            ${darkTheme ? "text-[#f1f1f1]" : "text-[#4e4e4e]"}   `}
@@ -78,7 +78,7 @@ const PlaylistCard = ({ item }) => {
             </Link>
             {/* for small divice */}
             <div className="line-clamp-2  pl-3 md:hidden w-full mt-1">
-              <Link to={"watch?v=" + item?.id?.playlistId}>
+              <Link to={"/channel/" + item?.snippet?.channelId}>
                 <div
                   className={`leading-4  line-clamp-2 ${
                     darkTheme ? "text-[#969696]" : "text-[#737373]"
@@ -171,7 +171,9 @@ const PlaylistCard = ({ item }) => {
                 darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
               }   text-xs flex gap-3 items-center`}
             >
-              <Link to={"/"}>{item?.snippet?.channelTitle}</Link>
+              <Link to={"/channel/" + item?.snippet?.channelId}>
+                {item?.snippet?.channelTitle}
+              </Link>
             </div>
             <div
               className={`channelName   line-clamp-1  font-medium  mt-3  text-xs `}
@@ -185,9 +187,7 @@ const PlaylistCard = ({ item }) => {
             <div
               className={`channelName   line-clamp-1  font-medium  mt-2  text-xs `}
             >
-              <Link
-                to={"/playlist?list=" +item?.id?.playlistId}
-              >
+              <Link to={"/playlist?list=" + item?.id?.playlistId}>
                 {playlistItems?.items[1] ? (
                   <div className="w-full">
                     {playlistItems?.items[1]?.snippet?.title}
@@ -198,7 +198,7 @@ const PlaylistCard = ({ item }) => {
               </Link>
             </div>
             <div className="w-full mt-3">
-              <Link to={"/playlist?list=" +item?.id?.playlistId}>
+              <Link to={"/playlist?list=" + item?.id?.playlistId}>
                 <div
                   className={`title uppercase  text-xs  
                   ${

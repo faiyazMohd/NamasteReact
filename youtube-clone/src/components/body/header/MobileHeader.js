@@ -13,6 +13,7 @@ import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
 import { cacheSearches } from "../../../utils/store/searchSlice";
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import MoreSettingIcon from "../../../assets/icons/svgs/SvgComponents/MoreSettingIcon";
+import YouTubeLogo from "../../../assets/icons/svgs/SvgComponents/YouTubeLogo";
 const MobileHeader = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
@@ -25,7 +26,10 @@ const MobileHeader = () => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
   const playlistName = useSelector((store) => store.content.playlistName);
+  const channelDetails = useSelector((store) => store.content.channelDetails);
   const path = useLocation();
+  const regex = /^\/channel\//;
+
   const dispatch = useDispatch();
   // console.log("isScrollUp in header is :" + isScrollUp);
 
@@ -61,7 +65,6 @@ const MobileHeader = () => {
       clearTimeout(timer);
     };
   }, [searchQuery]);
-  console.log(window.screenY);
 
   return (
     <>
@@ -89,9 +92,11 @@ const MobileHeader = () => {
             ? window.scrollY < 22
               ? "bg-transparent shadow-none"
               : darkTheme
-              ? "bg-[#0f0f0f ] "
+              ? "bg-[#0f0f0f]"
               : "bg-white"
-            : ""
+            : darkTheme
+            ? "bg-[#0f0f0f]"
+            : "bg-white"
         } `}
       >
         <div className="leftside flex ">
@@ -104,6 +109,14 @@ const MobileHeader = () => {
                   }
                 />
               </Link>
+            </div>
+          ) : regex.test(path.pathname) ? (
+            <div className="w-10 items-center">
+              <div className="logo w-7">
+                <Link to="/">
+                  <YouTubeLogo color={"red"} />
+                </Link>
+              </div>
             </div>
           ) : (
             <div className="logo w-28 ">
@@ -131,18 +144,36 @@ const MobileHeader = () => {
           ) : (
             ""
           )}
+          {regex.test(path.pathname) ? (
+            <div className="line-clamp-1 font-medium">
+              {channelDetails?.snippet?.title}{" "}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="rightSide flex justify-between items-center gap-6 ">
           <div className="searchBar" onClick={() => setShowSearch(true)}>
             <SearchIcon
-              color={window.scrollY < 22 ? "#fff" : darkTheme ? "#fff" : "#000"}
+              color={
+                path.pathname === "/playlist"
+                  ? window.scrollY < 22
+                    ? "#fff"
+                    : darkTheme
+                    ? "#fff"
+                    : "#000"
+                  : darkTheme
+                  ? "#fff"
+                  : "#000"
+              }
             />
           </div>
           <div className="account" onClick={() => setShowAccount(true)}>
             {path.pathname === "/playlist" ||
             path.pathname === "/watch" ||
-            path.pathname === "/results" ? (
+            path.pathname === "/results" ||
+            regex.test(path.pathname) ? (
               <div
                 className={`rounded-full px-[5px]   py-[5px]  h-9 cursor-pointer ${
                   darkTheme ? "active:bg-[#ffffff1a]" : "active:bg-[#f2f2f2]"
@@ -150,7 +181,15 @@ const MobileHeader = () => {
               >
                 <MoreSettingIcon
                   color={
-                    window.scrollY < 22 ? "#fff" : darkTheme ? "#fff" : "#000"
+                    path.pathname === "/playlist"
+                      ? window.scrollY < 22
+                        ? "#fff"
+                        : darkTheme
+                        ? "#fff"
+                        : "#000"
+                      : darkTheme
+                      ? "#fff"
+                      : "#000"
                   }
                 />
               </div>
@@ -197,14 +236,25 @@ const MobileHeader = () => {
                     : "bg-[#0000000d] text-[#0f0f0f] placeholder-[#606060]"
                 }   focus:outline-none  h-full w-full px-4 py-4 rounded-l-full`}
               />
-              <Link
-                to={"/results?search_query=" + searchQuery}
-                className={`${
-                  darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
-                }  h-full px-2 flex items-center rounded-r-full`}
-              >
-                <SearchIcon color={darkTheme ? "#fff" : "#000"} />
-              </Link>
+              {searchQuery.length === 0 ? (
+                <div
+                  className={`${
+                    darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                  }  h-full px-2 flex items-center rounded-r-full`}
+                >
+                  <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+                </div>
+              ) : (
+                <Link
+                  to={"/results?search_query=" + searchQuery}
+                  className={`${
+                    darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                  }  h-full px-2 flex items-center rounded-r-full`}
+                >
+                  <SearchIcon color={darkTheme ? "#fff" : "#000"} />
+                </Link>
+              )}
+
               {searchQuery.length !== 0 ? (
                 <div
                   onClick={() => setSearchQuery("")}

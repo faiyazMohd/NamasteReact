@@ -41,7 +41,7 @@ const Description = ({ videoDetails, channelDetails }) => {
                   darkTheme ? "border-[#ffffff33]" : "border-[#0000001a]"
                 } `}
               >
-                <Link to={"/"}>
+                <Link to={"/channel/" + channelDetails?.id}>
                   <div className="channelName my-4 h-[72px] flex w-full items-center ">
                     {/* <div className="flex items-center gap-3"> */}
                     <div className="channelImg mr-3">
@@ -73,7 +73,7 @@ const Description = ({ videoDetails, channelDetails }) => {
 
                 <div className="channelAbout w-full  h-9 flex justify-between gap-3">
                   <div className="videos w-[49%]">
-                    <Link to={"/"}>
+                    <Link to={"/channel/" + channelDetails?.id}>
                       <div
                         className={` w-full h-9 flex justify-center items-center pl-[8px] pr-[12px] py-[5px] rounded-full cursor-pointer
                           ${
@@ -94,7 +94,7 @@ const Description = ({ videoDetails, channelDetails }) => {
                     </Link>
                   </div>
                   <div className="about w-[49%]">
-                    <Link to={"/"}>
+                    <Link to={"/channel/" + channelDetails?.id+"/about"}>
                       <div
                         className={` w-full h-9 flex justify-center items-center pl-[8px] pr-[12px] py-[5px] rounded-full cursor-pointer
                           ${

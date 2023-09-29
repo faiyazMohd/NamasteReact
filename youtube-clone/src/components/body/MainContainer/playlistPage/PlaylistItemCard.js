@@ -29,7 +29,6 @@ const PlaylistItemCard = ({ item, index }) => {
     console.log(json);
   };
   useEffect(() => {
-    console.log("inside useEffect");
     getVideoData();
   }, []);
 
@@ -78,7 +77,7 @@ const PlaylistItemCard = ({ item, index }) => {
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                   }   text-xs `}
                 >
-                  <Link to={"/"}>{item?.snippet?.channelTitle}</Link>
+                  <Link to={"/channel/" + item?.snippet?.channelId}>{item?.snippet?.channelTitle}</Link>
                 </div>
               </div>
 
@@ -95,12 +94,12 @@ const PlaylistItemCard = ({ item, index }) => {
               </div>
             </div>
           </div>
+          
           {/* for large devices */}
-
           <div
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
-            className={`w-full h-[106px] flex mb-3  ${
+            className={`hidden md:flex w-full  h-[106px]  mb-3  ${
               darkTheme
                 ? " hover:bg-[#272727]  active:bg-[#3a3a3a]"
                 : " hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
@@ -153,7 +152,7 @@ const PlaylistItemCard = ({ item, index }) => {
                         darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                       }   text-xs `}
                     >
-                      <Link to={"/"}>{item?.snippet?.channelTitle}</Link>
+                      <Link to={"/channel/" + item?.snippet?.channelId}>{item?.snippet?.channelTitle}</Link>
                     </div>
                     <div
                       className={`mx-1 ${

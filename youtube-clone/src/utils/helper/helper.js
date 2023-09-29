@@ -23,13 +23,11 @@ const removeZeroForSubscribers = (num) => {
     let noZeroAfterPoint = Math.trunc(numString);
     // console.log("no decimal is "+noZeroAfterPoint);
     return noZeroAfterPoint;
-  }
-  else if(numString[dotIndex + 2] === "0"){
+  } else if (numString[dotIndex + 2] === "0") {
     let noZeroAfterPoint = Math.trunc(numString);
     // console.log("no decimal is "+noZeroAfterPoint);
     return noZeroAfterPoint;
-  }
-  else {
+  } else {
     return num;
   }
 };
@@ -148,7 +146,7 @@ export const preetifySubcribers = (viewCount) => {
   }
 
   return preetifiedViews;
-}
+};
 // preetifyViews
 // console.log(preetifyViews("4085"));
 // console.log(preetifyViews("4205"));
@@ -200,6 +198,7 @@ export const daysAgo = (dateAndTime) => {
   const days = Math.floor(hours / 24);
   const months = Math.floor(days / 30);
   const year = Math.floor(months / 12);
+
   if (seconds > 59) {
     if (minutes > 59) {
       if (hours > 24) {
@@ -220,6 +219,12 @@ export const daysAgo = (dateAndTime) => {
         } else {
           if (days === 1) {
             return days + " day ago";
+          } else if (days > 13 && days < 21) {
+            return "2 weeks ago";
+          } else if (days > 20 && days < 27) {
+            return "3 weeks ago";
+          } else if (days > 26 && days < 32) {
+            return "4 weeks ago";
           } else {
             return days + " days ago";
           }
@@ -274,6 +279,12 @@ export const daysAgoForComment = (dateAndTime) => {
         } else {
           if (days === 1) {
             return days + " day ago";
+          } else if (days > 13 && days < 21) {
+            return "2 weeks ago";
+          } else if (days > 20 && days < 27) {
+            return "3 weeks ago";
+          } else if (days > 26 && days < 32) {
+            return "4 weeks ago";
           } else {
             return days + " days ago";
           }
@@ -293,14 +304,21 @@ export const daysAgoForComment = (dateAndTime) => {
       }
     }
   } else {
-    return seconds+" seconds ago";
+    return seconds + " seconds ago";
   }
 };
 
-// console.log(daysAgo("2023-08-31T006:30:11Z"))
-// console.log(daysAgo("2023-09-29T12:30:25Z"))
+// console.log(daysAgo("2021-05-01T09:52:37Z"));
+// console.log(daysAgo("2023-08-01T09:52:37Z"));
+// console.log(daysAgo("2023-09-01T09:52:37Z"));
+// console.log(daysAgo("2023-09-03T09:52:37Z"));
+// console.log(daysAgo("2023-09-07T09:52:37Z"));
+// console.log(daysAgo("2023-09-12T12:30:25Z"));
+// console.log(daysAgo("2023-09-15T12:30:25Z"));
+// console.log(daysAgo("2023-09-27T12:30:25Z"));
+// console.log(daysAgo("2023-09-28T12:30:25Z"));
 // console.log(daysAgo("2012-01-29T12:30:25Z"));
- 
+
 export const preetifyDuration = (durationISOString) => {
   let result = durationISOString.slice(2);
   let H_Index = result.match(/H/);
@@ -336,7 +354,7 @@ export const preetifyDuration = (durationISOString) => {
     }`;
   } else if (durationISOString.match(/M/)) {
     // return mins + ":" + secs;
-    return `${mins}:${secs?  secs > 9 ? secs : "0" + secs : "00"}`;
+    return `${mins}:${secs ? (secs > 9 ? secs : "0" + secs) : "00"}`;
   } else {
     if (secs > 9) {
       return "0:" + secs;

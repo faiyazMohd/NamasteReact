@@ -17,6 +17,11 @@ const WatchVideoPage = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   // console.log(videoId);
+useEffect(() => {
+  window.scrollTo(0,0)
+}, [])
+
+
   useEffect(() => {
     getVideoData();
   }, [videoId]);

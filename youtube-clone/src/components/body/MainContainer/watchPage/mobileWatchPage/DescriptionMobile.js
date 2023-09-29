@@ -58,7 +58,7 @@ const DescriptionMobile = ({
         <div className="w-full ">
           <div className="channelInfo  flex items-center h-10   gap-2 mt-3">
             <div className="channelImg  ">
-              <Link to={"/"}>
+              <Link to={"/channel/" + channelDetails?.id}>
                 <img
                   className="w-6  rounded-full "
                   src={channelDetails?.snippet?.thumbnails?.medium?.url}
@@ -68,7 +68,9 @@ const DescriptionMobile = ({
               </Link>
             </div>
             <div className="channelName line-clamp-1 text-sm font-medium  ">
-              {channelDetails?.snippet?.title}
+              <Link to={"/channel/" + channelDetails?.id}>
+                {channelDetails?.snippet?.title}
+              </Link>
             </div>
           </div>
           <div
@@ -158,7 +160,7 @@ const DescriptionMobile = ({
               darkTheme ? "border-[#ffffff33]" : "border-[#0000001a]"
             } `}
           >
-            <Link to={"/"}>
+            <Link to={"/channel/" + channelDetails?.id}>
               <div className="channelName my-4 h-[72px] flex w-full items-center ">
                 {/* <div className="flex items-center gap-3"> */}
                 <div className="channelImg mr-3">
@@ -190,7 +192,7 @@ const DescriptionMobile = ({
 
             <div className="channelAbout w-full  h-9 flex justify-between gap-3">
               <div className="videos w-[49%]">
-                <Link to={"/"}>
+                <Link to={"/channel/" + channelDetails?.id}>
                   <div
                     className={` w-full h-9 flex justify-center items-center pl-[8px] pr-[12px] py-[5px] rounded-full cursor-pointer
                           ${
@@ -211,7 +213,7 @@ const DescriptionMobile = ({
                 </Link>
               </div>
               <div className="about w-[49%]">
-                <Link to={"/"}>
+                <Link to={"/channel/" + channelDetails?.id+"/about"}>
                   <div
                     className={` w-full h-9 flex justify-center items-center pl-[8px] pr-[12px] py-[5px] rounded-full cursor-pointer
                           ${

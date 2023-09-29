@@ -74,7 +74,7 @@ const WatchVideoDesktop = ({
               <div className="left flex w-1/2  gap-5">
                 <div className="flex items-center gap-3">
                   <div className="channelImg ">
-                    <Link to={"/"}>
+                    <Link to={"/channel/" + channelDetails?.id}>
                       <img
                         className="w-10  rounded-full "
                         src={channelDetails?.snippet?.thumbnails?.medium?.url}
@@ -85,7 +85,9 @@ const WatchVideoDesktop = ({
                   </div>
                   <div className="channelNameContainer ">
                     <div className="channelName line-clamp-1 text-base font-medium">
-                      {channelDetails?.snippet?.title}
+                      <Link to={"/channel/" + channelDetails?.id}>
+                        {channelDetails?.snippet?.title}
+                      </Link>
                     </div>
                     <div className="subcribersCount">
                       <div
@@ -197,7 +199,9 @@ const WatchVideoDesktop = ({
               topComments={topComments}
               setTopComments={setTopComments}
             />
-          ):""}
+          ) : (
+            ""
+          )}
         </div>
       </div>
 
@@ -212,7 +216,7 @@ const WatchVideoDesktop = ({
           >
             Show chat replay
           </div>
-          
+
           <div className="recommendationVideosContainer w-full mt-6">
             {recommendations ? (
               <>
@@ -222,10 +226,10 @@ const WatchVideoDesktop = ({
                   } else {
                     return (
                       <>
-                       <RecommendationVideoCard
-                         key={item?.id?.videoId}
-                         item={item}
-                       />
+                        <RecommendationVideoCard
+                          key={item?.id?.videoId}
+                          item={item}
+                        />
                       </>
                     );
                   }

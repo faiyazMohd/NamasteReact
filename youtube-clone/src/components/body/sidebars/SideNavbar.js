@@ -12,6 +12,7 @@ const SideNavbar = () => {
   return (
     <>
       {/* small to medium devices */}
+      {path.pathname==="/watch"? "" :
       <div
         className={` md:hidden border border-[#0000001a]  w-full h-12 fixed z-20 bottom-0 right-0  ${
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
@@ -57,7 +58,7 @@ const SideNavbar = () => {
           </div>
           <div className="home text-xs mb-1">Library</div>
         </Link>
-      </div>
+      </div>}
 
       {/* from large devices */}
       {path.pathname === "/watch" ? (

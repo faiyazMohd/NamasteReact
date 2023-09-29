@@ -30,7 +30,7 @@ const ChannelCard = ({ item }) => {
       >
         <div className="w-full h-[95px] flex items-center ">
           <div className="channelImg w-40 flex items-center justify-center   h-full">
-            <Link to={"watch?v=" + item?.id?.videoId}>
+            <Link to={"/channel/" + item?.snippet?.channelId}>
               <img
                 className="w-[67px] h-[67px] rounded-full"
                 src={channelDetails?.snippet?.thumbnails?.default?.url}
@@ -42,7 +42,9 @@ const ChannelCard = ({ item }) => {
           <div className="channelInfo  h-full  w-[calc(100%-160px)]">
             <div className="channelNameContainer  pb-2">
               <div className="channelName line-clamp-1 text-sm leading- font-medium">
-                {channelDetails?.snippet?.title}
+                <Link to={"/channel/" + item?.snippet?.channelId}>
+                  {channelDetails?.snippet?.title}
+                </Link>
               </div>
               <div
                 className={`subcribers viewCount  ${
@@ -77,7 +79,7 @@ const ChannelCard = ({ item }) => {
         </div>
       </div>
 
-{/* from medium devices */}
+      {/* from medium devices */}
       <div
         className={` md:w-full  lg:w-[1024px] xl:w-[1096px] my-2 h-[180px] border-y-[1px]    ${
           darkTheme ? "border-[#ffffff33]" : "border-[#0000001a]"
@@ -85,7 +87,7 @@ const ChannelCard = ({ item }) => {
       >
         <div className="w-full h-[136px] flex items-center justify-between ">
           <div className="channelImg md:w-[360px] xl:w-[384px] flex items-center justify-center   h-full">
-            <Link to={"watch?v=" + item?.id?.videoId}>
+            <Link to={"/channel/" + item?.snippet?.channelId}>
               <img
                 className="w-[136px] h-[136px] rounded-full"
                 src={channelDetails?.snippet?.thumbnails?.default?.url}
@@ -97,7 +99,9 @@ const ChannelCard = ({ item }) => {
           <div className="channelInfo  h-full  md:w-[calc(100%-370px)]  xl:w-[720px] flex ">
             <div className="channelNameContainer h-full w-[625.44px] ">
               <div className="channelName line-clamp-1 text-base  font-medium">
-                {channelDetails?.snippet?.title}
+                <Link to={"/channel/" + item?.snippet?.channelId}>
+                  {channelDetails?.snippet?.title}
+                </Link>
               </div>
               <div className="viewsContainer mt-2 flex">
                 <div
@@ -105,7 +109,7 @@ const ChannelCard = ({ item }) => {
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                   } font-medium text-xs `}
                 >
-                  <Link to={"/" + item?.id?.videoId}>
+                  <Link to={"/channel/" + item?.snippet?.channelId}>
                     {channelDetails?.snippet?.customUrl}
                   </Link>
                 </div>
@@ -121,10 +125,12 @@ const ChannelCard = ({ item }) => {
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                   } font-medium text-xs`}
                 >
-                  {preetifySubcribers(
-                    channelDetails?.statistics?.subscriberCount
-                  )}{" "}
-                  subscribers
+                  <Link to={"/channel/" + item?.snippet?.channelId}>
+                    {preetifySubcribers(
+                      channelDetails?.statistics?.subscriberCount
+                    )}{" "}
+                    subscribers
+                  </Link>
                 </div>
               </div>
               <div
@@ -132,7 +138,7 @@ const ChannelCard = ({ item }) => {
                   darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                 }   text-xs `}
               >
-                <Link to={"watch?v=" + item?.id?.videoId}>
+                <Link to={"/channel/" + item?.snippet?.channelId}>
                   {item?.snippet?.description}
                 </Link>
               </div>

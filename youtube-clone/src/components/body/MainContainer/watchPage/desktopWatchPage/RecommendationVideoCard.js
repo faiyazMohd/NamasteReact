@@ -90,12 +90,11 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
 
           <div className="infoContainer my-2 mt-3 flex">
             <div className="channelImg pt-1 flex justify-end items-start md:block w-[12%]  md:w-[10%]">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/channel/" + item?.snippet?.channelId}>
                 <img
                   className="w-10 rounded-full"
                   src={channelImgUrl}
                   alt="channelName"
-                  
                 />
               </Link>
             </div>
@@ -116,7 +115,13 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                       darkTheme ? "text-[#969696]" : "text-[#737373]"
                     }  text-[.8rem]`}
                   >
-                    {item?.snippet?.channelTitle} •{" "}
+                    <Link
+                      className="mr-1"
+                      to={"/channel/" + item?.snippet?.channelId}
+                    >
+                      {item?.snippet?.channelTitle}
+                    </Link>
+                    •{" "}
                     {preetifyViews(videoDetails?.statistics?.viewCount) +
                       " views"}{" "}
                     • {daysAgo(item?.snippet?.publishedAt)}
@@ -163,7 +168,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-full h-fit  sm:rounded-xl object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
-                  
                 />
               </Link>
               <Link to={"watch?v=" + item?.id?.videoId}>
@@ -178,12 +182,11 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
 
           <div className="infoContainer my-2 mt-3 flex">
             <div className="channelImg pt-1 flex justify-end items-start md:block w-[12%]  md:w-[10%]">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/channel/" + item?.snippet?.channelId}>
                 <img
                   className="w-10 rounded-full"
                   src={channelImgUrl}
                   alt="channelName"
-                  
                 />
               </Link>
             </div>
@@ -204,7 +207,13 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                       darkTheme ? "text-[#969696]" : "text-[#737373]"
                     }  text-[.8rem]`}
                   >
-                    {item?.snippet?.channelTitle} •{" "}
+                    <Link
+                      className="mr-1"
+                      to={"/channel/" + item?.snippet?.channelId}
+                    >
+                      {item?.snippet?.channelTitle}
+                    </Link>
+                    •{" "}
                     {preetifyViews(videoDetails?.statistics?.viewCount) +
                       " views"}{" "}
                     • {daysAgo(item?.snippet?.publishedAt)}
@@ -281,7 +290,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                       className="w-full h-full rounded-lg object-cover"
                       src={item?.snippet?.thumbnails?.medium?.url}
                       alt="thumbnail"
-                      
                     />
                   </Link>
                   {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
@@ -335,7 +343,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 </div>
               </div>
 
-              {/* from medium devices */}
               <div className="w-full">
                 <div className="viewsContainer  flex">
                   <div
@@ -371,15 +378,14 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                 }   text-xs flex gap-3 items-center`}
               >
-                <Link to={"watch?v=" + item?.id?.videoId}>
+                <Link to={"/channel/" + item?.snippet?.channelId}>
                   <img
                     className="w-6 h-6  rounded-full object-cover"
                     src={channelImgUrl}
                     alt="channelImg"
-                    
                   />
                 </Link>
-                <Link to={"/watch?v=" + item?.id?.videoId}>
+                <Link to={"/channel/" + item?.snippet?.channelId}>
                   {/* {item?.snippet?.channelTitle} */}
                   {videoDetails?.snippet?.channelTitle}
                 </Link>
@@ -415,28 +421,32 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   ""
                 )}
                 {videoDetails?.contentDetails?.definition ? (
-                  <div
-                    className={` ${
-                      darkTheme
-                        ? "text-[#a4a3a3] bg-[#272727] hover:bg-[#3a3a3a]  active:bg-[#575656]"
-                        : "text-[#737373] bg-[#0000000d] hover:bg-[#e9e7e7]  active:bg-[#e5e3e3]"
-                    } cursor-pointer rounded-sm  p-1 font-medium uppercase text-xs h-6 w-7 flex justify-center items-center`}
-                  >
-                    {videoDetails?.contentDetails?.definition}
-                  </div>
+                  <Link to={"/watch?v=" + item?.id?.videoId}>
+                    <div
+                      className={` ${
+                        darkTheme
+                          ? "text-[#a4a3a3] bg-[#272727] hover:bg-[#3a3a3a]  active:bg-[#575656]"
+                          : "text-[#737373] bg-[#0000000d] hover:bg-[#e9e7e7]  active:bg-[#e5e3e3]"
+                      } cursor-pointer rounded-sm  p-1 font-medium uppercase text-xs h-6 w-7 flex justify-center items-center`}
+                    >
+                      {videoDetails?.contentDetails?.definition}
+                    </div>
+                  </Link>
                 ) : (
                   ""
                 )}
                 {videoDetails?.contentDetails?.dimension ? (
-                  <div
-                    className={` ${
-                      darkTheme
-                        ? "text-[#a4a3a3] bg-[#272727] hover:bg-[#3a3a3a]  active:bg-[#575656]"
-                        : "text-[#737373] bg-[#0000000d] hover:bg-[#e9e7e7]  active:bg-[#e5e3e3]"
-                    } cursor-pointer rounded-sm font-medium  p-1 uppercase text-xs h-6 w-7 flex justify-center items-center`}
-                  >
-                    {videoDetails?.contentDetails?.dimension}
-                  </div>
+                  <Link to={"/watch?v=" + item?.id?.videoId}>
+                    <div
+                      className={` ${
+                        darkTheme
+                          ? "text-[#a4a3a3] bg-[#272727] hover:bg-[#3a3a3a]  active:bg-[#575656]"
+                          : "text-[#737373] bg-[#0000000d] hover:bg-[#e9e7e7]  active:bg-[#e5e3e3]"
+                      } cursor-pointer rounded-sm font-medium  p-1 uppercase text-xs h-6 w-7 flex justify-center items-center`}
+                    >
+                      {videoDetails?.contentDetails?.dimension}
+                    </div>
+                  </Link>
                 ) : (
                   ""
                 )}
@@ -457,7 +467,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   className="w-full rounded-lg object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
-                  
                 />
               </Link>
               <Link to={"/watch?v=" + item?.id?.videoId}>
@@ -488,7 +497,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                 }   text-xs `}
               >
-                <Link to={"/watch?v=" + item?.id?.videoId}>
+                <Link to={"/channel/" + item?.snippet?.channelId}>
                   {item?.snippet?.channelTitle}
                 </Link>
               </div>
@@ -523,7 +532,6 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </div>
             </div>
 
-            {/* from medium devices */}
             <div className="w-6 flex justify-center ">
               {isHover && (
                 <div

@@ -12,6 +12,10 @@ import LibraryPage from "./components/body/MainContainer/libraryPage/LibraryPage
 import HistoryPage from "./components/body/MainContainer/history/HistoryPage";
 import SearchResultPage from "./components/body/MainContainer/searchResultsPage/SearchResultPage";
 import PlaylistPage from "./components/body/MainContainer/playlistPage/PlaylistPage";
+import ChannelPage from "./components/body/MainContainer/channelPage/ChannelPage";
+import AboutSection from "./components/body/MainContainer/channelPage/AboutSection";
+import PlaylistSection from "./components/body/MainContainer/channelPage/PlaylistSection";
+import HomeSection from "./components/body/MainContainer/channelPage/HomeSection";
 
 const appRouter = createBrowserRouter([
   {
@@ -33,6 +37,24 @@ const appRouter = createBrowserRouter([
       {
         path: "playlist",
         element: <PlaylistPage />,
+      },
+      {
+        path: "channel/:channelId",
+        element: <ChannelPage />,
+        children: [
+          {
+            path: "",
+            element: <HomeSection/>,
+          },
+          {
+            path: "playlist",
+            element: <PlaylistSection />,
+          },
+          {
+            path: "about",
+            element: <AboutSection />,
+          },
+        ],
       },
       {
         path: "shorts",
