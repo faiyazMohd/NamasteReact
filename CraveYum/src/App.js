@@ -13,15 +13,19 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import ShimmerMenu from "./components/ShimmerMenu";
 import UserContext from "./utils/contexts/UserContext";
 import UserProfileState from "./utils/contexts/userProfile/UserProfileState";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./utils/store/store";
 import BottomNavbar from "./components/BottomNavbar";
+import AddressSidebar from "./components/AddressSidebar";
+import SignInSidebar from "./components/SignInSidebar";
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "Faiyaz Mohd",
     email: "faiayz.b.mohd@gmail.com",
   });
+
+
   return (
     <Provider store={store}>
       <UserContext.Provider
@@ -31,10 +35,12 @@ const AppLayout = () => {
         }}
       >
         <Header />
+        <AddressSidebar />
+        <SignInSidebar/>
         <UserProfileState>
           <Outlet />
           {/* <Footer /> */}
-          <BottomNavbar/>
+          <BottomNavbar />
         </UserProfileState>
       </UserContext.Provider>
     </Provider>
@@ -54,7 +60,6 @@ const appRouter = createBrowserRouter([
         path: "/about",
         element: (
           <Suspense fallback={<ShimmerMenu />}>
-            {" "}
             <About />
           </Suspense>
         ),

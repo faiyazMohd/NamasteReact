@@ -10,41 +10,80 @@ import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import UserProfile from "../utils/contexts/userProfile/UserProfile";
 import UserContext from "../utils/contexts/UserContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useOnline from "../utils/hooks/useOnline";
 import LeftArrow from "../assets/icons/IconsComponents/LeftArrow";
+import DownArrow from "../assets/icons/svgs/DownArrowOrange.svg";
+import { openAddressSidebar, openSignInSidebar } from "../utils/store/appSlice";
+import locationIcon from "../assets/icons/svgs/locationIcon.svg";
+
 const Header = () => {
   const [signInColor, setSignInColor] = useState("#000000");
   const [aboutColor, setAboutColor] = useState("#000000");
   const [offerColor, setofferColor] = useState("#000000");
   const [cartColor, setCartColor] = useState("#000000");
+  // const [openAddressSidebar, setOpenAddressSidebar] = useState(false)
   const isOnline = useOnline();
   const { user } = useContext(UserContext);
   const cartItems = useSelector((store) => store.cart.cartItems);
+  const address = useSelector((store) => store.app.address);
+  const placeId = useSelector((store) => store.app.place_id);
+
+  const addressSidebar = useSelector((store) => store.app.addressSidebar);
+  const dispatch = useDispatch();
   const path = useLocation();
   return (
-    <div className="header">
-      <div className="logo">
-       
-        <Link to="/" className="displayNoneAtPhone">
-          <img className="" src={Logo} data-testid="logo" alt="Logo" />
-        </Link>
+    <div className={`header ${!placeId & path.pathname === "/" ? "displayNoneAtPhone":""}`}>
+      <div
+        className="leftHeader"
+      >
+        <div className="logo">
+          <Link to="/" className="displayNoneAtPhone">
+            <img className="" src={Logo} data-testid="logo" alt="Logo" />
+          </Link>
 
-        <Link to="/" className="displayNoneAtLarge" >
-          {path.pathname === "/" ? (
-            <>
-              <img className="" src={Logo} data-testid="logo" alt="Logo" />
-            </>
-          ) : (
-            <>
+          <Link to="/" className="displayNoneAtLarge">
+            {path.pathname === "/" ? (
+              <>
+                <img
+                  className=""
+                  style={placeId ? {} : { width: "7rem" }}
+                  src={Logo}
+                  data-testid="logo"
+                  alt="Logo"
+                />
+              </>
+            ) : (
+              <>
                 <LeftArrow />
-            </>
-          )}
-        </Link>
-        {/* <Link to="/" className="displayNoneAtPhone" >
-            <img  src={Logo} data-testid="logo" alt="Logo" />
-          
-        </Link> */}
+              </>
+            )}
+          </Link>
+        </div>
+        {path.pathname === "/" ? (
+          <>
+            
+          </>
+        ) : (
+          ""
+        )}
+        {address ? (
+              <div
+                onClick={() => dispatch(openAddressSidebar())}
+                className={`addressTextContainer  ${path.pathname === "/" ? "": "displayNoneAtPhone"}`}
+              >
+                  <img src={locationIcon} alt="" />
+                <div className="mainText" style={{overflow:"visible"}}>
+                  <span>{address?.address_components[1]?.long_name}</span>
+                </div>
+
+                <div className="adddressText">
+                  <span>{address ? address.formatted_address : ""}</span>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
       </div>
       <ul className="list">
         <Link className="displayNoneAtPhone" to="/about">
@@ -83,7 +122,7 @@ const Header = () => {
           ""
         )}
 
-        <Link className="displayNoneAtPhone" to="/signIn">
+        <a className="displayNoneAtPhone" onClick={()=>dispatch(openSignInSidebar())}>
           <li
             onMouseOver={() => setSignInColor("#f3630b")}
             onMouseLeave={() => setSignInColor("#000000")}
@@ -94,7 +133,7 @@ const Header = () => {
               Sign In
             </span>
           </li>
-        </Link>
+        </a>
         <Link className="displayNoneAtPhone" to="/cart">
           <li
             onMouseOver={() => setCartColor("#f3630b")}

@@ -5,9 +5,10 @@ import aboutOrange from "../assets/icons/aboutOrange.png";
 import aboutBlack from "../assets/icons/aboutBlack.png";
 import CartSvg from "../assets/icons/IconsComponents/CartSvg";
 import {  useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import HomeIcon from "../assets/icons/IconsComponents/HomeIcon";
+import { openSignInSidebar } from "../utils/store/appSlice";
 
 const BottomNavbar = () => {
   const [signInColor, setSignInColor] = useState("#000000");
@@ -15,8 +16,16 @@ const BottomNavbar = () => {
   const [homeColor, setHomeColor] = useState("#000000");
   const [cartColor, setCartColor] = useState("#000000");
   const cartItems = useSelector((store) => store.cart.cartItems);
+  const placeId = useSelector((store) => store.app.place_id);
+  const dispatch = useDispatch();
+  const path = useLocation()
+  console.log(path.pathname);
+  const regexRestaurant = /\/restaurant\//;
+if (regexRestaurant.test(path.pathname)) {
+  console.log(path.pathname);
+}
   return (
-    <div className="bottomNavbar">
+    <div className={`bottomNavbar ${(!placeId && path.pathname === "/") || regexRestaurant.test(path.pathname) ? "displayNoneAtPhone":""}`}>
       <ul className="bottomNavbarList">
         <Link to="/">
           <li
@@ -89,7 +98,7 @@ const BottomNavbar = () => {
             <span style={{  color: cartColor }}>Cart</span>
           </li>
         </Link>
-        <Link to="/signIn">
+        <Link to={"/signIn"} onClick={()=>dispatch(openSignInSidebar())}>
           <li
             onMouseOver={() => setSignInColor("#f3630b")}
             onMouseLeave={() => setSignInColor("#000000")}
