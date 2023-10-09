@@ -66,7 +66,7 @@ const ShimmerVideoCard = () => {
     </div>
   ) : (
     <div
-      className={`w-full  sm:w-[45%]  md:w-[31.69%]  2xl:w-[23.69%]   cursor-pointer `}
+      className={`shimmerVideoCard w-full  sm:w-[45%]  md:w-[31.69%]  2xl:w-[23.69%]   cursor-pointer `}
     >
       <div
         className={`thumbnail ${

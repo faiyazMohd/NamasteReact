@@ -14,13 +14,14 @@ const WatchVideoPage = () => {
   const [recommendations, setRecommendations] = useState(null);
   const [comments, setComments] = useState(null);
   const [topComments, setTopComments] = useState(true);
+  const [nextCommentsToken, setNextCommentsToken] = useState("");
+
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   // console.log(videoId);
-useEffect(() => {
-  window.scrollTo(0,0)
-}, [])
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     getVideoData();
@@ -33,15 +34,14 @@ useEffect(() => {
     console.log(topComments);
   }, [topComments]);
   const deviceWidth = useWidth();
-  console.log("device width is " + deviceWidth);
   const getVideoData = async () => {
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cstatus&id=${videoId}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
     );
     const json = await data.json();
     setVideoDetails(json?.items[0]);
-    getChannelData(json?.items[0]?.snippet?.channelId);
-    getComments(); 
+    // getChannelData(json?.items[0]?.snippet?.channelId);
+    getComments();
     console.log(json?.items[0]?.snippet?.title);
     getRecommendation(json?.items[0]?.snippet?.title);
     console.log(json);
@@ -68,7 +68,6 @@ useEffect(() => {
   };
 
   const getComments = async () => {
-    // try {
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=${
         topComments ? "relevance" : "time"
@@ -76,13 +75,26 @@ useEffect(() => {
         process.env.REACT_APP_GOOGLE_API_KEY
     );
     const json = await data.json();
+    setNextCommentsToken(json ? json?.nextPageToken : "");
 
     setComments(json?.items ? json?.items : json);
     console.log(json);
 
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  };
+
+  const getMoreComments = async () => {
+    const data = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&order=${
+        topComments ? "relevance" : "time"
+      }&textFormat=plainText&videoId=${videoId}&pageToken=${nextCommentsToken}&key=` +
+        process.env.REACT_APP_GOOGLE_API_KEY
+    );
+    const json = await data.json();
+    setNextCommentsToken(json ? json?.nextPageToken : "");
+
+    setComments(json?.items ? json?.items : json);
+    console.log(json);
+
   };
 
   return (
@@ -101,6 +113,8 @@ useEffect(() => {
             comments={comments}
             topComments={topComments}
             setTopComments={setTopComments}
+            nextCommentsToken={nextCommentsToken}
+            getMoreComments={getMoreComments}
           />
         </div>
       ) : (
@@ -117,6 +131,8 @@ useEffect(() => {
             comments={comments}
             topComments={topComments}
             setTopComments={setTopComments}
+            nextCommentsToken={nextCommentsToken}
+            getMoreComments={getMoreComments}
           />
         </div>
       )}

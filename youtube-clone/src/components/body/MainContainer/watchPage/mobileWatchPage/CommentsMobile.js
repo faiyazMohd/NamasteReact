@@ -12,6 +12,8 @@ const CommentsMobile = ({
   topComments,
   setTopComments,
   videoDetails,
+  nextCommentsToken,
+  getMoreComments,
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
 
@@ -91,6 +93,24 @@ const CommentsMobile = ({
             );
           })}
         </div>
+        {nextCommentsToken ? (
+          <div
+            onClick={() => getMoreComments()}
+            className={`chatContainer whitespace-nowrap  text-center w-[50%] max-w-[200px] h-9 p-4 my-4 text-base font-medium flex justify-center items-center m-auto rounded-full cursor-pointer ${
+              darkTheme
+                ? " bg-[#121212] hover:bg-[#272727]  active:bg-[#3a3a3a] text-white  border border-[#514e4e]"
+                : "bg-white hover:bg-[#f2f2f2]  active:bg-[#e5e3e3] text-[#0f0f0f]  border border-[#ccc]"
+            } `}
+          >
+            Show more comments
+          </div>
+        ) : (
+          <div
+            className={`chatContainer whitespace-nowrap  text-center w-[50%] max-w-[200px] h-9 p-4 my-4 text-base font-medium flex justify-center items-center m-auto rounded-full cursor-pointer  `}
+          >
+            No more comments
+          </div>
+        )}
       </div>
     </div>
   );

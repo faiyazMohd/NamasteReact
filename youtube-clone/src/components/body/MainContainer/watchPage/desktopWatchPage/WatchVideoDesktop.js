@@ -15,12 +15,14 @@ import MoreSettingIcon from "../../../../../assets/icons/svgs/SvgComponents/More
 import SortIcon from "../../../../../assets/icons/svgs/SvgComponents/VideoPage/SortIcon";
 import AboutIcon from "../../../../../assets/icons/svgs/SvgComponents/VideoPage/AboutIcon";
 import VideosIcon from "../../../../../assets/icons/svgs/SvgComponents/VideoPage/VideosIcon";
+import SendIcon from "../../../../../assets/icons/svgs/SvgComponents/VideoPage/SendIcon";
 import CommentsList from "../CommentsList";
 import ProfileIcon from "../../../../../assets/icons/svgs/SvgComponents/ProfileIcon";
 import Description from "./Description";
 import ShimmerRecommendation from "./ShimmerRecommendation";
 import ShimmerVideoInfo from "./ShimmerVideoInfo";
 import ShimmerChannelInfo from "./ShimmerChannelInfo";
+import LiveChat from "./LiveChat";
 const WatchVideoDesktop = ({
   videoId,
   recommendations,
@@ -29,6 +31,8 @@ const WatchVideoDesktop = ({
   comments,
   topComments,
   setTopComments,
+  nextCommentsToken,
+  getMoreComments,
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   // console.log(window.innerWidth);
@@ -37,20 +41,20 @@ const WatchVideoDesktop = ({
   console.log(recommendations);
   return (
     <div
-      className={`watchPage flex w-full min-h-screen  pt-20    ${
+      className={`watchPage flex w-full min-h-screen  pt-20   ${
         darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"
       } `}
     >
       <div className="leftContainer w-8/12 2xl:w-9/12 flex justify-end">
         <div className="left w-[87%] xl:w-[91%] 2xl:w-[92.5%]  mr-8 ">
           {/* video Container */}
-          <div className="videoContainer w-full h-[30.05vw] xl:h-[31.77vw] 2xl:h-[33.5vw] ">
+          <div className="videoContainer w-full h-[30.05vw] xl:h-[31.77vw] 2xl:h-[33.5vw]">
             <iframe
               className="w-full h-full rounded-xl "
               src={
                 "https://www.youtube-nocookie.com/embed/" +
                 videoId +
-                "?autoplay=1&mute=0 "
+                "?autoplay=0&mute=0"
               }
               title="YouTube video player"
               frameborder="0"
@@ -198,6 +202,8 @@ const WatchVideoDesktop = ({
               comments={comments}
               topComments={topComments}
               setTopComments={setTopComments}
+              nextCommentsToken={nextCommentsToken}
+              getMoreComments={getMoreComments}
             />
           ) : (
             ""
@@ -205,19 +211,10 @@ const WatchVideoDesktop = ({
         </div>
       </div>
 
-      <div className="rightContainer w-4/12 2xl:w-[3/12] flex justify-start">
-        <div className="right w-[402px]">
-          <div
-            className={`chatContainer text-center w-[392px] h-9 p-4 text-base font-medium flex justify-center items-center m-auto rounded-full cursor-pointer ${
-              darkTheme
-                ? " bg-[#121212] hover:bg-[#272727]  active:bg-[#3a3a3a] text-white  border border-[#514e4e]"
-                : "bg-white hover:bg-[#f2f2f2]  active:bg-[#e5e3e3] text-[#0f0f0f]  border border-[#ccc]"
-            } `}
-          >
-            Show chat replay
-          </div>
-
-          <div className="recommendationVideosContainer w-full mt-6">
+      <div className="rightContainer w-4/12 2xl:w-[3/12] flex justify-start ">
+        <div className="right w-full max-w-[402px] ">
+          <LiveChat />
+          <div className="recommendationVideosContainer w-full mt-6 ">
             {recommendations ? (
               <>
                 {recommendations?.map((item) => {

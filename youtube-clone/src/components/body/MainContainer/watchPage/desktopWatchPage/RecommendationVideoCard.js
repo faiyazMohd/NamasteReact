@@ -67,7 +67,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
         >
           <div className={`thumbnail w-full h-[56vw]  relative `}>
             <div className=" md:hidden">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/watch?v=" + item?.id?.videoId}>
                 <img
                   className="w-full h-fit   object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
@@ -77,7 +77,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
                 ""
               ) : (
-                <Link to={"watch?v=" + item?.id?.videoId}>
+                <Link to={"/watch?v=" + item?.id?.videoId}>
                   <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
                     <span className=" text-xs font-medium tracking-wide">
                       {preetifyDuration(videoDetails?.contentDetails?.duration)}
@@ -99,7 +99,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </Link>
             </div>
             <div className="w-[80%] md:w-[80%] ">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/watch?v=" + item?.id?.videoId}>
                 <div
                   className={`title ml-3 text-base leading-5  line-clamp-2 md:text-base font-medium 
            ${darkTheme ? "text-[#f1f1f1]" : "text-[#4e4e4e]"}   `}
@@ -109,7 +109,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </Link>
               {/* for small divice */}
               <div className="line-clamp-2  pl-3 md:hidden w-full mt-1">
-                <Link to={"watch?v=" + item?.id?.videoId}>
+                <Link to={"/watch?v=" + item?.id?.videoId}>
                   <div
                     className={`leading-4  line-clamp-2 ${
                       darkTheme ? "text-[#969696]" : "text-[#737373]"
@@ -163,14 +163,14 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
         >
           <div className={`thumbnail w-full h-[56vw] sm:h-[25.5vw] relative `}>
             <div className=" md:hidden">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/watch?v=" + item?.id?.videoId}>
                 <img
                   className="w-full h-fit  sm:rounded-xl object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
                 />
               </Link>
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/watch?v=" + item?.id?.videoId}>
                 <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
                   <span className=" text-xs font-medium tracking-wide">
                     {preetifyDuration(videoDetails?.contentDetails?.duration)}
@@ -191,7 +191,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </Link>
             </div>
             <div className="w-[80%] md:w-[80%] ">
-              <Link to={"watch?v=" + item?.id?.videoId}>
+              <Link to={"/watch?v=" + item?.id?.videoId}>
                 <div
                   className={`title ml-3 text-base leading-5  line-clamp-2 md:text-base font-medium 
            ${darkTheme ? "text-[#f1f1f1]" : "text-[#4e4e4e]"}   `}
@@ -201,7 +201,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </Link>
               {/* for small divice */}
               <div className="line-clamp-2  pl-3 md:hidden w-full mt-1">
-                <Link to={"watch?v=" + item?.id?.videoId}>
+                <Link to={"/watch?v=" + item?.id?.videoId}>
                   <div
                     className={`leading-4  line-clamp-2 ${
                       darkTheme ? "text-[#969696]" : "text-[#737373]"
@@ -458,13 +458,13 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
         <div
           onMouseOver={() => setIsHover(true)}
           onMouseOut={() => setIsHover(false)}
-          className={`w-full h-[94px]  hidden cursor-pointer mt-3 md:flex`}
+          className={`w-full h-[80px] lg:h-[94px]  hidden cursor-pointer mt-3 md:flex `}
         >
-          <div className={`thumbnail w-[168px] h-full  relative `}>
+          <div className={`thumbnail md:w-[130px] lg:w-[150px]  xl:w-[168px]  h-full  relative `}>
             <div className="w-full h-full">
               <Link to={"/watch?v=" + item?.id?.videoId}>
                 <img
-                  className="w-full rounded-lg object-cover"
+                  className="w-full h-full rounded-lg object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
                 />
@@ -479,8 +479,8 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
             </div>
           </div>
 
-          <div className="infoContainer w-[226px] h-full flex">
-            <div className="w-[202px]">
+          <div className="infoContainer  md:w-[calc(100%-130px)] lg:w-[calc(100%-150px)] xl:w-[226px] h-full flex">
+            <div className=" md:w-[calc(100%-26px)] lg:w-[calc(100%-26px)] xl:w-[202px] ">
               <Link to={"/watch?v=" + item?.id?.videoId}>
                 <div
                   className={`title h-10 pl-1.5   line-clamp-2 text-sm  font-medium 
@@ -490,14 +490,12 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 </div>
               </Link>
 
-              {/* from medium devices */}
-
               <div
                 className={`channelName pl-1.5  block line-clamp-1 font-medium  mt-1  ${
                   darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                 }   text-xs `}
               >
-                <Link to={"/channel/" + item?.snippet?.channelId}>
+                <Link to={"/channel/" + item?.snippet?.channelId} className="line-clamp-1">
                   {item?.snippet?.channelTitle}
                 </Link>
               </div>
@@ -506,7 +504,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 <div
                   className={`viewCount pl-1.5 ${
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
-                  } font-medium text-xs `}
+                  } font-medium text-[.59rem] lg:text-xs  `}
                 >
                   <Link to={"/watch?v=" + item?.id?.videoId}>
                     {preetifyViews(videoDetails?.statistics?.viewCount) +
@@ -516,14 +514,14 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 <div
                   className={`mx-1 ${
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
-                  } font-medium text-xs`}
+                  } font-medium text-[.59rem] lg:text-xs`}
                 >
                   •
                 </div>
                 <div
                   className={`daysago  ${
                     darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
-                  } font-medium text-xs`}
+                  } font-medium text-[.59rem] lg:text-xs`}
                 >
                   <Link to={"/watch?v=" + item?.id?.videoId}>
                     {daysAgo(item?.snippet?.publishedAt)}
@@ -532,7 +530,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
               </div>
             </div>
 
-            <div className="w-6 flex justify-center ">
+            <div className="w-6 flex justify-center overflow-hidden xl:overflow-visible">
               {isHover && (
                 <div
                   onClick={(e) => e.stopPropagation()}

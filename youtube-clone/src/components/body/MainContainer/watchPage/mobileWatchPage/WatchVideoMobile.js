@@ -32,6 +32,9 @@ const WatchVideoMobile = ({
   comments,
   topComments,
   setTopComments,
+  nextCommentsToken,
+  getMoreComments
+
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const [showAllComments, setShowAllComments] = useState(false);
@@ -55,7 +58,7 @@ const WatchVideoMobile = ({
             src={
               "https://www.youtube-nocookie.com/embed/" +
               videoId +
-              "?autoplay=1&mute=0 "
+              "?autoplay=0&mute=0 "
             }
             title="YouTube video player"
             frameborder="0"
@@ -361,6 +364,9 @@ const WatchVideoMobile = ({
         setTopComments={setTopComments}
         videoDetails={videoDetails}
         comments={comments}
+        nextCommentsToken={nextCommentsToken}
+        getMoreComments={getMoreComments}
+
       />
       <DescriptionMobile
         showDescripton={showDescripton}

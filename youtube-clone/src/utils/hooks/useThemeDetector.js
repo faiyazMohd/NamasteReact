@@ -5,17 +5,14 @@ import { setThemeToLight, setThemeToDark } from "../store/themeSlice";
 const useThemeDetector = () => {
   const darkTheme = () =>
     window.matchMedia("(prefers-color-scheme: dark)").matches;
-  // console.log("Device Theme is ");
-  // console.log(darkTheme ? "dark" : "light");
+
   const [isDarkTheme, setIsDarkTheme] = useState(darkTheme);
   const dispatch = useDispatch();
   const currentTheme = useSelector((store) => store.theme.currentTheme);
-  // console.log("current Theme in outside effect is "+currentTheme);
   useEffect(() => {
     const themeListerner = (e) => {
       setIsDarkTheme(e.matches);
       if (currentTheme === "Use device theme") {
-        // console.log("current Theme in hook is "+currentTheme);
         if (e.matches) {
           dispatch(setThemeToDark());
         } else {

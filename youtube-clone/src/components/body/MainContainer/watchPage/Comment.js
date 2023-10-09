@@ -9,7 +9,12 @@ import DislikeIcon from "../../../../assets/icons/svgs/SvgComponents/VideoPage/D
 import LikeIcon from "../../../../assets/icons/svgs/SvgComponents/VideoPage/LikeIcon";
 import DownTriangleIcon from "../../../../assets/icons/svgs/SvgComponents/VideoPage/DownTriangleIcon";
 
-const Comment = ({ comment, totalReplies, snippet }) => {
+const Comment = ({
+  comment,
+  totalReplies,
+  snippet,
+
+}) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const [showReplies, setShowReplies] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -40,7 +45,11 @@ const Comment = ({ comment, totalReplies, snippet }) => {
         <div className="comment w-full my-2">
           <pre
             className={`text-sm font-sans ${
-              showMore ? "" : snippet?.textOriginal.length > 250 ? "line-clamp-4" : ""
+              showMore
+                ? ""
+                : snippet?.textOriginal.length > 250
+                ? "line-clamp-4"
+                : ""
             } whitespace-pre-wrap break-words`}
           >
             {snippet?.textOriginal}
@@ -148,6 +157,7 @@ const Comment = ({ comment, totalReplies, snippet }) => {
                   );
                 })
               : ""}
+
           </>
         ) : (
           ""
