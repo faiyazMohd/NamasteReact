@@ -17,6 +17,7 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
   const [timer, setTimer] = useState(null);
 
   const path = useLocation();
+  console.log(item);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   // console.log(item?.id?.videoId);
   // console.log(videoDetails);
@@ -75,10 +76,27 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 />
               </Link>
               {videoDetails?.snippet?.liveBroadcastContent === "live" ? (
-                ""
+                <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 absolute right-1.5  bottom-1   w-fit flex justify-center items-center py-2">
+                  <div
+                    className={`text-white bg-red-700 cursor-pointer rounded-sm  p-1 font-medium uppercase text-xs h-6 w-fit flex justify-center items-center`}
+                  >
+                    <div className="icon mr-1.5">
+                      <svg
+                        fill="#fff"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                        focusable="false"
+                      >
+                        <path d="M9 8c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm1.11 2.13.71.71C11.55 10.11 12 9.11 12 8c0-1.11-.45-2.11-1.18-2.84l-.71.71c.55.55.89 1.3.89 2.13 0 .83-.34 1.58-.89 2.13Zm-4.93.71.71-.71C5.34 9.58 5 8.83 5 8c0-.83.34-1.58.89-2.13l-.71-.71C4.45 5.89 4 6.89 4 8c0 1.11.45 2.11 1.18 2.84Zm7.05 1.41.71.71C14.21 11.69 15 9.94 15 8s-.79-3.69-2.06-4.96l-.71.71C13.32 4.84 14 6.34 14 8c0 1.66-.68 3.16-1.77 4.25Zm-9.17.71.71-.71C2.68 11.16 2 9.66 2 8c0-1.66.68-3.16 1.77-4.25l-.71-.71C1.79 4.31 1 6.06 1 8s.79 3.69 2.06 4.96Z"></path>
+                      </svg>
+                    </div>
+                    Live
+                  </div>
+                </div>
               ) : (
                 <Link to={"/watch?v=" + item?.id?.videoId}>
-                  <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center absolute px-1.5 py-2">
+                  <div className="duration bg-[rgba(0,0,0,0.8)] rounded text-white h-3 absolute right-2 md:right-1  bottom-1  md:bottom-1.5 w-fit flex justify-center items-center  px-1.5 py-2">
                     <span className=" text-xs font-medium tracking-wide">
                       {preetifyDuration(videoDetails?.contentDetails?.duration)}
                     </span>
@@ -460,7 +478,9 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
           onMouseOut={() => setIsHover(false)}
           className={`w-full h-[80px] lg:h-[94px]  hidden cursor-pointer mt-3 md:flex `}
         >
-          <div className={`thumbnail md:w-[130px] lg:w-[150px]  xl:w-[168px]  h-full  relative `}>
+          <div
+            className={`thumbnail md:w-[130px] lg:w-[150px]  xl:w-[168px]  h-full  relative `}
+          >
             <div className="w-full h-full">
               <Link to={"/watch?v=" + item?.id?.videoId}>
                 <img
@@ -495,7 +515,10 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                   darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
                 }   text-xs `}
               >
-                <Link to={"/channel/" + item?.snippet?.channelId} className="line-clamp-1">
+                <Link
+                  to={"/channel/" + item?.snippet?.channelId}
+                  className="line-clamp-1"
+                >
                   {item?.snippet?.channelTitle}
                 </Link>
               </div>

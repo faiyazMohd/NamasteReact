@@ -29,7 +29,7 @@ const ChannelCard = ({ item }) => {
         } flex  items-center   md:hidden`}
       >
         <div className="w-full h-[95px] flex items-center ">
-          <div className="channelImg w-40 flex items-center justify-center   h-full">
+          <div className="channelImg w-40 flex items-center justify-center  h-full">
             <Link to={"/channel/" + item?.snippet?.channelId}>
               <img
                 className="w-[67px] h-[67px] rounded-full"

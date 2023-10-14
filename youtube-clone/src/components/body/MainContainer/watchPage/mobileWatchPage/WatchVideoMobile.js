@@ -54,16 +54,16 @@ const WatchVideoMobile = ({
         {/* video Container */}
         <div className="videoContainer z-20 w-full h-[56.25vw] fixed top-12 left-0 right-0 ">
           <iframe
-            className="w-full h-full  "
+            className="w-full h-full"
             src={
-              "https://www.youtube-nocookie.com/embed/" +
+              "https://www.youtube.com/embed/" +
               videoId +
-              "?autoplay=0&mute=0 "
+              "?autoplay=0&mute=0&showinfo=0&rel=0"
             }
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
         {/* video title */}

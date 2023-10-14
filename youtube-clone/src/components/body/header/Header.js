@@ -8,21 +8,18 @@ import HamBurgerIcon from "../../../assets/icons/svgs/SvgComponents/HamBurgerIco
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
-import {
-  closeSidebar,
-  openSidebar,
-  toggleSidebar,
-} from "../../../utils/store/appSlice";
+import { openSidebar, toggleSidebar } from "../../../utils/store/appSlice";
 import SignInBtn from "../../others/SignInBtn";
 import { Link } from "react-router-dom";
 import MoreSettings from "./MoreSettings";
 import { cacheSearches } from "../../../utils/store/searchSlice";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import VoiceSearchModal from "./VoiceSearchModal";
 
 const Header = () => {
   const [showSearchIcon, setShowSearchIcon] = useState(false);
   const [showMoreSettings, setshowMoreSettings] = useState(false);
   const [showSuggestion, setShowSuggestion] = useState(false);
+  const [openVoiceSearchModal, setOpenVoiceSearchModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setsuggestions] = useState([]);
   const showSidebar = useSelector((store) => store.app.showSidebar);
@@ -37,7 +34,6 @@ const Header = () => {
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
   };
-
   const getSuggestions = async () => {
     if (searchQuery.length !== 0) {
       console.log(cachedSearch);
@@ -71,7 +67,6 @@ const Header = () => {
       clearTimeout(timer);
     };
   }, [searchQuery]);
-
   return (
     <>
       <div
@@ -220,6 +215,7 @@ const Header = () => {
             )}
 
             <div
+              onClick={() => setOpenVoiceSearchModal(true)}
               className={` ${
                 darkTheme
                   ? "bg-[#ffffff1a] hover:bg-[#3a3a3a]  active:bg-[#575656]"
@@ -251,6 +247,13 @@ const Header = () => {
       ) : (
         ""
       )}
+      {openVoiceSearchModal? (
+        <VoiceSearchModal
+          openVoiceSearchModal={openVoiceSearchModal}
+          setOpenVoiceSearchModal={setOpenVoiceSearchModal}
+          setSearchQuery={setSearchQuery}
+        />
+      ):""}
     </>
   );
 };

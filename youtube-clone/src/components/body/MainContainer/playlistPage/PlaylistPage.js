@@ -165,7 +165,7 @@ const PlaylistPage = () => {
 
       {/* for large devices */}
       <div
-        className={`playlistPageDesktop border border-yellow-400 hidden md:flex w-full ${
+        className={`playlistPageDesktop  hidden md:flex w-full ${
           showSidebar ? "xl:w-[88%]" : ""
         } min-h-screen pl-16  justify-end  ${
           darkTheme ? "bg-[#0f0f0f] text-white" : "bg-white text-black"

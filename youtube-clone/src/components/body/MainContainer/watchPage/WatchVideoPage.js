@@ -40,7 +40,7 @@ const WatchVideoPage = () => {
     );
     const json = await data.json();
     setVideoDetails(json?.items[0]);
-    // getChannelData(json?.items[0]?.snippet?.channelId);
+    getChannelData(json?.items[0]?.snippet?.channelId);
     getComments();
     console.log(json?.items[0]?.snippet?.title);
     getRecommendation(json?.items[0]?.snippet?.title);

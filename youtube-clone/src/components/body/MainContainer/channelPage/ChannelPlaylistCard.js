@@ -16,6 +16,7 @@ const ChannelPlaylistCard = ({ item }) => {
   const [playlistItems, setPlaylistItems] = useState(null);
   const [isHover, setIsHover] = useState(false);
   console.log(item);
+  console.log(item?.snippet?.thumbnails?.medium?.url);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const showSidebar = useSelector((store) => store.app.showSidebar);
   const path = useLocation();
@@ -26,10 +27,10 @@ const ChannelPlaylistCard = ({ item }) => {
 
       <div className={`w-full h-[90px] md:hidden  cursor-pointer mt-4 flex`}>
         <div className={`thumbnail w-[160px]  h-full  relative `}>
-          <div className="relative">
-            <Link to={"/playlist?list=" + item?.id}>
+          <div className="relative w-full h-full">
+            <Link to={"/playlist?list=" + item?.id} className="w-full h-full">
               <img
-                className="w-full h-fit rounded-lg  object-cover"
+                className="w-full h-full rounded-lg  object-cover"
                 src={item?.snippet?.thumbnails?.medium?.url}
                 alt="thumbnail"
                 srcset=""
@@ -98,39 +99,39 @@ const ChannelPlaylistCard = ({ item }) => {
           } relative `}
         >
           {/* <div className={`thumbnail md:w-[360px] h-[202px]   `}> */}
-            <div className=" relative">
-              <Link to={"/playlist?list=" + item?.id}>
-                <img
-                  className="w-full rounded-lg object-cover"
-                  src={item?.snippet?.thumbnails?.medium?.url}
-                  alt="thumbnail"
-                  srcset=""
-                />
-              </Link>
-              <div className="w-full h-6 bg-[#000000] rounded-b-lg flex justify-between items-center bg-opacity-60 text-white right-0 left-0 absolute bottom-0">
-                <div className="ml-3">
-                  <PlaylistIcon color={"#fff"} />
-                </div>
-                <div className="text-xs mr-3 font-medium">
-                  {item?.contentDetails?.itemCount}
-                  {" videos"}
-                </div>
+          <div className="w-full h-full relative">
+            <Link to={"/playlist?list=" + item?.id} className="w-full h-full">
+              <img
+                className="w-full h-full rounded-lg object-cover"
+                src={item?.snippet?.thumbnails?.medium?.url}
+                alt="thumbnail"
+                srcset=""
+              />
+            </Link>
+            <div className="w-full h-6 bg-[#000000] rounded-b-lg flex justify-between items-center bg-opacity-60 text-white right-0 left-0 absolute bottom-0">
+              <div className="ml-3">
+                <PlaylistIcon color={"#fff"} />
               </div>
-              {isHover ? (
-                <Link to={"/playlist?list=" + item?.id}>
-                  <div className="w-full h-full bg-[#000000] bg-opacity-60  rounded-b-lg flex justify-center items-center   text-white right-0 left-0 absolute bottom-0">
-                    <div className="flex gap-1">
-                      <PlayIcon color={"#fff"} />
-                      <div className="font-medium text-sm uppercase">
-                        View full playlist
-                      </div>
+              <div className="text-xs mr-3 font-medium">
+                {item?.contentDetails?.itemCount}
+                {" videos"}
+              </div>
+            </div>
+            {isHover ? (
+              <Link to={"/playlist?list=" + item?.id}>
+                <div className="w-full h-full bg-[#000000] bg-opacity-60  rounded-b-lg flex justify-center items-center   text-white right-0 left-0 absolute bottom-0">
+                  <div className="flex gap-1">
+                    <PlayIcon color={"#fff"} />
+                    <div className="font-medium text-sm uppercase">
+                      View full playlist
                     </div>
                   </div>
-                </Link>
-              ) : (
-                ""
-              )}
-            </div>
+                </div>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
           {/* </div> */}
         </div>
 
@@ -154,9 +155,7 @@ const ChannelPlaylistCard = ({ item }) => {
                 darkTheme ? "text-[#a4a3a3]" : "text-[#737373]"
               }   text-xs flex gap-3 items-center`}
             >
-              <Link to={"" }>
-                {item?.snippet?.channelTitle}
-              </Link>
+              <Link to={""}>{item?.snippet?.channelTitle}</Link>
             </div>
             <div className="w-full mt-1">
               <Link to={"/playlist?list=" + item?.id}>

@@ -45,10 +45,10 @@ const PlaylistCard = ({ item }) => {
       {/* for small to medium devices */}
       <div className={`w-full md:hidden  mt-3    cursor-pointer `}>
         <div className={`thumbnail w-full h-[56vw]   `}>
-          <div className="relative">
-            <Link to={"/playlist?list=" + item?.id?.playlistId}>
+          <div className="relative w-full h-full">
+            <Link to={"/playlist?list=" + item?.id?.playlistId} className="w-full h-full">
               <img
-                className="w-full h-fit   object-cover"
+                className="w-full h-full   object-cover"
                 src={item?.snippet?.thumbnails?.medium?.url}
                 alt="thumbnail"
                 srcset=""
@@ -115,10 +115,10 @@ const PlaylistCard = ({ item }) => {
       >
         <div className="thumbnailContainer md:w-[360px] xl:w-[384px] h-full flex flex-col items-center justify-center">
           <div className={`thumbnail md:w-[360px] h-[202px]   `}>
-            <div className=" relative">
-              <Link to={"/playlist?list=" + item?.id?.playlistId}>
+            <div className=" relative w-full h-full">
+              <Link to={"/playlist?list=" + item?.id?.playlistId} className="w-full h-full"> 
                 <img
-                  className="w-full rounded-lg object-cover"
+                  className="w-full h-full rounded-lg object-cover"
                   src={item?.snippet?.thumbnails?.medium?.url}
                   alt="thumbnail"
                   srcset=""

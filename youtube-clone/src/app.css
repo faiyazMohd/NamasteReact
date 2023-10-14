@@ -11,44 +11,41 @@ html {
   scrollbar-width: none;
 }
 
-
 @keyframes sidebarAnimation {
-    from {
-        transform: translateX(-101%);
-    }
-    to{
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(-101%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-.translateSlidebar{
-    animation: .25s  1 forwards ease sidebarAnimation;
+.translateSlidebar {
+  animation: 0.25s 1 forwards ease sidebarAnimation;
 }
 
 @media screen and (min-width: 900px) {
   /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background-color: #0f0f0f;
-  opacity: 0 ;
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #0f0f0f;
+    opacity: 0;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #878585;
-  border-radius: 5px;
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #878585;
+    border-radius: 5px;
+  }
 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  /* background: #555; */
-}
-
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    /* background: #555; */
+  }
 }
 
 /* width */
@@ -59,24 +56,19 @@ html {
 /* Track */
 ::-webkit-scrollbar-track {
   background-color: #0f0f0f;
-  opacity: 0 ;
+  opacity: 0;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #878585;
   border-radius: 5px;
-
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   /* background: #555; */
 }
-
-
-
-
 
 /* width */
 .sidebarContainer::-webkit-scrollbar {
@@ -92,15 +84,12 @@ html {
 .sidebarContainer::-webkit-scrollbar-thumb {
   background: #878585;
   border-radius: 5px;
-
 }
 
 /* Handle on hover */
 .sidebarContainer::-webkit-scrollbar-thumb:hover {
   /* background: #555; */
 }
-
-
 
 /* width */
 .locationsContainer::-webkit-scrollbar {
@@ -116,13 +105,38 @@ html {
 .locationsContainer::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: #939292;
-
 }
 
 /* Handle on hover */
 .locationsContainer::-webkit-scrollbar-thumb:hover {
   background: #878585;
-
 }
 
+@keyframes speakMicAnimation {
+  0% {
+    border: 0px solid;
+    border-color: inherit;
+  }
+  25% {
+    border: 6px solid;
+    border-color: inherit;
+  }
+  50% {
+    border: 12px solid;
+    border-color: inherit;
+  }
+  75% {
+    border: 17px solid;
+    border-color: inherit;
+  }
+  100% {
+    border: 25px solid;
+    border-color: inherit;
+  }
+}
 
+.animateMic {
+  /* anima */
+  /* animation: speakMicAnimation  ease-in-out  infinite; */
+  animation: 600ms infinite forwards ease-in-out speakMicAnimation;
+}

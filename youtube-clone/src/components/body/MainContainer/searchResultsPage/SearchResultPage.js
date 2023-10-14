@@ -51,7 +51,7 @@ const SearchResultPage = () => {
     const data = await fetch(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=${
         searchFilters.type
-      }&maxResults=15&videoDuration=${searchFilters.duration}&order=${
+      }&maxResults=50&videoDuration=${searchFilters.duration}&order=${
         searchFilters.sortBy
       }${
         searchFilters.uploadDate === "any"

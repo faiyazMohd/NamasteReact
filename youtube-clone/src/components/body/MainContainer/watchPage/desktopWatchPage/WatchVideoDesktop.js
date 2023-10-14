@@ -52,14 +52,14 @@ const WatchVideoDesktop = ({
             <iframe
               className="w-full h-full rounded-xl "
               src={
-                "https://www.youtube-nocookie.com/embed/" +
+                "https://www.youtube.com/embed/" +
                 videoId +
-                "?autoplay=0&mute=0"
+                "?autoplay=1&mute=0&showinfo=0&rel=0"
               }
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
 
