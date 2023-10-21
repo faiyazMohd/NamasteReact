@@ -769,6 +769,7 @@ a {
   width: 95%;
   margin: auto;
   height: 50%;
+  padding-bottom: 2rem;
 }
 
 .menuItemShimmer {
@@ -1075,6 +1076,8 @@ a {
   cursor: pointer;
   width: 70px;
   height: 30px;
+  min-width: 70px;
+
 }
 .addRemoveContainer > p {
   color: #60b246;
@@ -1093,6 +1096,7 @@ a {
   font-size: 13px;
   color: #535665;
   font-weight: 600;
+  overflow: hidden;
 }
 
 .suggestionContainer {
@@ -1310,31 +1314,29 @@ a {
   color: white;
   padding: 0 16px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3),
-  0 2px 1px 0 rgba(93, 141, 213, 0.2);
+    0 2px 1px 0 rgba(93, 141, 213, 0.2);
 }
-.itemCountsAlert{
+.itemCountsAlert {
   font-weight: 600;
   font-size: 1rem;
   color: inherit;
 }
 
-.checkoutCartItems{
+.checkoutCartItems {
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: inherit;
   display: flex;
-
 }
-.checkoutCartItems > div{
+.checkoutCartItems > div {
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: inherit;
-
 }
-.checkoutCartItems > img{
+.checkoutCartItems > img {
   width: 18px;
   height: 18px;
-margin-left: 6px;
+  margin-left: 6px;
 }
 /* search Addresss */
 
@@ -1518,4 +1520,51 @@ margin-left: 6px;
 .signInFood > img {
   width: 100;
   height: 105;
+}
+
+@keyframes pulseAnimation {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animatePulse {
+  animation: pulseAnimation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spinAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animateSpin {
+  animation: spinAnimation 1s linear infinite;
+}
+
+/* Custom CSS class for the spinner container */
+.spinnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 85vh;
+}
+
+/* Custom CSS class for the spinner */
+.spinner {
+  width: 4rem; /* Adjust the width as needed */
+  height: 4rem; /* Adjust the height as needed */
+  border-radius: 50%;
+  border: 0.25rem solid rgba(0, 0, 0, 0.13);
+  border-top: 0.25rem solid #000;
+  animation: spinAnimation 1s linear infinite;
 }

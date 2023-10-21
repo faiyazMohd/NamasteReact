@@ -11,12 +11,13 @@ import foodMobile from "../assets/bg/foodMobile.webp";
 import { openAddressSidebar } from "../utils/store/appSlice";
 import { taglines } from "../utils/constants";
 import SearchArea from "./SearchArea";
+import { useNavigate } from "react-router-dom";
 
 const Offers = () => {
   const [searchText, setSearchText] = useState("");
   const placeId = useSelector((store) => store.app.place_id);
   const [taglineIndex, setTaglineIndex] = useState(0);
-
+const navigate = useNavigate()
   const dispatch = useDispatch();
   const [allRestaurants, filteredRestaurants, setFilteredRestaurants] =
     useAllRest();
@@ -31,9 +32,11 @@ const Offers = () => {
     setFilteredRestaurants(filteredData);
   }, [allRestaurants]);
 
+  if (allRestaurants?.length === 0 ) {
+    navigate("/")
+  }
   return (
     <div className="body">
-      
       {placeId ? (
         allRestaurants?.length !== 0 ? (
           <>
@@ -67,46 +70,7 @@ const Offers = () => {
           </div>
         )
       ) : (
-        <>
-          <div className="displayNoneAtLarge">
-            <div className="searchAreaContainer">
-              <div className="rightSearchArea">
-                <img src={foodMobile} alt="" />
-              </div>
-              <div className="leftSearchArea">
-                <h1 className="tagline">{taglines[taglineIndex]}</h1>
-                <h2 className="restNearYou">
-                  Order food from favourite restaurants near you.
-                </h2>
-                <div
-                  onClick={() => dispatch(openAddressSidebar())}
-                  className="seeAllRestBtn"
-                >
-                  setup your location
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="displayNoneAtPhone">
-            <div className="searchAreaContainer ">
-              <div className="leftSearchArea">
-                <h1 className="tagline">{taglines[taglineIndex]}</h1>
-                <h2 className="restNearYou">
-                  Order food from favourite restaurants near you.
-                </h2>
-                <div
-                  className=""
-                  style={{ width: "75%", margin: "1.25rem auto" }}
-                >
-                  <SearchArea />
-                </div>
-              </div>
-              <div className="rightSearchArea">
-                <img src={foodDesktop} alt="" />
-              </div>
-            </div>
-          </div>
-        </>
+        ""
       )}
     </div>
   );

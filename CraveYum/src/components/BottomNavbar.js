@@ -19,11 +19,7 @@ const BottomNavbar = () => {
   const placeId = useSelector((store) => store.app.place_id);
   const dispatch = useDispatch();
   const path = useLocation()
-  console.log(path.pathname);
   const regexRestaurant = /\/restaurant\//;
-if (regexRestaurant.test(path.pathname)) {
-  console.log(path.pathname);
-}
   return (
     <div className={`bottomNavbar ${(!placeId && path.pathname === "/") || regexRestaurant.test(path.pathname) ? "displayNoneAtPhone":""}`}>
       <ul className="bottomNavbarList">

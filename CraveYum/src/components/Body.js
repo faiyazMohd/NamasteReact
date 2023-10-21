@@ -38,7 +38,7 @@ const Body = () => {
     filteredRestaurants,
     setFilteredRestaurants
   );
-  console.log(allRestaurants);
+  // console.log(allRestaurants);
   useEffect(() => {
     const theTimer = setInterval(() => {
       if (taglineIndex === 5) {

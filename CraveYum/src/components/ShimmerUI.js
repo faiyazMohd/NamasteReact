@@ -2,7 +2,7 @@ import React from 'react'
 
 const ShimmerUI = () => {
   return (
-      <div className="shimmerUICard">
+      <div className="shimmerUICard animatePulse">
       </div>
   )
 }

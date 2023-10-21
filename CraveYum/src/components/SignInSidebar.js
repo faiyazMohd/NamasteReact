@@ -6,7 +6,6 @@ import foodPng from "../assets/icons/foodPng.webp";
 const SignInSidebar = () => {
   const signInSidebar = useSelector((store) => store.app.signInSidebar);
   const dispatch = useDispatch();
-  console.log(signInSidebar);
   return (
     <>
       <div
@@ -87,8 +86,8 @@ const SignInSidebar = () => {
                 </div>
               </div>
 
-              <div className="signInForm">
-                <input type="text" placeholder="Phone Number" />
+              <form className="signInForm">
+                <input autoFocus type="text" placeholder="Phone Number" />
                 <input type="text" placeholder="Name" />
                 <input type="email" placeholder="Email" />
                 <div className="phoneNumber"></div>
@@ -106,7 +105,7 @@ const SignInSidebar = () => {
                     Continue
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

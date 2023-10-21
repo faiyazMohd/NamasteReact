@@ -22,14 +22,19 @@ const SearchArea = () => {
     );
     const json = await data.json();
     setAddressSuggestions(json?.data);
-    console.log(json);
+    // console.log(json);
   };
   return (
     <div style={{ width: "100%" }}>
-      <div className="AddressSearchBar">
+      <form
+        className="AddressSearchBar"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input
           type="text"
-          autofocus
+          autoFocus
           className="addSearchInput"
           placeholder="Search for area, street name.."
           value={searchInput}
@@ -46,7 +51,7 @@ const SearchArea = () => {
             Clear
           </div>
         )}
-      </div>
+      </form>
       {addressSuggestions?.map((address) => {
         return (
           <Link to="/">

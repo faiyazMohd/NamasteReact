@@ -4,12 +4,12 @@ import Header from "./components/Header";
 // import Footer from "./components/Footer";
 import Body from "./components/Body";
 // import About from "./components/About";
-import Cart from "./components/Cart";
+// import Cart from "./components/Cart";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Error from "./components/Error";
-import Offer from "./components/Offer";
+// import Offer from "./components/Offer";
 import SignIn from "./components/SignIn";
-import RestaurantMenu from "./components/RestaurantMenu";
+// import RestaurantMenu from "./components/RestaurantMenu";
 import ShimmerMenu from "./components/ShimmerMenu";
 import UserContext from "./utils/contexts/UserContext";
 import UserProfileState from "./utils/contexts/userProfile/UserProfileState";
@@ -18,13 +18,16 @@ import store from "./utils/store/store";
 import BottomNavbar from "./components/BottomNavbar";
 import AddressSidebar from "./components/AddressSidebar";
 import SignInSidebar from "./components/SignInSidebar";
+import Spinner from "./components/Spinner";
 const About = lazy(() => import("./components/About"));
+const Offer = lazy(() => import("./components/Offer"));
+const Cart = lazy(() => import("./components/Cart"));
+const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "Faiyaz Mohd",
     email: "faiayz.b.mohd@gmail.com",
   });
-
 
   return (
     <Provider store={store}>
@@ -36,10 +39,9 @@ const AppLayout = () => {
       >
         <Header />
         <AddressSidebar />
-        <SignInSidebar/>
+        <SignInSidebar />
         <UserProfileState>
           <Outlet />
-          {/* <Footer /> */}
           <BottomNavbar />
         </UserProfileState>
       </UserContext.Provider>
@@ -59,18 +61,26 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<ShimmerMenu />}>
+          <Suspense fallback={<Spinner />}>
             <About />
           </Suspense>
         ),
       },
       {
         path: "/offer",
-        element: <Offer />,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Offer />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/signIn",
@@ -78,7 +88,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:id",
-        element: <RestaurantMenu />,
+        element: (
+          <Suspense fallback={<ShimmerMenu />}>
+            <RestaurantMenu />
+          </Suspense>
+        ),
       },
     ],
   },
