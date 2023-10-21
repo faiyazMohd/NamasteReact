@@ -5,9 +5,10 @@ import SignInBtn from "../../../others/SignInBtn";
 
 const SubscriptionsPage = () => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-
+  document.title = "Subscriptions - YouTube";
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen">
+      
       <div className="icon  md:hidden">
         <SubbedPageIcon size={90} color={darkTheme ? "#fff" : "#000"} />
       </div>

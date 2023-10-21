@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import MicIcon from "../../../assets/icons/svgs/SvgComponents/MicIcon";
 import { useNavigate } from "react-router-dom";
+import { setSearchQuery } from "../../../utils/store/appSlice";
+
 const VoiceSearchModal = ({
   openVoiceSearchModal,
   setOpenVoiceSearchModal,
-  setSearchQuery,
 }) => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
+  const searchQuery = useSelector((store) => store.app.searchQuery);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(navigate);
   const {
@@ -33,8 +36,8 @@ const VoiceSearchModal = ({
   useEffect(() => {
     if (finalTranscript.length > 0) {
       navigate("/results?search_query=" + finalTranscript);
-      setSearchQuery(finalTranscript)
-      setOpenVoiceSearchModal(false)
+      dispatch(setSearchQuery(finalTranscript));
+      setOpenVoiceSearchModal(false);
     }
     return () => {};
   }, [finalTranscript]);
@@ -77,7 +80,9 @@ const VoiceSearchModal = ({
                 {transcript.length === 0 && listening
                   ? "Listening..."
                   : transcript}
-                {finalTranscript.length === 0 && !listening
+                {finalTranscript.length === 0 &&
+                transcript.length === 0 &&
+                !listening
                   ? "Didn't hear that. Try again."
                   : ""}
               </div>

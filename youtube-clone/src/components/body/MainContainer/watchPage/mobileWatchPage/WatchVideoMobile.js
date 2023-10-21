@@ -54,11 +54,11 @@ const WatchVideoMobile = ({
         {/* video Container */}
         <div className="videoContainer z-20 w-full h-[56.25vw] fixed top-12 left-0 right-0 ">
           <iframe
-            className="w-full h-full"
+            className="w-full h-full shadow-[-5px_2px_66px_7px_#e2e8f020]"
             src={
               "https://www.youtube.com/embed/" +
               videoId +
-              "?autoplay=0&mute=0&showinfo=0&rel=0"
+              "?autoplay=1&mute=0&showinfo=0&rel=0"
             }
             title="YouTube video player"
             frameborder="0"

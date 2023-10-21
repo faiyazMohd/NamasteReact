@@ -6,7 +6,7 @@ import ShortsIcon from "../../../../assets/icons/svgs/SvgComponents/ShortsIcon";
 
 const ShortsPage = () => {
   const darkTheme = useSelector((store) => store.theme.darkTheme);
-
+  document.title = "Shorts - YouTube";
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen ">
       <div className="shorts flex justify-center items-center gap-3">

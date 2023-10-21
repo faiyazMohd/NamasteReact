@@ -14,14 +14,14 @@ const VideoCard = ({ item }) => {
   const [isHoverTitle, setIsHoverTitle] = useState(false);
   const [isHoverThumbnail, setIsHoverThumbnail] = useState(false);
   const [timer, setTimer] = useState(null);
-  const [channelDetails, setchannelDetails] = useState([]);
+  const [channelDetails, setchannelDetails] = useState(null);
   const { id, snippet, statistics, contentDetails } = item;
   const { title, thumbnails, channelTitle, publishedAt, channelId } = snippet;
   const { viewCount } = statistics;
   const { duration } = contentDetails;
   // console.log(duration);
-  const channelImgUrl =
-    "https://yt3.ggpht.com/D8uGTY8fLYo42IK9S_ahqO2u9NAkWEdbAswFM-OcCVNHVmgo0lYx0Pgq6WimdNvxDbw31U-6cA=s88-c-k-c0x00ffffff-no-nd-rj";
+  // const channelImgUrl =
+  //   "https://yt3.ggpht.com/D8uGTY8fLYo42IK9S_ahqO2u9NAkWEdbAswFM-OcCVNHVmgo0lYx0Pgq6WimdNvxDbw31U-6cA=s88-c-k-c0x00ffffff-no-nd-rj";
   // const channelImgUrl = channelDetails?.snippet?.thumbnails?.default?.url
   // console.log(item);
   const getChannelData = async () => {
@@ -34,7 +34,7 @@ const VideoCard = ({ item }) => {
     setchannelDetails(json.items[0]);
   };
   useEffect(() => {
-    // getChannelData();
+    getChannelData();
   }, []);
   return (
     <div
@@ -65,6 +65,7 @@ const VideoCard = ({ item }) => {
             <img
               className="w-full h-fit  sm:rounded-xl object-cover"
               src={thumbnails?.medium?.url}
+              loading="lazy"
               alt="thumbnail"
               srcset=""
             />
@@ -98,6 +99,7 @@ const VideoCard = ({ item }) => {
                 className="w-full h-fit  sm:rounded-xl object-cover"
                 src={thumbnails?.medium?.url}
                 alt="thumbnail"
+                loading="lazy"
                 srcset=""
               />
             </Link>
@@ -119,12 +121,21 @@ const VideoCard = ({ item }) => {
       >
         <div className="channelImg pt-1 flex justify-end items-start md:block w-[12%]  md:w-[10%]">
           <Link to={"channel/" + channelId}>
-            <img
-              className="w-10 rounded-full"
-              src={channelImgUrl}
-              alt="channelName"
-              srcset=""
-            />
+            {channelDetails ? (
+              <img
+                className="w-10 rounded-full"
+                src={channelDetails?.snippet?.thumbnails?.default?.url}
+                alt="channelName"
+                srcset=""
+                loading="lazy"
+              />
+            ) : (
+              <div
+                className={`w-10 h-10 ${
+                  darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                }  rounded-full animate-pulse`}
+              ></div>
+            )}
           </Link>
         </div>
         <div className="w-[80%] md:w-[80%] ">

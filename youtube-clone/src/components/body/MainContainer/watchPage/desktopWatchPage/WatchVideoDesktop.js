@@ -48,9 +48,9 @@ const WatchVideoDesktop = ({
       <div className="leftContainer w-8/12 2xl:w-9/12 flex justify-end">
         <div className="left w-[87%] xl:w-[91%] 2xl:w-[92.5%]  mr-8 ">
           {/* video Container */}
-          <div className="videoContainer w-full h-[30.05vw] xl:h-[31.77vw] 2xl:h-[33.5vw]">
+          <div className="videoContainer w-full h-[30.05vw] xl:h-[31.77vw] 2xl:h-[33.5vw] ">
             <iframe
-              className="w-full h-full rounded-xl "
+              className="w-full h-full rounded-xl  shadow-[-5px_2px_66px_7px_#e2e8f020] "
               src={
                 "https://www.youtube.com/embed/" +
                 videoId +

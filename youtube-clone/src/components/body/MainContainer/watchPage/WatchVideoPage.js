@@ -44,6 +44,7 @@ const WatchVideoPage = () => {
     getComments();
     console.log(json?.items[0]?.snippet?.title);
     getRecommendation(json?.items[0]?.snippet?.title);
+    document.title = json?.items[0]?.snippet?.title +" - YouTube"
     console.log(json);
   };
 

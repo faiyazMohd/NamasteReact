@@ -5,6 +5,7 @@ const app = createSlice({
     showSidebar: false,
     locationName:"India",
     locationCode:"IN",
+    searchQuery:""
   },
   reducers: {
     openSidebar: (state) => {
@@ -21,9 +22,12 @@ const app = createSlice({
     },
     setLocationName:(state,action)=>{
       state.locationName = action.payload;
+    },
+    setSearchQuery:(state,action)=>{
+      state.searchQuery = action.payload
     }
   },
 });
 
-export const { openSidebar, closeSidebar ,toggleSidebar,setLocationCode,setLocationName} = app.actions;
+export const { openSidebar, closeSidebar ,toggleSidebar,setLocationCode,setLocationName,setSearchQuery} = app.actions;
 export default app.reducer;

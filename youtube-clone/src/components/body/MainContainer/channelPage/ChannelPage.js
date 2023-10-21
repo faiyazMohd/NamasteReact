@@ -30,6 +30,7 @@ const ChannelPage = () => {
     const json = await data.json();
     console.log(json);
     console.log(json?.items[0]?.contentDetails?.relatedPlaylists?.uploads);
+    document.title = json?.items[0]?.snippet?.title + " - YouTube";
     dispatch(modifyChannelDetails(json?.items[0]));
     setChannelDetails(json?.items[0]);
   };

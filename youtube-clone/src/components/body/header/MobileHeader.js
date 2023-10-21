@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import YoutubeLogoLight from "../../../assets/icons/pngs/Youtube-Logo-Dark.png";
 import YoutubeLogoDark from "../../../assets/icons/pngs/Youtube-Logo-Light.png";
 import SearchIcon from "../../../assets/icons/svgs/SvgComponents/SearchIcon";
@@ -7,7 +7,7 @@ import ArrowRightIcon from "../../../assets/icons/svgs/SvgComponents/ArrowRightI
 import MicIcon from "../../../assets/icons/svgs/SvgComponents/MicIcon";
 import MobileAccount from "./MobileAccount";
 import useScrollUp from "../../../utils/hooks/useScrollUp";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
 import { cacheSearches } from "../../../utils/store/searchSlice";
@@ -15,13 +15,13 @@ import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import MoreSettingIcon from "../../../assets/icons/svgs/SvgComponents/MoreSettingIcon";
 import YouTubeLogo from "../../../assets/icons/svgs/SvgComponents/YouTubeLogo";
 import VoiceSearchModal from "./VoiceSearchModal";
+import { setSearchQuery } from "../../../utils/store/appSlice";
 const MobileHeader = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const [showSuggestion, setShowSuggestion] = useState(false);
-  const [showSuggestionBox, setShowSuggestionBox] = useState(false);
   const [openVoiceSearchModal, setOpenVoiceSearchModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setsuggestions] = useState([]);
   const isScrollUp = useScrollUp();
   const locationCode = useSelector((store) => store.app.locationCode);
@@ -29,11 +29,19 @@ const MobileHeader = () => {
   const cachedSearch = useSelector((store) => store.search);
   const playlistName = useSelector((store) => store.content.playlistName);
   const channelDetails = useSelector((store) => store.content.channelDetails);
+  const searchQuery =  useSelector((store)=>store.app.searchQuery)
   const path = useLocation();
+  const navigate = useNavigate();
+  // const inputRef = createRef()
+  const inputRef = useRef();
   const regex = /^\/channel\//;
 
   const dispatch = useDispatch();
   // console.log("isScrollUp in header is :" + isScrollUp);
+
+// if (showSearch) {
+//   inputRef.current.focus()
+// }
 
   const getSuggestions = async () => {
     if (searchQuery.length !== 0) {
@@ -216,16 +224,24 @@ const MobileHeader = () => {
             <div className={"left"} onClick={() => setShowSearch(false)}>
               <ArrowRightIcon color={darkTheme ? "#fff" : "#000"} />
             </div>
-            <div
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                inputRef.current.blur()
+                navigate("/results?search_query=" + searchQuery);
+                setShowSuggestion(false);
+              }}
               className={`searchBar flex items-center h-8  ${
                 showSuggestion || searchQuery !== 0 ? "w-full mx-2" : "w-3/4"
               }   `}
             >
               <input
+              ref={inputRef}
                 type="text"
+                autoFocus
                 placeholder="Search YouTube"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => dispatch(setSearchQuery(e.target.value))}
                 onFocus={() => setShowSuggestion(true)}
                 onBlur={() =>
                   setTimeout(() => {
@@ -259,7 +275,7 @@ const MobileHeader = () => {
 
               {searchQuery.length !== 0 ? (
                 <div
-                  onClick={() => setSearchQuery("")}
+                  onClick={() => dispatch(setSearchQuery(""))}
                   className={`absolute right-14  ${
                     darkTheme ? "active:bg-[#ffffff1a]" : "b"
                   } cursor-pointer rounded-full p-[1px] mx-2 `}
@@ -269,10 +285,10 @@ const MobileHeader = () => {
               ) : (
                 ""
               )}
-            </div>
+            </form>
             {searchQuery.length === 0 ? (
               <div
-              onClick={()=>setOpenVoiceSearchModal(true)}
+                onClick={() => setOpenVoiceSearchModal(true)}
                 className={`right ${
                   darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
                 }  rounded-full p-1`}
@@ -295,7 +311,7 @@ const MobileHeader = () => {
                   <>
                     <Link to={"/results?search_query=" + suggestion}>
                       <div
-                        onClick={() => setSearchQuery(suggestion)}
+                        onClick={() => dispatch(setSearchQuery(suggestion))}
                         className={`px-3 z-30 w-full  flex md:hidden  py-1.5 cursor-pointer justify-between items-center
                  
                   ${
@@ -342,7 +358,6 @@ const MobileHeader = () => {
         <VoiceSearchModal
           openVoiceSearchModal={openVoiceSearchModal}
           setOpenVoiceSearchModal={setOpenVoiceSearchModal}
-          setSearchQuery={setSearchQuery}
         />
       )}
     </>

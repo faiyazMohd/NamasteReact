@@ -7,7 +7,6 @@ const liveChatSlice = createSlice({
     },
     reducers:{
         addLiveChat:(state,action)=>{
-            console.log(action.payload);
             state.liveChats.unshift(action.payload)
             if (state.liveChats.length > 25) {
                 state.liveChats.splice(25,1)

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import YoutubeLogoLight from "../../../assets/icons/pngs/Youtube-Logo-Dark.png";
 import YoutubeLogoDark from "../../../assets/icons/pngs/Youtube-Logo-Light.png";
 import SearchIcon from "../../../assets/icons/svgs/SvgComponents/SearchIcon";
@@ -8,9 +8,9 @@ import HamBurgerIcon from "../../../assets/icons/svgs/SvgComponents/HamBurgerIco
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
-import { openSidebar, toggleSidebar } from "../../../utils/store/appSlice";
+import {  setSearchQuery, toggleSidebar } from "../../../utils/store/appSlice";
 import SignInBtn from "../../others/SignInBtn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MoreSettings from "./MoreSettings";
 import { cacheSearches } from "../../../utils/store/searchSlice";
 import VoiceSearchModal from "./VoiceSearchModal";
@@ -18,19 +18,19 @@ import VoiceSearchModal from "./VoiceSearchModal";
 const Header = () => {
   const [showSearchIcon, setShowSearchIcon] = useState(false);
   const [showMoreSettings, setshowMoreSettings] = useState(false);
-  const [showSuggestion, setShowSuggestion] = useState(false);
   const [openVoiceSearchModal, setOpenVoiceSearchModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setsuggestions] = useState([]);
-  const showSidebar = useSelector((store) => store.app.showSidebar);
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
+  const searchQuery =  useSelector((store)=>store.app.searchQuery)
+  const navigate = useNavigate()
+  // const inputRef = createRef();
+  const inputRef = useRef();
   console.log(searchQuery);
   const dispatch = useDispatch();
-  const handleOpenSideBar = () => {
-    dispatch(openSidebar());
-  };
+
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
   };
@@ -109,12 +109,21 @@ const Header = () => {
             >
               <SearchIcon color={darkTheme ? "#fff " : "#000"} />
             </div>
-            <div className="searchBar flex items-center h-8 w-3/4 relative">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                inputRef.current.blur()
+                navigate("/results?search_query=" + searchQuery)
+                setShowSearchIcon(false)
+              }}
+              className="searchBar flex items-center h-8 w-3/4 relative"
+            >
               <input
+              ref={inputRef}
                 type="text"
                 placeholder="Search"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => dispatch(setSearchQuery(e.target.value))}
                 onFocus={() => {
                   setShowSearchIcon(true);
                 }}
@@ -135,7 +144,7 @@ const Header = () => {
               />
               {searchQuery.length !== 0 ? (
                 <div
-                  onClick={() => setSearchQuery("")}
+                  onClick={() => dispatch(setSearchQuery(""))}
                   className={`absolute right-12  ${
                     darkTheme ? "hover:bg-[#ffffff1a]" : "bg-[#0000000d]"
                   } cursor-pointer rounded-full  p-[8px] mx-4 `}
@@ -176,7 +185,7 @@ const Header = () => {
                   <SearchIcon color={darkTheme ? "#fff" : "#000"} />
                 </Link>
               )}
-            </div>
+            </form>
 
             {showSearchIcon && suggestions.length !== 0 ? (
               <>
@@ -192,7 +201,7 @@ const Header = () => {
                       <Link to={"/results?search_query=" + suggestion}>
                         <div
                           onClick={() => {
-                            setSearchQuery(suggestion);
+                            dispatch(setSearchQuery(suggestion));
                           }}
                           className={`px-3  w-full  hidden md:flex  py-1 cursor-pointer justify-between items-center ${
                             darkTheme
@@ -247,13 +256,14 @@ const Header = () => {
       ) : (
         ""
       )}
-      {openVoiceSearchModal? (
+      {openVoiceSearchModal ? (
         <VoiceSearchModal
           openVoiceSearchModal={openVoiceSearchModal}
           setOpenVoiceSearchModal={setOpenVoiceSearchModal}
-          setSearchQuery={setSearchQuery}
         />
-      ):""}
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -31,6 +31,7 @@ const PlaylistPage = () => {
     );
     const json = await data.json();
     dispatch(modifyPlaylistName(json?.items[0]?.snippet?.title));
+    document.title = json?.items[0]?.snippet?.title + " - YouTube";
     setPlaylistDetails(json?.items[0]);
     console.log(json);
   };

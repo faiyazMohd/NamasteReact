@@ -13,11 +13,10 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
   const [videoDetails, setVideoDetails] = useState(null);
   const [isHover, setIsHover] = useState(false);
   const [isHoverThumbnail, setIsHoverThumbnail] = useState(false);
-  const [channelDetails, setchannelDetails] = useState([]);
+  const [channelDetails, setchannelDetails] = useState(null);
   const [timer, setTimer] = useState(null);
 
   const path = useLocation();
-  console.log(item);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   // console.log(item?.id?.videoId);
   // console.log(videoDetails);
@@ -33,8 +32,8 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
     // console.log(item?.snippet?.title);
     console.log(json);
   };
-  const channelImgUrl =
-    "https://yt3.ggpht.com/D8uGTY8fLYo42IK9S_ahqO2u9NAkWEdbAswFM-OcCVNHVmgo0lYx0Pgq6WimdNvxDbw31U-6cA=s88-c-k-c0x00ffffff-no-nd-rj";
+  // const channelImgUrl =
+  //   "https://yt3.ggpht.com/D8uGTY8fLYo42IK9S_ahqO2u9NAkWEdbAswFM-OcCVNHVmgo0lYx0Pgq6WimdNvxDbw31U-6cA=s88-c-k-c0x00ffffff-no-nd-rj";
   // const channelImgUrl = channelDetails?.snippet?.thumbnails?.default?.url
   // console.log(item);
   const getChannelData = async () => {
@@ -47,8 +46,8 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
     setchannelDetails(json.items[0]);
   };
   useEffect(() => {
-    // getChannelData();
     getVideoData();
+    getChannelData();
     return () => {
       // console.log("I am returning");
       // console.log(item?.id?.videoId);
@@ -109,11 +108,19 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
           <div className="infoContainer my-2 mt-3 flex">
             <div className="channelImg pt-1 flex justify-end items-start md:block w-[12%]  md:w-[10%]">
               <Link to={"/channel/" + item?.snippet?.channelId}>
-                <img
-                  className="w-10 rounded-full"
-                  src={channelImgUrl}
-                  alt="channelName"
-                />
+                {channelDetails ? (
+                  <img
+                    className="w-10 rounded-full"
+                    src={channelDetails?.snippet?.thumbnails?.default?.url}
+                    alt="channelName"
+                  />
+                ) : (
+                  <div
+                    className={`w-10 h-10 ${
+                      darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                    }  rounded-full animate-pulse`}
+                  ></div>
+                )}
               </Link>
             </div>
             <div className="w-[80%] md:w-[80%] ">
@@ -201,11 +208,19 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
           <div className="infoContainer my-2 mt-3 flex">
             <div className="channelImg pt-1 flex justify-end items-start md:block w-[12%]  md:w-[10%]">
               <Link to={"/channel/" + item?.snippet?.channelId}>
-                <img
-                  className="w-10 rounded-full"
-                  src={channelImgUrl}
-                  alt="channelName"
-                />
+                {channelDetails ? (
+                  <img
+                    className="w-10 rounded-full"
+                    src={channelDetails?.snippet?.thumbnails?.default?.url}
+                    alt="channelName"
+                  />
+                ) : (
+                  <div
+                    className={`w-10 h-10 ${
+                      darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                    }  rounded-full animate-pulse`}
+                  ></div>
+                )}
               </Link>
             </div>
             <div className="w-[80%] md:w-[80%] ">
@@ -397,11 +412,16 @@ const RecommendationVideoCard = ({ item, searchFilters }) => {
                 }   text-xs flex gap-3 items-center`}
               >
                 <Link to={"/channel/" + item?.snippet?.channelId}>
+                  {channelDetails? 
                   <img
                     className="w-6 h-6  rounded-full object-cover"
-                    src={channelImgUrl}
+                    src={channelDetails?.snippet?.thumbnails?.default?.url}
                     alt="channelImg"
-                  />
+                  />:<div
+                  className={`w-6 h-6 ${
+                    darkTheme ? "bg-[#ffffff1a]" : "bg-[#0000000d]"
+                  }  rounded-full animate-pulse`}
+                ></div>}
                 </Link>
                 <Link to={"/channel/" + item?.snippet?.channelId}>
                   {/* {item?.snippet?.channelTitle} */}

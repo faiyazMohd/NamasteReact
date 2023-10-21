@@ -45,6 +45,7 @@ const SearchResultPage = () => {
   console.log(searchFilters);
   console.log(searchResults);
   useEffect(() => {
+    document.title = searchQuery + " - YouTube"
     getSearchResults();
   }, [searchQuery, searchFilters]);
   const getSearchResults = async (query) => {
@@ -108,7 +109,7 @@ const SearchResultPage = () => {
           ) : searchResults.length === 0 ? (
             <NoResults />
           ) : (
-            searchResults?.map((item, index) => {
+            searchResults?.map((item) => {
               if (item?.id?.kind === "youtube#playlist") {
                 return (
                   <PlaylistCard

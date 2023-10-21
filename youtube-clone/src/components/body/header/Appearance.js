@@ -111,7 +111,11 @@ const Appearance = ({ setShowAppearance, setshowMoreSettings }) => {
       >
         <div className="px-3 h-14  flex justify-between items-center">
           <div
-            className="closeAccount rounded-full p-[5px]   hover:bg-[#3a3a3a]  active:bg-[#575656]   w-2/12 cursor-pointer"
+            className={`closeAccount rounded-full p-[5px]   hover:bg-[#3a3a3a]  active:bg-[#575656]   w-2/12 cursor-pointer ${
+              darkTheme
+                ? "  hover:bg-[#272727]  active:bg-[#3a3a3a]"
+                : "  hover:bg-[#f2f2f2]  active:bg-[#e5e3e3]"
+            }`}
             onClick={() => {
               setShowAppearance(false);
               setshowMoreSettings(false);
