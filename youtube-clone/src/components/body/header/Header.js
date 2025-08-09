@@ -8,7 +8,7 @@ import HamBurgerIcon from "../../../assets/icons/svgs/SvgComponents/HamBurgerIco
 import CrossIcon from "../../../assets/icons/svgs/SvgComponents/CrossIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_SUGGESTIONS } from "../../../utils/constants/constants";
-import {  setSearchQuery, toggleSidebar } from "../../../utils/store/appSlice";
+import { setSearchQuery, toggleSidebar } from "../../../utils/store/appSlice";
 import SignInBtn from "../../others/SignInBtn";
 import { Link, useNavigate } from "react-router-dom";
 import MoreSettings from "./MoreSettings";
@@ -24,8 +24,8 @@ const Header = () => {
   const locationCode = useSelector((store) => store.app.locationCode);
   const darkTheme = useSelector((store) => store.theme.darkTheme);
   const cachedSearch = useSelector((store) => store.search);
-  const searchQuery =  useSelector((store)=>store.app.searchQuery)
-  const navigate = useNavigate()
+  const searchQuery = useSelector((store) => store.app.searchQuery);
+  const navigate = useNavigate();
   // const inputRef = createRef();
   const inputRef = useRef();
   console.log(searchQuery);
@@ -41,18 +41,21 @@ const Header = () => {
         setsuggestions(cachedSearch[searchQuery]);
       } else {
         const data = await fetch(
-          `https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`
+          `https://api.allorigins.win/get?url=${encodeURIComponent(
+            `http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`
+          )}`
         );
-        // console.log(data);
+        console.log({ data });
         const json = await data.json();
-        console.log(json);
+        const suggestData = JSON.parse(json?.contents);
+        console.log({ json });
         console.log(searchQuery);
         dispatch(
           cacheSearches({
-            [searchQuery]: json[1],
+            [searchQuery]: suggestData[1],
           })
         );
-        setsuggestions(json[1]);
+        setsuggestions(suggestData[1]);
       }
     } else {
       setsuggestions([]);
@@ -112,14 +115,14 @@ const Header = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                inputRef.current.blur()
-                navigate("/results?search_query=" + searchQuery)
-                setShowSearchIcon(false)
+                inputRef.current.blur();
+                navigate("/results?search_query=" + searchQuery);
+                setShowSearchIcon(false);
               }}
               className="searchBar flex items-center h-8 w-3/4 relative"
             >
               <input
-              ref={inputRef}
+                ref={inputRef}
                 type="text"
                 placeholder="Search"
                 value={searchQuery}

@@ -29,7 +29,7 @@ const MobileHeader = () => {
   const cachedSearch = useSelector((store) => store.search);
   const playlistName = useSelector((store) => store.content.playlistName);
   const channelDetails = useSelector((store) => store.content.channelDetails);
-  const searchQuery =  useSelector((store)=>store.app.searchQuery)
+  const searchQuery = useSelector((store) => store.app.searchQuery);
   const path = useLocation();
   const navigate = useNavigate();
   // const inputRef = createRef()
@@ -39,9 +39,9 @@ const MobileHeader = () => {
   const dispatch = useDispatch();
   // console.log("isScrollUp in header is :" + isScrollUp);
 
-// if (showSearch) {
-//   inputRef.current.focus()
-// }
+  // if (showSearch) {
+  //   inputRef.current.focus()
+  // }
 
   const getSuggestions = async () => {
     if (searchQuery.length !== 0) {
@@ -50,17 +50,20 @@ const MobileHeader = () => {
         setsuggestions(cachedSearch[searchQuery]);
       } else {
         const data = await fetch(
-          `https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`
+          `https://api.allorigins.win/get?url=${encodeURIComponent(
+            `http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&gl=${locationCode}&q=${searchQuery}`
+          )}`
         );
         const json = await data.json();
-        console.log(json);
+        const suggestData = JSON.parse(json?.contents);
+        console.log({ json });
         console.log(searchQuery);
         dispatch(
           cacheSearches({
-            [searchQuery]: json[1],
+            [searchQuery]: suggestData[1],
           })
         );
-        setsuggestions(json[1]);
+        setsuggestions(suggestData[1]);
       }
     } else {
       setsuggestions([]);
@@ -227,7 +230,7 @@ const MobileHeader = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                inputRef.current.blur()
+                inputRef.current.blur();
                 navigate("/results?search_query=" + searchQuery);
                 setShowSuggestion(false);
               }}
@@ -236,7 +239,7 @@ const MobileHeader = () => {
               }   `}
             >
               <input
-              ref={inputRef}
+                ref={inputRef}
                 type="text"
                 autoFocus
                 placeholder="Search YouTube"
